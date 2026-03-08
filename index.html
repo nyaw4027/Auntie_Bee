@@ -451,6 +451,7 @@
       <span class="hero-ornament">✦ ✦ ✦</span>
       <div class="hero-sub">In Loving Memory of</div>
       <div class="hero-photo-ring">
+         <img src="profile.jpg" alt="profile Photo" class="hero-photo">
         <div class="hero-photo-placeholder"><i class="fas fa-user"></i></div>
       </div>
       <h1 class="hero-name">
@@ -498,7 +499,7 @@
       <div class="quick-events-grid">
         <div class="event-card reveal reveal-delay-1">
           <div class="event-card-icon"><i class="fas fa-moon"></i></div>
-          <div class="event-card-type">Day 1</div>
+          <div class="event-card-type">Phase 1</div>
           <div class="event-card-name">One Week Observation</div>
           <div class="event-card-detail">
             <div><i class="fas fa-calendar-alt"></i> Monday, 14th April 2026</div>
@@ -508,22 +509,22 @@
         </div>
         <div class="event-card reveal reveal-delay-2">
           <div class="event-card-icon"><i class="fas fa-fire"></i></div>
-          <div class="event-card-type">Day 2</div>
+          <div class="event-card-type">Phase 2 - Day 1</div>
           <div class="event-card-name">Wake Keeping</div>
           <div class="event-card-detail">
             <div><i class="fas fa-calendar-alt"></i> Date to be announced</div>
             <div><i class="fas fa-clock"></i> 8:00 PM</div>
-            <div><i class="fas fa-map-marker-alt"></i> Family Residence</div>
+            <div><i class="fas fa-map-marker-alt"></i> Sankubenase Funeral Grounds</div>
           </div>
         </div>
         <div class="event-card reveal reveal-delay-3">
           <div class="event-card-icon"><i class="fas fa-church"></i></div>
-          <div class="event-card-type">Day 3</div>
+          <div class="event-card-type">Phase 2 - Day 2</div>
           <div class="event-card-name">Burial Service</div>
           <div class="event-card-detail">
             <div><i class="fas fa-calendar-alt"></i> Date to be announced</div>
             <div><i class="fas fa-clock"></i> 9:00 AM</div>
-            <div><i class="fas fa-map-marker-alt"></i> Venue to be announced</div>
+            <div><i class="fas fa-map-marker-alt"></i> Sankubenase Funeral Ground</div>
           </div>
         </div>
         <div class="event-card reveal reveal-delay-4">
@@ -533,7 +534,7 @@
           <div class="event-card-detail">
             <div><i class="fas fa-calendar-alt"></i> Date to be announced</div>
             <div><i class="fas fa-clock"></i> 9:00 AM</div>
-            <div><i class="fas fa-map-marker-alt"></i> Venue to be announced</div>
+            <div><i class="fas fa-map-marker-alt"></i> The Church Of Pentecost, Sankubenase Assembly. </div>
           </div>
         </div>
       </div>
@@ -1197,12 +1198,24 @@
     if (a) a.textContent = attendees.length;
   }
   function shareWebsite() {
-    if (navigator.share) {
-      navigator.share({ title:'In Loving Memory – Madam Agnes Pomaa (Auntie Bee)', text:'Join us in honouring the life of Madam Agnes Pomaa.', url: window.location.href });
-    } else {
-      navigator.clipboard.writeText(window.location.href).then(() => showToast('Link copied to clipboard!'));
-    }
+  const shareData = {
+    title: "In Loving Memory – Madam Agnes Pomaa (Auntie Bee)",
+    text: "Join us in honoring the life of Madam Agnes Pomaa. View the funeral programme, send condolences, and watch the livestream.",
+    url: "https://nyaw4027.github.io/Auntie_Bee/"
+  };
+
+  if (navigator.share) {
+    navigator.share(shareData)
+      .then(() => console.log("Shared successfully"))
+      .catch((error) => console.log("Error sharing:", error));
+  } else {
+    navigator.clipboard.writeText(shareData.url)
+      .then(() => showToast("Memorial link copied! Share it with family and friends."))
+      .catch(() => {
+        prompt("Copy and share this memorial link:", shareData.url);
+      });
   }
+}
 
   // ============================================================
   // TOAST & HELPERS
