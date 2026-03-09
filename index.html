@@ -68,7 +68,7 @@
     ============================================================ */
     #nav {
       position: fixed; top: 0; left: 0; right: 0;
-      background: rgba(17,17,17,0.96); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      background: rgba(17,17,17,0.96); backdrop-filter: blur(12px);
       z-index: 1000; border-bottom: 1px solid var(--border);
     }
     .nav-inner {
@@ -283,21 +283,99 @@
     .condolence-msg { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--text-mid); line-height: 1.7; padding-left: 8px; }
 
     /* ============================================================
-       GALLERY
+       TRIBUTES
     ============================================================ */
-    .gallery-subtitle { margin-top: 16px; color: var(--text-mid); font-size: 0.9rem; max-width: 500px; margin-left: auto; margin-right: auto; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap: 16px; }
-    .gallery-item { position: relative; border-radius: 2px; overflow: hidden; aspect-ratio: 4/3; cursor: pointer; background: #222; }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
-    .gallery-item:hover img { transform: scale(1.06); }
-    .gallery-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg,#1e1e18 0%,#2a2a22 100%); color: var(--gold); font-size: 2rem; gap: 10px; }
-    .gallery-placeholder span { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-light); text-transform: uppercase; }
-    .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 60%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 16px; }
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
-    .gallery-overlay-text { color: var(--cream); font-size: 0.85rem; font-family: 'Cormorant Garamond', serif; }
-    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 2000; display: none; align-items: center; justify-content: center; }
+    .tribute-page-sub { margin-top: 16px; color: var(--text-mid); font-size: 0.9rem; max-width: 540px; margin-left: auto; margin-right: auto; text-align: center; line-height: 1.7; }
+
+    /* Tab strip */
+    .tribute-tabs { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 52px; }
+    .tribute-tab  { padding: 11px 26px; border: 1px solid var(--border); background: var(--ivory); color: var(--text-mid); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all 0.2s; font-family: 'Lato', sans-serif; display: flex; align-items: center; gap: 8px; }
+    .tribute-tab.active, .tribute-tab:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
+
+    /* Panels */
+    .tribute-panel { display: none; animation: fadeInPage 0.4s ease forwards; }
+    .tribute-panel.active { display: block; }
+
+    /* ── Tribute text block (shown FIRST) ── */
+    .tribute-text-block {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 6px 6px 0;
+      padding: 40px 44px;
+      position: relative;
+      margin-bottom: 56px;
+    }
+    .tribute-text-block::before {
+      content: '\201C';
+      position: absolute; top: 12px; left: 22px;
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem; color: var(--gold);
+      opacity: 0.1; line-height: 1; pointer-events: none;
+    }
+    .tribute-text-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.22rem; line-height: 2.0;
+      color: var(--text-mid); font-style: italic;
+      padding-left: 14px;
+      white-space: pre-line;
+    }
+    .tribute-signoff {
+      display: flex; align-items: center; gap: 16px;
+      margin-top: 28px; padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .tribute-signoff-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(200,168,75,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.1rem; flex-shrink: 0;
+    }
+    .tribute-signoff-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--text-dark); }
+    .tribute-signoff-role { font-size: 0.78rem; color: var(--text-light); margin-top: 3px; }
+
+    /* ── Photos section (shown AFTER text) ── */
+    .tribute-photos-heading {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 24px;
+    }
+    .tribute-photos-heading span { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 700; white-space: nowrap; }
+    .tribute-photos-heading::before,
+    .tribute-photos-heading::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    .tribute-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    /* Member card */
+    .member-card { background: var(--ivory); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; text-align: center; }
+    .member-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .member-photo-wrap { position: relative; aspect-ratio: 3/4; overflow: hidden; background: var(--charcoal); cursor: pointer; }
+    .member-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.4s; }
+    .member-card:hover .member-photo-wrap img { transform: scale(1.05); }
+    .member-photo-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg,#1e1e18 0%,#2a2a22 100%); color: var(--gold); gap: 10px; }
+    .member-photo-placeholder i { font-size: 2.8rem; opacity: 0.45; }
+    .member-photo-placeholder span { font-size: 0.68rem; letter-spacing: 0.12em; color: var(--text-light); text-transform: uppercase; }
+    .member-info { padding: 16px 12px 18px; }
+    .member-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px; }
+    .member-occupation { font-size: 0.78rem; color: var(--gold); letter-spacing: 0.05em; line-height: 1.4; }
+
+    /* Church sub-labels */
+    .church-sub-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 700; display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .church-sub-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* Empty notice */
+    .tribute-empty { text-align: center; padding: 48px 20px; color: var(--text-light); font-size: 0.9rem; border: 1px dashed rgba(200,168,75,0.2); border-radius: 4px; }
+    .tribute-empty i { display: block; font-size: 2.4rem; color: var(--gold); opacity: 0.2; margin-bottom: 14px; }
+
+    /* Lightbox */
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 2000; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 12px; }
     .lightbox.open { display: flex; }
-    .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 2px; }
+    .lightbox img { max-width: 90vw; max-height: 78vh; object-fit: contain; border-radius: 2px; }
+    .lightbox-caption { color: var(--gold-pale); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; opacity: 0.8; }
     .lightbox-close { position: absolute; top: 24px; right: 28px; color: var(--gold); font-size: 1.8rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; background: none; border: none; }
     .lightbox-close:hover { opacity: 1; }
 
@@ -397,6 +475,11 @@
       .form-row { grid-template-columns: 1fr; }
       .hero-content { padding: 40px 16px; }
       .admin-links-grid { grid-template-columns: 1fr; }
+      .tribute-text-block { padding: 28px 22px 28px 26px; }
+      .tribute-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+    }
+    @media (max-width: 480px) {
+      .tribute-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -420,7 +503,7 @@
       <li><a onclick="showPage('announcements')" data-page="announcements">Announcements</a></li>
       <li><a onclick="showPage('program')"       data-page="program">Program</a></li>
       <li><a onclick="showPage('condolences')"   data-page="condolences">Condolences</a></li>
-      <li><a onclick="showPage('gallery')"       data-page="gallery">Gallery</a></li>
+      <li><a onclick="showPage('tributes')"      data-page="tributes">Tributes</a></li>
       <li><a onclick="showPage('livestream')"    data-page="livestream">Livestream</a></li>
       <li><a onclick="showPage('attend')"        data-page="attend">Attend</a></li>
     </ul>
@@ -433,7 +516,7 @@
     <a onclick="showPage('announcements');closeMenu()">Announcements</a>
     <a onclick="showPage('program');closeMenu()">Funeral Program</a>
     <a onclick="showPage('condolences');closeMenu()">Condolences</a>
-    <a onclick="showPage('gallery');closeMenu()">Gallery</a>
+    <a onclick="showPage('tributes');closeMenu()">Tributes</a>
     <a onclick="showPage('livestream');closeMenu()">Livestream</a>
     <a onclick="showPage('attend');closeMenu()">Attend &amp; SMS</a>
   </div>
@@ -451,7 +534,6 @@
       <span class="hero-ornament">✦ ✦ ✦</span>
       <div class="hero-sub">In Loving Memory of</div>
       <div class="hero-photo-ring">
-         <img src="profile.jpg" alt="profile Photo" class="hero-photo">
         <div class="hero-photo-placeholder"><i class="fas fa-user"></i></div>
       </div>
       <h1 class="hero-name">
@@ -499,7 +581,7 @@
       <div class="quick-events-grid">
         <div class="event-card reveal reveal-delay-1">
           <div class="event-card-icon"><i class="fas fa-moon"></i></div>
-          <div class="event-card-type">Phase 1</div>
+          <div class="event-card-type">Day 1</div>
           <div class="event-card-name">One Week Observation</div>
           <div class="event-card-detail">
             <div><i class="fas fa-calendar-alt"></i> Monday, 14th April 2026</div>
@@ -509,22 +591,22 @@
         </div>
         <div class="event-card reveal reveal-delay-2">
           <div class="event-card-icon"><i class="fas fa-fire"></i></div>
-          <div class="event-card-type">Phase 2 - Day 1</div>
+          <div class="event-card-type">Day 2</div>
           <div class="event-card-name">Wake Keeping</div>
           <div class="event-card-detail">
             <div><i class="fas fa-calendar-alt"></i> Date to be announced</div>
             <div><i class="fas fa-clock"></i> 8:00 PM</div>
-            <div><i class="fas fa-map-marker-alt"></i> Sankubenase Funeral Grounds</div>
+            <div><i class="fas fa-map-marker-alt"></i> Family Residence</div>
           </div>
         </div>
         <div class="event-card reveal reveal-delay-3">
           <div class="event-card-icon"><i class="fas fa-church"></i></div>
-          <div class="event-card-type">Phase 2 - Day 2</div>
+          <div class="event-card-type">Day 3</div>
           <div class="event-card-name">Burial Service</div>
           <div class="event-card-detail">
             <div><i class="fas fa-calendar-alt"></i> Date to be announced</div>
             <div><i class="fas fa-clock"></i> 9:00 AM</div>
-            <div><i class="fas fa-map-marker-alt"></i> Sankubenase Funeral Ground</div>
+            <div><i class="fas fa-map-marker-alt"></i> Venue to be announced</div>
           </div>
         </div>
         <div class="event-card reveal reveal-delay-4">
@@ -534,7 +616,7 @@
           <div class="event-card-detail">
             <div><i class="fas fa-calendar-alt"></i> Date to be announced</div>
             <div><i class="fas fa-clock"></i> 9:00 AM</div>
-            <div><i class="fas fa-map-marker-alt"></i> The Church Of Pentecost, Sankubenase Assembly. </div>
+            <div><i class="fas fa-map-marker-alt"></i> Venue to be announced</div>
           </div>
         </div>
       </div>
@@ -588,7 +670,7 @@
       <a onclick="showPage('announcements')">Announcements</a>
       <a onclick="showPage('program')">Program</a>
       <a onclick="showPage('condolences')">Condolences</a>
-      <a onclick="showPage('gallery')">Gallery</a>
+      <a onclick="showPage('tributes')">Tributes</a>
       <a onclick="showPage('livestream')">Livestream</a>
       <a onclick="showPage('attend')">Attend</a>
     </nav>
@@ -713,18 +795,46 @@
 </div>
 
 <!-- ================================================================
-     PAGE: GALLERY
+     PAGE: TRIBUTES
 ================================================================ -->
-<div id="page-gallery" class="page">
+<div id="page-tributes" class="page">
   <section class="section">
-    <div class="container">
+    <div class="container-md">
       <div class="section-header reveal">
-        <span class="section-eyebrow">Photo Memories</span>
-        <h2 class="section-title">Gallery</h2>
-        <div class="section-ornament"><span></span><i class="fas fa-images"></i><span></span></div>
-        <p class="gallery-subtitle">A collection of cherished moments and memories of Madam Agnes Pomaa.</p>
+        <span class="section-eyebrow">Words of Love</span>
+        <h2 class="section-title">Tributes</h2>
+        <div class="section-ornament"><span></span><i class="fas fa-heart"></i><span></span></div>
+        <p class="tribute-page-sub">Heartfelt tributes and cherished photographs from those whose lives were touched by Madam Agnes Pomaa — "Auntie Bee".</p>
       </div>
-      <div class="gallery-grid" id="gallery-grid"></div>
+
+      <!-- Tab buttons -->
+      <div class="tribute-tabs reveal">
+        <button class="tribute-tab active" onclick="switchTribute('children')">
+          <i class="fas fa-child"></i> Children
+        </button>
+        <button class="tribute-tab" onclick="switchTribute('family')">
+          <i class="fas fa-users"></i> Family
+        </button>
+        <button class="tribute-tab" onclick="switchTribute('grandchildren')">
+          <i class="fas fa-baby"></i> Grandchildren
+        </button>
+        <button class="tribute-tab" onclick="switchTribute('church')">
+          <i class="fas fa-church"></i> Church
+        </button>
+      </div>
+
+      <!-- Children -->
+      <div class="tribute-panel active" id="tribute-panel-children"></div>
+
+      <!-- Family -->
+      <div class="tribute-panel" id="tribute-panel-family"></div>
+
+      <!-- Grandchildren -->
+      <div class="tribute-panel" id="tribute-panel-grandchildren"></div>
+
+      <!-- Church -->
+      <div class="tribute-panel" id="tribute-panel-church"></div>
+
     </div>
   </section>
   <div class="page-footer">
@@ -890,7 +1000,8 @@
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
-  <img id="lightbox-img" src="" alt="Gallery Photo"/>
+  <img id="lightbox-img" src="" alt="Photo"/>
+  <div class="lightbox-caption" id="lightbox-caption"></div>
 </div>
 
 <!-- TOAST -->
@@ -1093,28 +1204,194 @@
   }
 
   // ============================================================
-  // GALLERY
+  // TRIBUTES DATA
+  // ── HOW TO ADD A PERSON ──────────────────────────────────────
+  //   1. Find the group you want (tributeGroups.children, .family,
+  //      .grandchildren, or .church)
+  //   2. Add a new object inside the members array:
+  //        { photo: 'filename.jpg', name: 'Full Name', occupation: 'Role / City' }
+  //   3. If the photo is not ready yet, set photo: '' to show a placeholder
+  //   4. For church group, use subgroup: 'leaders' or subgroup: 'members'
+  //   5. Save the file. That's it — the grid expands automatically.
+  // ────────────────────────────────────────────────────────────
+  const tributeGroups = {
+
+    children: {
+      icon: 'fa-child',
+      signName: 'The Children of Madam Agnes Pomaa',
+      signRole: 'In loving memory of our dear mother',
+      tributeText: `Maa, you were our first home — the place we always came back to, no matter how far life took us.
+
+Your hands cooked for us, your voice prayed over us, and your love never once wavered. You taught us what it means to work hard, to love God, and to stand together as family.
+
+The house feels quieter now, but your presence lives in every corner of it. In your grandchildren's laughter, in the way we still set the table the way you liked it, in the recipes we are slowly learning to make.
+
+We are so proud to be your children. Thank you for everything you gave us — not just the things we can hold, but the things we carry inside us. Rest well, Maa. You have truly earned it.`,
+      members: [
+        // Add each child below. Example:
+        // { photo: 'child1.jpg', name: 'Kwame Pomaa', occupation: 'Engineer · Kumasi' },
+        // { photo: 'child2.jpg', name: 'Akosua Pomaa', occupation: 'Nurse · Accra' },
+        // { photo: '',           name: 'Kofi Pomaa',   occupation: 'Teacher · Tamale' },
+      ]
+    },
+
+    family: {
+      icon: 'fa-users',
+      signName: 'The Family of Madam Agnes Pomaa',
+      signRole: 'In loving memory of our beloved',
+      tributeText: `She was the thread that held us all together.
+
+At every naming ceremony, every wedding, every gathering — Auntie Bee was there, moving between rooms and people with a warmth that made everyone feel at home. She remembered birthdays, she called to check in, she sent for you when she hadn't heard your voice in too long.
+
+Family was not just a word to her — it was her life's work.
+
+We are grateful for every moment shared, every lesson passed down, and every prayer she lifted on our behalf. Her legacy lives on in this family she loved so deeply. We will carry her name with pride.`,
+      members: [
+        // Add family members below:
+        // { photo: 'uncle_james.jpg', name: 'James Pomaa',  occupation: 'Family Head · Sankubenase' },
+        // { photo: '',                name: 'Ama Asante',   occupation: 'Niece · Kumasi' },
+      ]
+    },
+
+    grandchildren: {
+      icon: 'fa-baby',
+      signName: 'The Grandchildren of Madam Agnes Pomaa',
+      signRole: 'In loving memory of our dearest grandmother',
+      tributeText: `Grandma, you spoiled us with love and we would not change a single moment.
+
+You always had something on the stove when we visited. You called us by our full names when we were in trouble, and funny nicknames when you were proud of us. You told us the stories of where we came from, and made sure we never forgot them.
+
+You believed in us before we believed in ourselves. You prayed for us every single morning — we know because we heard you.
+
+We will grow up carrying your values, your strength, and your faith. One day we will tell our own children about you, and the stories will make them wish they had known you too. We love you forever, Grandma.`,
+      members: [
+        // Add grandchildren below — add as many as needed:
+        // { photo: 'grand1.jpg', name: 'Nana Ama',     occupation: 'Student · Accra' },
+        // { photo: 'grand2.jpg', name: 'Kofi Jnr',     occupation: 'Student · Kumasi' },
+        // { photo: '',           name: 'Abena Miriam',  occupation: 'Student · UK' },
+      ]
+    },
+
+    church: {
+      icon: 'fa-church',
+      signName: 'The Church Of Pentecost, Sankubenase Assembly',
+      signRole: 'In loving memory of a faithful and dedicated member',
+      tributeText: `Sister Agnes Pomaa was the kind of member every church prays for.
+
+She came early and stayed late. She served quietly without seeking recognition. She gave generously without keeping records. Her faith was not just something she professed — it was something she practised, consistently, over many decades of faithful service to God and to this assembly.
+
+We will remember her in the choir, in the women's fellowship, and in the quiet corners of the sanctuary where she would linger after service to pray.
+
+The Sankubenase Assembly has lost a pillar. But heaven has gained one of its finest servants. We celebrate her life and give thanks to God for the privilege of worshipping alongside her. May her memory inspire us to serve with the same devotion she showed until the very end.`,
+      // Church uses two sub-sections: 'leaders' and 'members'
+      members: [
+        // Church leaders — set subgroup: 'leaders'
+        // { photo: 'pastor.jpg',  name: 'Ps. Emmanuel Adu',  occupation: 'District Pastor',   subgroup: 'leaders' },
+        // { photo: 'elder1.jpg',  name: 'Elder Kwesi Boateng', occupation: 'Presiding Elder', subgroup: 'leaders' },
+        // { photo: '',            name: 'Deaconess Abena',    occupation: 'Women\'s Leader',  subgroup: 'leaders' },
+        // Church group photos — set subgroup: 'members'
+        // { photo: 'choir.jpg',   name: 'Church Choir',       occupation: 'Sankubenase Assembly',  subgroup: 'members' },
+        // { photo: 'women.jpg',   name: 'Women\'s Fellowship', occupation: 'Sankubenase Assembly', subgroup: 'members' },
+      ]
+    }
+  };
+
   // ============================================================
-  const galleryItems = [
-    { label:'Early Life', icon:'fa-baby' }, { label:'Family Portrait', icon:'fa-users' },
-    { label:'Church Service', icon:'fa-church' }, { label:'Community Work', icon:'fa-hands-helping' },
-    { label:'Celebration', icon:'fa-birthday-cake' }, { label:'With Grandchildren', icon:'fa-heart' },
-    { label:'Wedding Day', icon:'fa-ring' }, { label:'Travel Memories', icon:'fa-plane' },
-    { label:'Last Christmas', icon:'fa-star' }, { label:'Garden Moments', icon:'fa-leaf' },
-    { label:'At Work', icon:'fa-briefcase' }, { label:'Friends Gathering', icon:'fa-smile' },
-  ];
-  function renderGallery() {
-    const g = document.getElementById('gallery-grid');
-    if (!g) return;
-    g.innerHTML = galleryItems.map((item, i) => `
-      <div class="gallery-item reveal" onclick="openLightboxPlaceholder(${i}, '${item.label}')">
-        <div class="gallery-placeholder"><i class="fas ${item.icon}"></i><span>${item.label}</span></div>
-        <div class="gallery-overlay"><div class="gallery-overlay-text">${item.label}</div></div>
-      </div>`).join('');
+  // RENDER TRIBUTES
+  // ============================================================
+  function renderTributes() {
+    Object.keys(tributeGroups).forEach(key => renderTributePanel(key));
+  }
+
+  function renderTributePanel(key) {
+    const panel = document.getElementById('tribute-panel-' + key);
+    if (!panel) return;
+    const g = tributeGroups[key];
+
+    // ── 1. Tribute text block ──
+    const textHTML = `
+      <div class="tribute-text-block reveal">
+        <div class="tribute-text-body">${escHtml(g.tributeText)}</div>
+        <div class="tribute-signoff">
+          <div class="tribute-signoff-icon"><i class="fas ${g.icon}"></i></div>
+          <div>
+            <div class="tribute-signoff-name">${escHtml(g.signName)}</div>
+            <div class="tribute-signoff-role">${escHtml(g.signRole)}</div>
+          </div>
+        </div>
+      </div>`;
+
+    // ── 2. Photos grid ──
+    let photosHTML = '';
+    const members = g.members || [];
+
+    if (key === 'church') {
+      // Church: split into leaders and group/members sub-sections
+      const leaders = members.filter(m => m.subgroup === 'leaders' || !m.subgroup);
+      const grp     = members.filter(m => m.subgroup === 'members');
+
+      const leadersGrid = leaders.length > 0
+        ? `<div class="tribute-grid">${leaders.map(m => memberCardHTML(m)).join('')}</div>`
+        : `<div class="tribute-empty"><i class="fas fa-user-tie"></i>No leaders added yet — add entries in the <code>church.members</code> array with <code>subgroup: 'leaders'</code>.</div>`;
+
+      const grpGrid = grp.length > 0
+        ? `<div class="tribute-grid">${grp.map(m => memberCardHTML(m)).join('')}</div>`
+        : `<div class="tribute-empty"><i class="fas fa-users"></i>No group photos added yet — add entries with <code>subgroup: 'members'</code>.</div>`;
+
+      photosHTML = `
+        <div class="church-sub-label"><i class="fas fa-user-tie"></i> Church Leaders</div>
+        ${leadersGrid}
+        <div class="church-sub-label" style="margin-top:32px"><i class="fas fa-users"></i> Congregation &amp; Groups</div>
+        ${grpGrid}`;
+    } else {
+      photosHTML = members.length > 0
+        ? `<div class="tribute-grid">${members.map(m => memberCardHTML(m)).join('')}</div>`
+        : `<div class="tribute-empty"><i class="fas fa-images"></i>Photos coming soon — add entries in the <code>${key}.members</code> array in the code.</div>`;
+    }
+
+    const photosSection = `
+      <div class="reveal">
+        <div class="tribute-photos-heading">
+          <span><i class="fas fa-images"></i> &nbsp;Photographs</span>
+        </div>
+        ${photosHTML}
+      </div>`;
+
+    panel.innerHTML = textHTML + photosSection;
     triggerReveal();
   }
-  function openLightboxPlaceholder(i, label) {
-    showToast(`Photo: "${label}" — Upload images to see them here.`);
+
+  function memberCardHTML(m) {
+    const photoContent = m.photo
+      ? `<img src="${escHtml(m.photo)}" alt="${escHtml(m.name)}"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+              onclick="openLightbox('${escHtml(m.photo)}','${escHtml(m.name)}')"/>
+         <div class="member-photo-placeholder" style="display:none"><i class="fas fa-user"></i><span>Photo</span></div>`
+      : `<div class="member-photo-placeholder"><i class="fas fa-user"></i><span>Photo Coming</span></div>`;
+    return `
+      <div class="member-card">
+        <div class="member-photo-wrap">${photoContent}</div>
+        <div class="member-info">
+          <div class="member-name">${escHtml(m.name)}</div>
+          ${m.occupation ? `<div class="member-occupation">${escHtml(m.occupation)}</div>` : ''}
+        </div>
+      </div>`;
+  }
+
+  // ── Tab switching ──
+  function switchTribute(key) {
+    const keys = ['children','family','grandchildren','church'];
+    document.querySelectorAll('.tribute-tab').forEach((btn, i) => btn.classList.toggle('active', keys[i] === key));
+    document.querySelectorAll('.tribute-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tribute-panel-' + key).classList.add('active');
+    triggerReveal();
+  }
+
+  // ── Lightbox ──
+  function openLightbox(src, name) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-caption').textContent = name || '';
+    document.getElementById('lightbox').classList.add('open');
   }
   function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
 
@@ -1198,24 +1475,12 @@
     if (a) a.textContent = attendees.length;
   }
   function shareWebsite() {
-  const shareData = {
-    title: "In Loving Memory – Madam Agnes Pomaa (Auntie Bee)",
-    text: "Join us in honoring the life of Madam Agnes Pomaa. View the funeral programme, send condolences, and watch the livestream.",
-    url: "https://nyaw4027.github.io/Auntie_Bee/"
-  };
-
-  if (navigator.share) {
-    navigator.share(shareData)
-      .then(() => console.log("Shared successfully"))
-      .catch((error) => console.log("Error sharing:", error));
-  } else {
-    navigator.clipboard.writeText(shareData.url)
-      .then(() => showToast("Memorial link copied! Share it with family and friends."))
-      .catch(() => {
-        prompt("Copy and share this memorial link:", shareData.url);
-      });
+    if (navigator.share) {
+      navigator.share({ title:'In Loving Memory – Madam Agnes Pomaa (Auntie Bee)', text:'Join us in honouring the life of Madam Agnes Pomaa.', url: window.location.href });
+    } else {
+      navigator.clipboard.writeText(window.location.href).then(() => showToast('Link copied to clipboard!'));
+    }
   }
-}
 
   // ============================================================
   // TOAST & HELPERS
@@ -1236,7 +1501,7 @@
   // INIT
   // ============================================================
   function initAll() {
-    renderAnnouncements(); renderPrograms(); renderGallery();
+    renderAnnouncements(); renderPrograms(); renderTributes();
     renderCondolences(); renderAttendees(); updateStats();
     initReveal(); triggerReveal();
     if (streamLinks.fb) document.getElementById('fb-stream-link').href = streamLinks.fb;
