@@ -1593,20 +1593,36 @@ function renderTributes() {
 }
 
 function memberCard(m) {
-  const photo = m.photo
-    ? `<img src="${esc(m.photo)}" alt="${esc(m.name)}"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-            onclick="openLightbox('${esc(m.photo)}','${esc(m.name)}')"/>
-       <div class="member-photo-placeholder" style="display:none"><i class="fas fa-user"></i><span>Photo</span></div>`
-    : `<div class="member-photo-placeholder"><i class="fas fa-user"></i><span>Photo Coming</span></div>`;
+  const photoHTML = m.photo
+    ? `
+      <div class="member-photo-wrap">
+        <img src="${esc(m.photo)}" alt="${esc(m.name)}"
+             onerror="this.style.display='none'; this.parentNode.querySelector('.member-photo-placeholder').style.display='flex';"
+             onclick="openLightbox('${esc(m.photo)}','${esc(m.name)}')"/>
+        <div class="member-photo-placeholder" style="display:none">
+          <i class="fas fa-user"></i>
+          <span>Photo</span>
+        </div>
+      </div>
+    `
+    : `
+      <div class="member-photo-wrap">
+        <div class="member-photo-placeholder" style="display:flex">
+          <i class="fas fa-user"></i>
+          <span>Photo Coming</span>
+        </div>
+      </div>
+    `;
+
   return `
     <div class="member-card">
-      <div class="member-photo-wrap">${photo}</div>
+      ${photoHTML}
       <div class="member-info">
         <div class="member-name">${esc(m.name)}</div>
         ${m.occupation ? `<div class="member-occupation">${esc(m.occupation)}</div>` : ''}
       </div>
-    </div>`;
+    </div>
+  `;
 }
 
 function switchTribute(key) {
