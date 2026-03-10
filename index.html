@@ -1127,118 +1127,244 @@ function switchProgram(tab) {
 }
 
 /* ── TRIBUTES ─────────────────────────────────────────────── */
-/*
-  TO ADD PEOPLE: find the members array for the group below and add:
-  { photo: 'filename.jpg', name: 'Full Name', occupation: 'Role · City' }
-  Leave photo:'' to show a placeholder until photo is ready.
-  For church members also add  subgroup: 'leaders'  or  subgroup: 'members'
-*/
+
 const TRIBUTE_GROUPS = {
+
   children: {
-    icon:'fa-child', signName:'The Children of Madam Agnes Pomaa', signRole:'In loving memory of our dear mother',
-    text:`Maa, you were our first home — the place we always came back to, no matter how far life took us.\n\nYour hands cooked for us, your voice prayed over us, and your love never once wavered. You taught us what it means to work hard, to love God, and to stand together as family.\n\nThe house feels quieter now, but your presence lives in every corner of it. In your grandchildren's laughter, in the way we still set the table the way you liked it, in the recipes we are slowly learning to make.\n\nWe are so proud to be your children. Thank you for everything you gave us — not just the things we can hold, but the things we carry inside us. Rest well, Maa. You have truly earned it.`,
-    members: [
-      // { photo: 'child1.jpg', name: 'Kwame Pomaa', occupation: 'Engineer · Kumasi' },
-    ]
+    icon:'fa-child',
+    signName:'The Children of Madam Agnes Pomaa',
+    signRole:'In loving memory of our dear mother',
+    text:`Maa, you were our first home — the place we always came back to, no matter how far life took us.
+
+Your hands cooked for us, your voice prayed over us, and your love never once wavered. You taught us what it means to work hard, to love God, and to stand together as family.
+
+The house feels quieter now, but your presence lives in every corner of it. In your grandchildren's laughter, in the way we still set the table the way you liked it, in the recipes we are slowly learning to make.
+
+We are so proud to be your children. Thank you for everything you gave us — not just the things we can hold, but the things we carry inside us. Rest well, Maa. You have truly earned it.`,
+    members: []
   },
+
   family: {
-    icon:'fa-users', signName:'The Family of Madam Agnes Pomaa', signRole:'In loving memory of our beloved',
-    text:`She was the thread that held us all together.\n\nAt every naming ceremony, every wedding, every gathering — Auntie Bee was there, moving between rooms and people with a warmth that made everyone feel at home. She remembered birthdays, she called to check in, she sent for you when she hadn't heard your voice in too long.\n\nFamily was not just a word to her — it was her life's work.\n\nWe are grateful for every moment shared, every lesson passed down, and every prayer she lifted on our behalf. Her legacy lives on in this family she loved so deeply. We will carry her name with pride.`,
-    members: [
-      // { photo: 'uncle.jpg', name: 'James Pomaa', occupation: 'Family Head · Sankubenase' },
-    ]
+    icon:'fa-users',
+    signName:'The Family of Madam Agnes Pomaa',
+    signRole:'In loving memory of our beloved',
+    text:`She was the thread that held us all together.
+
+At every naming ceremony, every wedding, every gathering — Auntie Bee was there, moving between rooms and people with a warmth that made everyone feel at home.
+
+Family was not just a word to her — it was her life's work.
+
+We are grateful for every moment shared, every lesson passed down, and every prayer she lifted on our behalf. Her legacy lives on in this family she loved so deeply.`,
+    members: []
   },
+
   grandchildren: {
-    icon:'fa-baby', signName:'The Grandchildren of Madam Agnes Pomaa', signRole:'In loving memory of our dearest grandmother',
-    text:`Grandma, you spoiled us with love and we would not change a single moment.\n\nYou always had something on the stove when we visited. You called us by our full names when we were in trouble, and funny nicknames when you were proud of us. You told us the stories of where we came from, and made sure we never forgot them.\n\nYou believed in us before we believed in ourselves. You prayed for us every single morning — we know because we heard you.\n\nWe will grow up carrying your values, your strength, and your faith. One day we will tell our own children about you, and the stories will make them wish they had known you too. We love you forever, Grandma.`,
-    members: [
-      // { photo: 'grand1.jpg', name: 'Nana Ama', occupation: 'Student · Accra' },
-    ]
+    icon:'fa-baby',
+    signName:'The Grandchildren of Madam Agnes Pomaa',
+    signRole:'In loving memory of our dearest grandmother',
+    text:`Grandma, you spoiled us with love and we would not change a single moment.
+
+You always had something on the stove when we visited. You called us by our full names when we were in trouble, and funny nicknames when you were proud of us.
+
+You believed in us before we believed in ourselves. You prayed for us every single morning — we know because we heard you.
+
+We love you forever, Grandma.`,
+    members: []
   },
+
+  greatgrandchildren: {
+    icon:'fa-baby',
+    signName:'The Great-Grandchildren of Madam Agnes Pomaa',
+    signRole:'In loving memory of our great-grandmother',
+    text:`Though some of us were very young, your love still touched our lives.
+
+Your legacy will continue through generations to come. Your kindness, faith, and strength will live on through our families.
+
+Rest peacefully, Great-Grandma.`,
+    members: []
+  },
+
   church: {
-    icon:'fa-church', signName:'The Church Of Pentecost, Sankubenase Assembly', signRole:'In loving memory of a faithful and dedicated member',
-    text:`Sister Agnes Pomaa was the kind of member every church prays for.\n\nShe came early and stayed late. She served quietly without seeking recognition. She gave generously without keeping records. Her faith was not just something she professed — it was something she practised, consistently, over many decades of faithful service to God and to this assembly.\n\nWe will remember her in the choir, in the women's fellowship, and in the quiet corners of the sanctuary where she would linger after service to pray.\n\nThe Sankubenase Assembly has lost a pillar. But heaven has gained one of its finest servants. We celebrate her life and give thanks to God for the privilege of worshipping alongside her. May her memory inspire us to serve with the same devotion she showed until the very end.`,
-    members: [
-      // { photo: 'pastor.jpg',  name: 'Ps. Emmanuel Adu',    occupation: 'District Pastor',      subgroup: 'leaders' },
-      // { photo: 'elder1.jpg',  name: 'Elder Kwesi Boateng', occupation: 'Presiding Elder',       subgroup: 'leaders' },
-      // { photo: 'choir.jpg',   name: 'Church Choir',        occupation: 'Sankubenase Assembly',  subgroup: 'members' },
-      // { photo: 'women.jpg',   name: "Women's Fellowship",  occupation: 'Sankubenase Assembly',  subgroup: 'members' },
-    ]
+    icon:'fa-church',
+    signName:'The Church Of Pentecost, Sankubenase Assembly',
+    signRole:'In loving memory of a faithful and dedicated member',
+    text:`Sister Agnes Pomaa was the kind of member every church prays for.
+
+She served faithfully and loved deeply. Her life reflected Christ in humility and devotion.
+
+The Sankubenase Assembly has lost a pillar, but heaven has gained a faithful servant.`,
+    members: []
   }
 };
 
+
+/* ── ESCAPE HTML (PREVENT XSS ERRORS) ─────────────────────── */
+function esc(str) {
+  if (!str) return '';
+  return str
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+/* ── RENDER TRIBUTES ─────────────────────────────────────── */
+
 function renderTributes() {
+
   Object.keys(TRIBUTE_GROUPS).forEach(key => {
+
     const panel = document.getElementById('tribute-panel-' + key);
     if (!panel) return;
+
     const g = TRIBUTE_GROUPS[key];
     const members = g.members || [];
 
     let photosHTML;
+
     if (key === 'church') {
+
       const leaders = members.filter(m => m.subgroup === 'leaders');
-      const grp     = members.filter(m => m.subgroup === 'members');
+      const grp = members.filter(m => m.subgroup === 'members');
+
       photosHTML = `
-        <div class="church-sub-label"><i class="fas fa-user-tie"></i> Church Leaders</div>
-        ${leaders.length ? `<div class="tribute-grid">${leaders.map(memberCard).join('')}</div>` : '<div class="tribute-empty"><i class="fas fa-user-tie"></i>Leaders will appear here once photos are added.</div>'}
-        <div class="church-sub-label church-sub-label--mt"><i class="fas fa-users"></i> Congregation &amp; Groups</div>
-        ${grp.length ? `<div class="tribute-grid">${grp.map(memberCard).join('')}</div>` : '<div class="tribute-empty"><i class="fas fa-users"></i>Group photos will appear here once added.</div>'}`;
+      <div class="church-sub-label"><i class="fas fa-user-tie"></i> Church Leaders</div>
+      ${
+        leaders.length
+        ? `<div class="tribute-grid">${leaders.map(memberCard).join('')}</div>`
+        : `<div class="tribute-empty"><i class="fas fa-user-tie"></i> Leaders will appear here once photos are added.</div>`
+      }
+
+      <div class="church-sub-label church-sub-label--mt"><i class="fas fa-users"></i> Congregation & Groups</div>
+      ${
+        grp.length
+        ? `<div class="tribute-grid">${grp.map(memberCard).join('')}</div>`
+        : `<div class="tribute-empty"><i class="fas fa-users"></i> Group photos will appear here once added.</div>`
+      }`;
+
     } else {
+
       photosHTML = members.length
         ? `<div class="tribute-grid">${members.map(memberCard).join('')}</div>`
-        : `<div class="tribute-empty"><i class="fas fa-images"></i>Photos will appear here once added to the code.</div>`;
+        : `<div class="tribute-empty"><i class="fas fa-images"></i> Photos will appear here once added.</div>`;
+
     }
 
     panel.innerHTML = `
       <div class="tribute-text-block reveal">
+
         <div class="tribute-text-body">${esc(g.text)}</div>
+
         <div class="tribute-signoff">
-          <div class="tribute-signoff-icon"><i class="fas ${g.icon}"></i></div>
+          <div class="tribute-signoff-icon">
+            <i class="fas ${g.icon}"></i>
+          </div>
+
           <div>
             <div class="tribute-signoff-name">${esc(g.signName)}</div>
             <div class="tribute-signoff-role">${esc(g.signRole)}</div>
           </div>
         </div>
+
       </div>
+
       <div class="reveal">
-        <div class="tribute-photos-heading"><span><i class="fas fa-images"></i>&nbsp; Photographs</span></div>
+
+        <div class="tribute-photos-heading">
+          <span><i class="fas fa-images"></i> Photographs</span>
+        </div>
+
         ${photosHTML}
+
       </div>`;
-    triggerReveal();
   });
-}
 
-function memberCard(m) {
-  const photo = m.photo
-    ? `<img src="${esc(m.photo)}" alt="${esc(m.name)}"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-            onclick="openLightbox('${esc(m.photo)}','${esc(m.name)}')"/>
-       <div class="member-photo-placeholder" style="display:none"><i class="fas fa-user"></i><span>Photo</span></div>`
-    : `<div class="member-photo-placeholder"><i class="fas fa-user"></i><span>Photo Coming</span></div>`;
-  return `
-    <div class="member-card">
-      <div class="member-photo-wrap">${photo}</div>
-      <div class="member-info">
-        <div class="member-name">${esc(m.name)}</div>
-        ${m.occupation ? `<div class="member-occupation">${esc(m.occupation)}</div>` : ''}
-      </div>
-    </div>`;
-}
-
-function switchTribute(key) {
-  const keys = ['children','family','grandchildren','church'];
-  document.querySelectorAll('.tribute-tab').forEach((b, i) => b.classList.toggle('active', keys[i] === key));
-  document.querySelectorAll('.tribute-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('tribute-panel-' + key).classList.add('active');
   triggerReveal();
 }
 
+
+/* ── MEMBER CARD ─────────────────────────────────────────── */
+
+function memberCard(m) {
+
+  const photo = m.photo
+  ? `<img src="${esc(m.photo)}"
+          alt="${esc(m.name)}"
+          onclick="openLightbox('${esc(m.photo)}','${esc(m.name)}')"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+     <div class="member-photo-placeholder" style="display:none">
+       <i class="fas fa-user"></i>
+       <span>Photo</span>
+     </div>`
+  : `<div class="member-photo-placeholder">
+       <i class="fas fa-user"></i>
+       <span>Photo Coming</span>
+     </div>`;
+
+  return `
+  <div class="member-card">
+
+    <div class="member-photo-wrap">
+      ${photo}
+    </div>
+
+    <div class="member-info">
+      <div class="member-name">${esc(m.name)}</div>
+      ${m.occupation ? `<div class="member-occupation">${esc(m.occupation)}</div>` : ''}
+    </div>
+
+  </div>`;
+}
+
+
+/* ── SWITCH TRIBUTE TAB ─────────────────────────────────── */
+
+function switchTribute(key) {
+
+  const keys = [
+    'children',
+    'family',
+    'grandchildren',
+    'greatgrandchildren',
+    'church'
+  ];
+
+  document.querySelectorAll('.tribute-tab')
+    .forEach((b,i) => b.classList.toggle('active', keys[i] === key));
+
+  document.querySelectorAll('.tribute-panel')
+    .forEach(p => p.classList.remove('active'));
+
+  const activePanel = document.getElementById('tribute-panel-' + key);
+
+  if (activePanel) {
+    activePanel.classList.add('active');
+  }
+
+  triggerReveal();
+}
+
+
+/* ── LIGHTBOX ───────────────────────────────────────────── */
+
 function openLightbox(src, name) {
-  document.getElementById('lightbox-img').src = src;
+
+  const img = document.getElementById('lightbox-img');
+
+  img.src = src;
+  img.alt = name || '';
+
   document.getElementById('lightbox-caption').textContent = name || '';
   document.getElementById('lightbox').classList.add('open');
+
 }
-function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
 
 /* ── ATTENDANCE ───────────────────────────────────────────── */
 function submitAttendance() {
