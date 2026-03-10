@@ -1230,19 +1230,13 @@ function renderTributes() {
       const grp = members.filter(m => m.subgroup === 'members');
 
       photosHTML = `
-      <div class="church-sub-label"><i class="fas fa-user-tie"></i> Church Leaders</div>
-      ${
-        leaders.length
-        ? `<div class="tribute-grid">${leaders.map(memberCard).join('')}</div>`
-        : `<div class="tribute-empty"><i class="fas fa-user-tie"></i> Leaders will appear here once photos are added.</div>`
-      }
+        <div class="church-sub-label"><i class="fas fa-user-tie"></i> Church Leaders</div>
+        ${leaders.length ? `<div class="tribute-grid">${leaders.map(memberCard).join('')}</div>` 
+                         : `<div class="tribute-empty"><i class="fas fa-user-tie"></i> Leaders will appear here once photos are added.</div>`}
 
-      <div class="church-sub-label church-sub-label--mt"><i class="fas fa-users"></i> Congregation & Groups</div>
-      ${
-        grp.length
-        ? `<div class="tribute-grid">${grp.map(memberCard).join('')}</div>`
-        : `<div class="tribute-empty"><i class="fas fa-users"></i> Group photos will appear here once added.</div>`
-      }`;
+        <div class="church-sub-label church-sub-label--mt"><i class="fas fa-users"></i> Congregation & Groups</div>
+        ${grp.length ? `<div class="tribute-grid">${grp.map(memberCard).join('')}</div>` 
+                     : `<div class="tribute-empty"><i class="fas fa-users"></i> Group photos will appear here once added.</div>`}`;
 
     } else {
 
@@ -1254,36 +1248,34 @@ function renderTributes() {
 
     panel.innerHTML = `
       <div class="tribute-text-block reveal">
-
         <div class="tribute-text-body">${esc(g.text)}</div>
-
         <div class="tribute-signoff">
           <div class="tribute-signoff-icon">
             <i class="fas ${g.icon}"></i>
           </div>
-
           <div>
             <div class="tribute-signoff-name">${esc(g.signName)}</div>
             <div class="tribute-signoff-role">${esc(g.signRole)}</div>
           </div>
         </div>
-
       </div>
 
       <div class="reveal">
-
         <div class="tribute-photos-heading">
           <span><i class="fas fa-images"></i> Photographs</span>
         </div>
-
         ${photosHTML}
-
       </div>`;
   });
 
-  triggerReveal();
+  // Call safely
+  if (typeof triggerReveal === "function") {
+    triggerReveal();
+  }
 }
 
+// Ensure it runs after page load
+document.addEventListener("DOMContentLoaded", renderTributes);
 
 /* ── MEMBER CARD ─────────────────────────────────────────── */
 
