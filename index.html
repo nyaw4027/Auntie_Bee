@@ -1315,11 +1315,12 @@ function memberCard(m) {
 /* ── SWITCH TRIBUTE TAB ─────────────────────────────────── */
 
 function switchTribute(key) {
+  if (!key) return;
 
-  // Toggle active tab
+  // Activate the correct tab
   document.querySelectorAll('.tribute-tab').forEach(btn => {
-    const isActive = btn.getAttribute('onclick').includes(key);
-    btn.classList.toggle('active', isActive);
+    const tabKey = btn.dataset.key; // safer than parsing onclick
+    btn.classList.toggle('active', tabKey === key);
   });
 
   // Hide all panels
@@ -1327,18 +1328,13 @@ function switchTribute(key) {
     panel.classList.remove('active');
   });
 
-  // Show selected panel
+  // Show the selected panel
   const panel = document.getElementById('tribute-panel-' + key);
-  if (panel) {
-    panel.classList.add('active');
-  }
+  if (panel) panel.classList.add('active');
 
-  // Trigger animations
-  if (typeof triggerReveal === "function") {
-    triggerReveal();
-  }
+  // Trigger animations if function exists
+  if (typeof triggerReveal === "function") triggerReveal();
 }
-
 
 /* ── LIGHTBOX ───────────────────────────────────────────── */
 
