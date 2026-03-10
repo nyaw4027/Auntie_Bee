@@ -1324,27 +1324,27 @@ function memberCard(m) {
 
 function switchTribute(key) {
 
-  const keys = [
-    'children',
-    'family',
-    'grandchildren',
-    'greatgrandchildren',
-    'church'
-  ];
+  // Toggle active tab
+  document.querySelectorAll('.tribute-tab').forEach(btn => {
+    const isActive = btn.getAttribute('onclick').includes(key);
+    btn.classList.toggle('active', isActive);
+  });
 
-  document.querySelectorAll('.tribute-tab')
-    .forEach((b,i) => b.classList.toggle('active', keys[i] === key));
+  // Hide all panels
+  document.querySelectorAll('.tribute-panel').forEach(panel => {
+    panel.classList.remove('active');
+  });
 
-  document.querySelectorAll('.tribute-panel')
-    .forEach(p => p.classList.remove('active'));
-
-  const activePanel = document.getElementById('tribute-panel-' + key);
-
-  if (activePanel) {
-    activePanel.classList.add('active');
+  // Show selected panel
+  const panel = document.getElementById('tribute-panel-' + key);
+  if (panel) {
+    panel.classList.add('active');
   }
 
-  triggerReveal();
+  // Trigger animations
+  if (typeof triggerReveal === "function") {
+    triggerReveal();
+  }
 }
 
 
