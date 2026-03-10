@@ -632,11 +632,11 @@
   </section>
   <div class="page-footer"><i class="fas fa-cross footer-cross"></i>In Loving Memory of Madam Agnes Pomaa &nbsp;·&nbsp; "Auntie Bee"</div>
 </div>
-
 <!-- ══════════════════ TRIBUTES ══════════════════ -->
 <div id="page-tributes" class="page">
   <section class="section">
     <div class="container-md">
+      <!-- Section Header -->
       <div class="section-header reveal">
         <span class="section-eyebrow">Words of Love</span>
         <h2 class="section-title">Tributes</h2>
@@ -648,11 +648,21 @@
 
       <!-- Tribute Tabs -->
       <div class="tribute-tabs reveal">
-        <button class="tribute-tab active" data-key="children"><i class="fas fa-child"></i> Children</button>
-        <button class="tribute-tab" data-key="family"><i class="fas fa-users"></i> Family</button>
-        <button class="tribute-tab" data-key="grandchildren"><i class="fas fa-baby"></i> Grandchildren</button>
-        <button class="tribute-tab" data-key="greatgrandchildren"><i class="fas fa-seedling"></i> Great-Grandchildren</button>
-        <button class="tribute-tab" data-key="church"><i class="fas fa-church"></i> Church</button>
+        <button class="tribute-tab active" data-key="children" onclick="switchTribute('children')">
+          <i class="fas fa-child"></i> Children
+        </button>
+        <button class="tribute-tab" data-key="family" onclick="switchTribute('family')">
+          <i class="fas fa-users"></i> Family
+        </button>
+        <button class="tribute-tab" data-key="grandchildren" onclick="switchTribute('grandchildren')">
+          <i class="fas fa-baby"></i> Grandchildren
+        </button>
+        <button class="tribute-tab" data-key="greatgrandchildren" onclick="switchTribute('greatgrandchildren')">
+          <i class="fas fa-seedling"></i> Great-Grandchildren
+        </button>
+        <button class="tribute-tab" data-key="church" onclick="switchTribute('church')">
+          <i class="fas fa-church"></i> Church
+        </button>
       </div>
 
       <!-- Tribute Panels -->
@@ -674,9 +684,10 @@
 <div class="lightbox" id="lightbox">
   <img id="lightbox-img" src="" alt="">
   <div class="lightbox-caption" id="lightbox-caption"></div>
-  <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+  <button class="lightbox-close" onclick="closeLightbox()">
+    <i class="fas fa-times"></i>
+  </button>
 </div>
-
 <!-- ══════════════════ LIVESTREAM ══════════════════ -->
 <div id="page-livestream" class="page">
   <section class="section">
