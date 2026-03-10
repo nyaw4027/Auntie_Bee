@@ -1,0 +1,80 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "Seed data mutation, safe for any authenticated user to run.") {
+  user_insertMany(data: [
+    {
+      id: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      displayName: "Alice Smith",
+      email: "alice.smith@example.com",
+      createdAt: "2023-01-15T10:00:00Z",
+      photoUrl: "https://example.com/alice.jpg"
+    },
+    {
+      id: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22",
+      displayName: "Bob Johnson",
+      email: "bob.johnson@example.com",
+      createdAt: "2023-01-15T11:00:00Z",
+      photoUrl: "https://example.com/bob.jpg"
+    }
+  ])
+  memorial_insertMany(data: [
+    {
+      id: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a33",
+      creatorId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      firstName: "John",
+      lastName: "Doe",
+      dateOfBirth: "1950-05-20",
+      dateOfDeath: "2020-10-25",
+      isPublic: true,
+      createdAt: "2023-01-16T09:00:00Z",
+      eulogy: "John was a beloved member of the community.",
+      profilePhotoUrl: "https://example.com/john_doe.jpg"
+    },
+    {
+      id: "d0eebc99-9c0b-4ef8-bb6d-6bb9bd380a44",
+      creatorId: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22",
+      firstName: "Jane",
+      lastName: "Smith",
+      dateOfBirth: "1960-03-10",
+      dateOfDeath: "2022-07-01",
+      isPublic: false,
+      createdAt: "2023-01-17T14:30:00Z",
+      eulogy: "Jane will be deeply missed by her family.",
+      profilePhotoUrl: "https://example.com/jane_smith.jpg"
+    }
+  ])
+  memory_insertMany(data: [
+    {
+      id: "e0eebc99-9c0b-4ef8-bb6d-6bb9bd380a55",
+      contributorId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      memorialId: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a33",
+      type: "PHOTO",
+      createdAt: "2023-01-17T10:00:00Z",
+      text: "A beautiful memory of John at his favorite park.",
+      imageUrl: "https://example.com/john_park.jpg"
+    },
+    {
+      id: "f0eebc99-9c0b-4ef8-bb6d-6bb9bd380a66",
+      contributorId: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22",
+      memorialId: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a33",
+      type: "STORY",
+      createdAt: "2023-01-18T12:00:00Z",
+      text: "Remembering John's kindness and humor.",
+      imageUrl: null
+    }
+  ])
+  comment_insertMany(data: [
+    {
+      id: "10eebc99-9c0b-4ef8-bb6d-6bb9bd380a77",
+      authorId: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22",
+      memorialId: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a33",
+      text: "He truly touched many lives.",
+      createdAt: "2023-01-17T11:00:00Z"
+    },
+    {
+      id: "20eebc99-9c0b-4ef8-bb6d-6bb9bd380a88",
+      authorId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      memoryId: "e0eebc99-9c0b-4ef8-bb6d-6bb9bd380a55",
+      text: "I remember that day!",
+      createdAt: "2023-01-17T10:30:00Z"
+    }
+  ])
+}

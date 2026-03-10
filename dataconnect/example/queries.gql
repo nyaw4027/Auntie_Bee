@@ -1,0 +1,48 @@
+query listPublicMemorials @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  memorials(where: {isPublic: {eq: true}}) {
+    id
+    firstName
+    lastName
+    dateOfBirth
+    dateOfDeath
+    profilePhotoUrl
+  }
+}
+
+query getMyMemorials @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  memorials(where: {creatorId: {eq_expr: "auth.uid"}}) {
+    id
+    firstName
+    lastName
+    dateOfBirth
+    dateOfDeath
+    isPublic
+    createdAt
+    profilePhotoUrl
+  }
+}
+
+mutation createMemorial($firstName: String!, $lastName: String!, $dateOfBirth: Date!, $dateOfDeath: Date!, $isPublic: Boolean!, $eulogy: String, $profilePhotoUrl: String) @auth(level: USER) {
+  memorial_insert(data: {
+    firstName: $firstName,
+    lastName: $lastName,
+    dateOfBirth: $dateOfBirth,
+    dateOfDeath: $dateOfDeath,
+    isPublic: $isPublic,
+    eulogy: $eulogy,
+    profilePhotoUrl: $profilePhotoUrl,
+    creatorId_expr: "auth.uid",
+    createdAt_expr: "request.time"
+  })
+}
+
+mutation addMemoryToMemorial($memorialId: UUID!, $type: String!, $text: String, $imageUrl: String) @auth(level: USER) {
+  memory_insert(data: {
+    memorialId: $memorialId,
+    contributorId_expr: "auth.uid",
+    type: $type,
+    text: $text,
+    imageUrl: $imageUrl,
+    createdAt_expr: "request.time"
+  })
+}
