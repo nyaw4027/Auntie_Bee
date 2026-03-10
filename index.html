@@ -628,23 +628,41 @@
         <span class="section-eyebrow">Words of Love</span>
         <h2 class="section-title">Tributes</h2>
         <div class="section-ornament"><span></span><i class="fas fa-heart"></i><span></span></div>
-        <p class="tribute-page-sub">Heartfelt tributes and cherished photographs from those whose lives were touched by Madam Agnes Pomaa — "Auntie Bee".</p>
+        <p class="tribute-page-sub">
+          Heartfelt tributes and cherished photographs from those whose lives were touched by Madam Agnes Pomaa — "Auntie Bee".
+        </p>
       </div>
+
       <div class="tribute-tabs reveal">
-        <button class="tribute-tab active" onclick="switchTribute('children')"><i class="fas fa-child"></i> Children</button>
-        <button class="tribute-tab" onclick="switchTribute('family')"><i class="fas fa-users"></i> Family</button>
-        <button class="tribute-tab" onclick="switchTribute('grandchildren')"><i class="fas fa-baby"></i> Grandchildren</button>
-        <button class="tribute-tab" onclick="switchTribute('greatgrandchildren')"><i class="fas fa-seedling"></i> Great-Grandchildren</button>
-        <button class="tribute-tab" onclick="switchTribute('church')"><i class="fas fa-church"></i> Church</button>
+        <button class="tribute-tab active" data-key="children" onclick="switchTribute('children')">
+          <i class="fas fa-child"></i> Children
+        </button>
+        <button class="tribute-tab" data-key="family" onclick="switchTribute('family')">
+          <i class="fas fa-users"></i> Family
+        </button>
+        <button class="tribute-tab" data-key="grandchildren" onclick="switchTribute('grandchildren')">
+          <i class="fas fa-baby"></i> Grandchildren
+        </button>
+        <button class="tribute-tab" data-key="greatgrandchildren" onclick="switchTribute('greatgrandchildren')">
+          <i class="fas fa-seedling"></i> Great-Grandchildren
+        </button>
+        <button class="tribute-tab" data-key="church" onclick="switchTribute('church')">
+          <i class="fas fa-church"></i> Church
+        </button>
       </div>
+
       <div class="tribute-panel active" id="tribute-panel-children"></div>
-      <div class="tribute-panel"        id="tribute-panel-family"></div>
-      <div class="tribute-panel"        id="tribute-panel-grandchildren"></div>
-      <div class="tribute-panel"        id="tribute-panel-greatgrandchildren"></div>
-      <div class="tribute-panel"        id="tribute-panel-church"></div>
+      <div class="tribute-panel" id="tribute-panel-family"></div>
+      <div class="tribute-panel" id="tribute-panel-grandchildren"></div>
+      <div class="tribute-panel" id="tribute-panel-greatgrandchildren"></div>
+      <div class="tribute-panel" id="tribute-panel-church"></div>
     </div>
   </section>
-  <div class="page-footer"><i class="fas fa-cross footer-cross"></i>In Loving Memory of Madam Agnes Pomaa &nbsp;·&nbsp; "Auntie Bee"</div>
+
+  <div class="page-footer">
+    <i class="fas fa-cross footer-cross"></i>
+    In Loving Memory of Madam Agnes Pomaa &nbsp;·&nbsp; "Auntie Bee"
+  </div>
 </div>
 
 <!-- ══════════════════ LIVESTREAM ══════════════════ -->
