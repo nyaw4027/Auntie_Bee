@@ -9,6 +9,146 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
+
+
+
+/* ═══════════════════════════════════════════════════════════
+   SITE-WIDE FOOTER
+═══════════════════════════════════════════════════════════ */
+.site-footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(200,168,75,.18);
+  font-family: 'Lato', sans-serif;
+  color: rgba(245,233,196,.4);
+  font-size: .82rem;
+}
+
+/* ── Top: memorial strip ─────────────────────────────────── */
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 28px 24px 22px;
+  border-bottom: 1px solid rgba(200,168,75,.09);
+  flex-wrap: wrap;
+  text-align: center;
+}
+.footer-top .footer-cross {
+  color: var(--gold);
+  opacity: .38;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.footer-memorial {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(245,233,196,.5);
+  letter-spacing: .02em;
+  line-height: 1.5;
+}
+.footer-memorial strong {
+  color: var(--gold);
+  font-style: normal;
+}
+
+/* ── Middle: nav links ───────────────────────────────────── */
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 6px;
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(200,168,75,.09);
+}
+.footer-nav a {
+  color: rgba(245,233,196,.3);
+  font-size: .74rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 5px 11px;
+  border-radius: 2px;
+  transition: color .2s, background .2s;
+}
+.footer-nav a:hover {
+  color: var(--gold);
+  background: rgba(200,168,75,.08);
+}
+
+/* ── Bottom: credits + socials ───────────────────────────── */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 16px 32px;
+  flex-wrap: wrap;
+}
+.footer-left {
+  font-size: .76rem;
+  color: rgba(245,233,196,.25);
+  letter-spacing: .04em;
+}
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: .78rem;
+  color: rgba(245,233,196,.32);
+}
+.footer-right strong {
+  color: rgba(245,233,196,.5);
+}
+.footer-right a {
+  color: rgba(245,233,196,.35);
+  text-decoration: none;
+  transition: color .2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+/* Generic hover */
+.footer-right a:hover                    { color: var(--gold); }
+/* Brand-colour hovers */
+.footer-right a[href*="facebook"]:hover  { color: #1877f2; }
+.footer-right a[href*="wa.me"]:hover     { color: #25d366; }
+.footer-right a[href*="tiktok"]:hover    { color: #ee1d52; }
+.footer-right a[href*="x.com"]:hover     { color: #e7e7e7; }
+.footer-right a[href*="instagram"]:hover { color: #e1306c; }
+.footer-right a[href*="linkedin"]:hover  { color: #0a66c2; }
+
+/* ── Motto line ──────────────────────────────────────────── */
+.footer-copy {
+  text-align: center;
+  padding: 13px 24px 22px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: .92rem;
+  color: rgba(245,233,196,.18);
+  letter-spacing: .06em;
+  border-top: 1px solid rgba(200,168,75,.06);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 16px 20px;
+  }
+  .footer-right {
+    justify-content: center;
+  }
+}
+
+
+
+
     /* ── VARIABLES ─────────────────────────────────────────── */
     :root{
       --charcoal:#1c1c1c; --dark:#111111; --gold:#c8a84b;
