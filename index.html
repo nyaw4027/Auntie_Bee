@@ -210,48 +210,61 @@
     .cond-empty{text-align:center;padding:52px 20px;color:var(--text-light);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;border:1px dashed rgba(200,168,75,.2);border-radius:4px}
     .cond-empty i{display:block;font-size:2rem;color:var(--gold);opacity:.2;margin-bottom:12px}
 
-    /* ── TRIBUTES ────────────────────────────────────────────── */
-    .tribute-page-sub{margin:16px auto 0;color:var(--text-mid);font-size:.9rem;max-width:540px;text-align:center;line-height:1.7}
-    .tribute-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:52px}
-    .tribute-tab{padding:11px 26px;border:1px solid var(--border);background:var(--ivory);color:var(--text-mid);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s;font-family:'Lato',sans-serif;display:flex;align-items:center;gap:8px}
-    .tribute-tab.active,.tribute-tab:hover{background:var(--gold);color:var(--dark);border-color:var(--gold)}
-    .tribute-panel{display:none;animation:fadeInPage .4s ease forwards}
-    .tribute-panel.active{display:block}
-    .tribute-text-block{background:var(--ivory);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 6px 6px 0;padding:40px 44px;position:relative;margin-bottom:56px}
-    .tribute-text-block::before{content:'\201C';position:absolute;top:12px;left:22px;font-family:'Playfair Display',serif;font-size:6rem;color:var(--gold);opacity:.09;line-height:1;pointer-events:none}
-    .tribute-text-body{font-family:'Cormorant Garamond',serif;font-size:1.22rem;line-height:2;color:var(--text-mid);font-style:italic;padding-left:14px;white-space:pre-line}
-    .tribute-signoff{display:flex;align-items:center;gap:16px;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
-    .tribute-signoff-icon{width:44px;height:44px;border-radius:50%;background:rgba(200,168,75,.12);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.1rem;flex-shrink:0}
-    .tribute-signoff-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark)}
-    .tribute-signoff-role{font-size:.78rem;color:var(--text-light);margin-top:3px}
-    .tribute-photos-heading{display:flex;align-items:center;gap:16px;margin-bottom:24px}
-    .tribute-photos-heading span{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700;white-space:nowrap}
-    .tribute-photos-heading::before,.tribute-photos-heading::after{content:'';flex:1;height:1px;background:var(--border)}
-    .tribute-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;margin-bottom:20px}
-    .member-card{background:var(--ivory);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:transform .2s,box-shadow .2s;text-align:center}
-    .member-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-    .member-photo-wrap{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--charcoal);cursor:pointer}
-    .member-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .4s}
-    .member-card:hover .member-photo-wrap img{transform:scale(1.05)}
-    .member-photo-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#1e1e18,#2a2a22);color:var(--gold);gap:10px}
-    .member-photo-placeholder i{font-size:2.8rem;opacity:.4}
-    .member-photo-placeholder span{font-size:.68rem;letter-spacing:.12em;color:var(--text-light);text-transform:uppercase}
-    .member-info{padding:16px 12px 18px}
-    .member-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--text-dark);margin-bottom:5px}
-    .member-occupation{font-size:.78rem;color:var(--gold);letter-spacing:.05em;line-height:1.4}
-    .church-sub-label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px;margin:36px 0 16px}
-    .church-sub-label::after{content:'';flex:1;height:1px;background:var(--border)}
-    .church-sub-label--mt{margin-top:32px}
-    .tribute-empty{text-align:center;padding:48px 20px;color:var(--text-light);font-size:.9rem;border:1px dashed rgba(200,168,75,.2);border-radius:4px}
-    .tribute-empty i{display:block;font-size:2.4rem;color:var(--gold);opacity:.2;margin-bottom:14px}
+   :root {
+  --ivory: #fff8f0;
+  --gold: #c8a84b;
+  --gold-pale: #d9c179;
+  --dark: #2a2a2a;
+  --text-dark: #1e1e1e;
+  --text-mid: #555;
+  --text-light: #999;
+  --border: #ddd;
+  --charcoal: #1c1c1c;
+  --shadow: 0 4px 12px rgba(0,0,0,.1);
+}
 
-    /* ── LIGHTBOX ────────────────────────────────────────────── */
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:2000;display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px}
-    .lightbox.open{display:flex}
-    .lightbox img{max-width:90vw;max-height:78vh;object-fit:contain;border-radius:2px}
-    .lightbox-caption{color:var(--gold-pale);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;opacity:.8}
-    .lightbox-close{position:absolute;top:24px;right:28px;color:var(--gold);font-size:1.8rem;cursor:pointer;opacity:.7;background:none;border:none;transition:opacity .2s}
-    .lightbox-close:hover{opacity:1}
+/* TRIBUTES */
+.tribute-page-sub { margin:16px auto 0; color:var(--text-mid); font-size:.9rem; max-width:540px; text-align:center; line-height:1.7; }
+.tribute-tabs { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:52px; }
+.tribute-tab { padding:11px 26px; border:1px solid var(--border); background:var(--ivory); color:var(--text-mid); font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; border-radius:2px; transition:all .2s; display:flex; align-items:center; gap:8px; }
+.tribute-tab.active, .tribute-tab:hover { background:var(--gold); color:var(--dark); border-color:var(--gold); }
+.tribute-panel { display:none; animation:fadeInPage .4s ease forwards; }
+.tribute-panel.active { display:block; }
+.tribute-text-block { background:var(--ivory); border:1px solid var(--border); border-left:4px solid var(--gold); border-radius:0 6px 6px 0; padding:40px 44px; position:relative; margin-bottom:56px; }
+.tribute-text-block::before { content:'\201C'; position:absolute; top:12px; left:22px; font-family:'Playfair Display',serif; font-size:6rem; color:var(--gold); opacity:.09; line-height:1; pointer-events:none; }
+.tribute-text-body { font-family:'Cormorant Garamond',serif; font-size:1.22rem; line-height:2; color:var(--text-mid); font-style:italic; padding-left:14px; white-space:pre-line; }
+.tribute-signoff { display:flex; align-items:center; gap:16px; margin-top:28px; padding-top:20px; border-top:1px solid var(--border); }
+.tribute-signoff-icon { width:44px; height:44px; border-radius:50%; background:rgba(200,168,75,.12); display:flex; align-items:center; justify-content:center; color:var(--gold); font-size:1.1rem; flex-shrink:0; }
+.tribute-signoff-name { font-family:'Playfair Display',serif; font-size:1rem; font-weight:600; color:var(--text-dark); }
+.tribute-signoff-role { font-size:.78rem; color:var(--text-light); margin-top:3px; }
+.tribute-photos-heading { display:flex; align-items:center; gap:16px; margin-bottom:24px; }
+.tribute-photos-heading span { font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); font-weight:700; white-space:nowrap; }
+.tribute-photos-heading::before, .tribute-photos-heading::after { content:''; flex:1; height:1px; background:var(--border); }
+.tribute-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:18px; margin-bottom:20px; }
+.member-card { background:var(--ivory); border:1px solid var(--border); border-radius:4px; overflow:hidden; transition:transform .2s,box-shadow .2s; text-align:center; }
+.member-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+.member-photo-wrap { position:relative; aspect-ratio:3/4; overflow:hidden; background:var(--charcoal); cursor:pointer; }
+.member-photo-wrap img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; transition:transform .4s; }
+.member-card:hover .member-photo-wrap img { transform:scale(1.05); }
+.member-photo-placeholder { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(135deg,#1e1e18,#2a2a22); color:var(--gold); gap:10px; }
+.member-photo-placeholder i { font-size:2.8rem; opacity:.4; }
+.member-photo-placeholder span { font-size:.68rem; letter-spacing:.12em; color:var(--text-light); text-transform:uppercase; }
+.member-info { padding:16px 12px 18px; }
+.member-name { font-family:'Playfair Display',serif; font-size:1rem; font-weight:600; color:var(--text-dark); margin-bottom:5px; }
+.member-occupation { font-size:.78rem; color:var(--gold); letter-spacing:.05em; line-height:1.4; }
+.church-sub-label { font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); font-weight:700; display:flex; align-items:center; gap:10px; margin:36px 0 16px; }
+.church-sub-label::after { content:''; flex:1; height:1px; background:var(--border); }
+.church-sub-label--mt { margin-top:32px; }
+.tribute-empty { text-align:center; padding:48px 20px; color:var(--text-light); font-size:.9rem; border:1px dashed rgba(200,168,75,.2); border-radius:4px; }
+.tribute-empty i { display:block; font-size:2.4rem; color:var(--gold); opacity:.2; margin-bottom:14px; }
+
+/* LIGHTBOX */
+.lightbox { position:fixed; inset:0; background:rgba(0,0,0,.93); z-index:2000; display:none; align-items:center; justify-content:center; flex-direction:column; gap:14px; }
+.lightbox.open { display:flex; }
+.lightbox img { max-width:90vw; max-height:78vh; object-fit:contain; border-radius:2px; }
+.lightbox-caption { color:var(--gold-pale); font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; opacity:.8; text-align:center; }
+.lightbox-close { position:absolute; top:24px; right:28px; color:var(--gold); font-size:1.8rem; cursor:pointer; opacity:.7; background:none; border:none; transition:opacity .2s; }
+.lightbox-close:hover { opacity:1; }
 
     /* ── LIVESTREAM ──────────────────────────────────────────── */
     .livestream-embed{position:relative;padding-bottom:56.25%;height:0;background:#000;border-radius:4px;overflow:hidden;border:1px solid var(--border);margin-bottom:40px}
@@ -633,24 +646,16 @@
         </p>
       </div>
 
+      <!-- Tribute Tabs -->
       <div class="tribute-tabs reveal">
-        <button class="tribute-tab active" data-key="children" onclick="switchTribute('children')">
-          <i class="fas fa-child"></i> Children
-        </button>
-        <button class="tribute-tab" data-key="family" onclick="switchTribute('family')">
-          <i class="fas fa-users"></i> Family
-        </button>
-        <button class="tribute-tab" data-key="grandchildren" onclick="switchTribute('grandchildren')">
-          <i class="fas fa-baby"></i> Grandchildren
-        </button>
-        <button class="tribute-tab" data-key="greatgrandchildren" onclick="switchTribute('greatgrandchildren')">
-          <i class="fas fa-seedling"></i> Great-Grandchildren
-        </button>
-        <button class="tribute-tab" data-key="church" onclick="switchTribute('church')">
-          <i class="fas fa-church"></i> Church
-        </button>
+        <button class="tribute-tab active" data-key="children"><i class="fas fa-child"></i> Children</button>
+        <button class="tribute-tab" data-key="family"><i class="fas fa-users"></i> Family</button>
+        <button class="tribute-tab" data-key="grandchildren"><i class="fas fa-baby"></i> Grandchildren</button>
+        <button class="tribute-tab" data-key="greatgrandchildren"><i class="fas fa-seedling"></i> Great-Grandchildren</button>
+        <button class="tribute-tab" data-key="church"><i class="fas fa-church"></i> Church</button>
       </div>
 
+      <!-- Tribute Panels -->
       <div class="tribute-panel active" id="tribute-panel-children"></div>
       <div class="tribute-panel" id="tribute-panel-family"></div>
       <div class="tribute-panel" id="tribute-panel-grandchildren"></div>
@@ -659,10 +664,17 @@
     </div>
   </section>
 
+  <!-- Page Footer -->
   <div class="page-footer">
-    <i class="fas fa-cross footer-cross"></i>
-    In Loving Memory of Madam Agnes Pomaa &nbsp;·&nbsp; "Auntie Bee"
+    <i class="fas fa-cross footer-cross"></i> In Loving Memory of Madam Agnes Pomaa &nbsp;·&nbsp; "Auntie Bee"
   </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+  <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
 </div>
 
 <!-- ══════════════════ LIVESTREAM ══════════════════ -->
@@ -1147,12 +1159,11 @@ function switchProgram(tab) {
 /* ── TRIBUTES ─────────────────────────────────────────────── */
 
 const TRIBUTE_GROUPS = {
-
   children: {
-    icon:'fa-child',
-    signName:'The Children of Madam Agnes Pomaa',
-    signRole:'In loving memory of our dear mother',
-    text:`Maa, you were our first home — the place we always came back to, no matter how far life took us.
+    icon: 'fa-child',
+    signName: 'The Children of Madam Agnes Pomaa',
+    signRole: 'In loving memory of our dear mother',
+    text: `Maa, you were our first home — the place we always came back to, no matter how far life took us.
 
 Your hands cooked for us, your voice prayed over us, and your love never once wavered. You taught us what it means to work hard, to love God, and to stand together as family.
 
@@ -1161,12 +1172,11 @@ The house feels quieter now, but your presence lives in every corner of it. In y
 We are so proud to be your children. Thank you for everything you gave us — not just the things we can hold, but the things we carry inside us. Rest well, Maa. You have truly earned it.`,
     members: []
   },
-
   family: {
-    icon:'fa-users',
-    signName:'The Family of Madam Agnes Pomaa',
-    signRole:'In loving memory of our beloved',
-    text:`She was the thread that held us all together.
+    icon: 'fa-users',
+    signName: 'The Family of Madam Agnes Pomaa',
+    signRole: 'In loving memory of our beloved',
+    text: `She was the thread that held us all together.
 
 At every naming ceremony, every wedding, every gathering — Auntie Bee was there, moving between rooms and people with a warmth that made everyone feel at home.
 
@@ -1175,12 +1185,11 @@ Family was not just a word to her — it was her life's work.
 We are grateful for every moment shared, every lesson passed down, and every prayer she lifted on our behalf. Her legacy lives on in this family she loved so deeply.`,
     members: []
   },
-
   grandchildren: {
-    icon:'fa-baby',
-    signName:'The Grandchildren of Madam Agnes Pomaa',
-    signRole:'In loving memory of our dearest grandmother',
-    text:`Grandma, you spoiled us with love and we would not change a single moment.
+    icon: 'fa-baby',
+    signName: 'The Grandchildren of Madam Agnes Pomaa',
+    signRole: 'In loving memory of our dearest grandmother',
+    text: `Grandma, you spoiled us with love and we would not change a single moment.
 
 You always had something on the stove when we visited. You called us by our full names when we were in trouble, and funny nicknames when you were proud of us.
 
@@ -1189,24 +1198,22 @@ You believed in us before we believed in ourselves. You prayed for us every sing
 We love you forever, Grandma.`,
     members: []
   },
-
   greatgrandchildren: {
-    icon:'fa-baby',
-    signName:'The Great-Grandchildren of Madam Agnes Pomaa',
-    signRole:'In loving memory of our great-grandmother',
-    text:`Though some of us were very young, your love still touched our lives.
+    icon: 'fa-baby',
+    signName: 'The Great-Grandchildren of Madam Agnes Pomaa',
+    signRole: 'In loving memory of our great-grandmother',
+    text: `Though some of us were very young, your love still touched our lives.
 
 Your legacy will continue through generations to come. Your kindness, faith, and strength will live on through our families.
 
 Rest peacefully, Great-Grandma.`,
     members: []
   },
-
   church: {
-    icon:'fa-church',
-    signName:'The Church Of Pentecost, Sankubenase Assembly',
-    signRole:'In loving memory of a faithful and dedicated member',
-    text:`Sister Agnes Pomaa was the kind of member every church prays for.
+    icon: 'fa-church',
+    signName: 'The Church Of Pentecost, Sankubenase Assembly',
+    signRole: 'In loving memory of a faithful and dedicated member',
+    text: `Sister Agnes Pomaa was the kind of member every church prays for.
 
 She served faithfully and loved deeply. Her life reflected Christ in humility and devotion.
 
@@ -1215,37 +1222,65 @@ The Sankubenase Assembly has lost a pillar, but heaven has gained a faithful ser
   }
 };
 
-
-/* ── ESCAPE HTML (PREVENT XSS ERRORS) ─────────────────────── */
+/* ── ESCAPE HTML ─────────────────────────────────────────── */
 function esc(str) {
   if (!str) return '';
   return str
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
+/* ── MEMBER CARD ─────────────────────────────────────────── */
+function memberCard(m) {
+  let photoHTML = '';
+
+  if (m.photo) {
+    photoHTML = `
+      <img src="${esc(m.photo)}"
+           alt="${esc(m.name)}"
+           onclick="openLightbox('${esc(m.photo)}','${esc(m.name)}')"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="member-photo-placeholder" style="display:none">
+        <i class="fas fa-user"></i>
+        <span>Photo</span>
+      </div>
+    `;
+  } else {
+    photoHTML = `
+      <div class="member-photo-placeholder">
+        <i class="fas fa-user"></i>
+        <span>Photo Coming</span>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="member-card">
+      <div class="member-photo-wrap">${photoHTML}</div>
+      <div class="member-info">
+        <div class="member-name">${esc(m.name)}</div>
+        ${m.occupation ? `<div class="member-occupation">${esc(m.occupation)}</div>` : ''}
+      </div>
+    </div>
+  `;
+}
 
 /* ── RENDER TRIBUTES ─────────────────────────────────────── */
-
 function renderTributes() {
-
   Object.keys(TRIBUTE_GROUPS).forEach(key => {
-
     const panel = document.getElementById('tribute-panel-' + key);
     if (!panel) return;
 
-    const g = TRIBUTE_GROUPS[key];
-    const members = g.members || [];
-
-    let photosHTML;
+    const group = TRIBUTE_GROUPS[key];
+    const members = group.members || [];
+    let photosHTML = '';
 
     if (key === 'church') {
-
       const leaders = members.filter(m => m.subgroup === 'leaders');
-      const grp = members.filter(m => m.subgroup === 'members');
+      const congregation = members.filter(m => m.subgroup === 'members');
 
       photosHTML = `
         <div class="church-sub-label"><i class="fas fa-user-tie"></i> Church Leaders</div>
@@ -1253,124 +1288,74 @@ function renderTributes() {
                          : `<div class="tribute-empty"><i class="fas fa-user-tie"></i> Leaders will appear here once photos are added.</div>`}
 
         <div class="church-sub-label church-sub-label--mt"><i class="fas fa-users"></i> Congregation & Groups</div>
-        ${grp.length ? `<div class="tribute-grid">${grp.map(memberCard).join('')}</div>` 
-                     : `<div class="tribute-empty"><i class="fas fa-users"></i> Group photos will appear here once added.</div>`}`;
-
+        ${congregation.length ? `<div class="tribute-grid">${congregation.map(memberCard).join('')}</div>` 
+                               : `<div class="tribute-empty"><i class="fas fa-users"></i> Group photos will appear here once added.</div>`}
+      `;
     } else {
-
       photosHTML = members.length
         ? `<div class="tribute-grid">${members.map(memberCard).join('')}</div>`
         : `<div class="tribute-empty"><i class="fas fa-images"></i> Photos will appear here once added.</div>`;
-
     }
 
     panel.innerHTML = `
       <div class="tribute-text-block reveal">
-        <div class="tribute-text-body">${esc(g.text)}</div>
+        <div class="tribute-text-body">${esc(group.text)}</div>
         <div class="tribute-signoff">
-          <div class="tribute-signoff-icon">
-            <i class="fas ${g.icon}"></i>
-          </div>
+          <div class="tribute-signoff-icon"><i class="fas ${group.icon}"></i></div>
           <div>
-            <div class="tribute-signoff-name">${esc(g.signName)}</div>
-            <div class="tribute-signoff-role">${esc(g.signRole)}</div>
+            <div class="tribute-signoff-name">${esc(group.signName)}</div>
+            <div class="tribute-signoff-role">${esc(group.signRole)}</div>
           </div>
         </div>
       </div>
-
       <div class="reveal">
-        <div class="tribute-photos-heading">
-          <span><i class="fas fa-images"></i> Photographs</span>
-        </div>
+        <div class="tribute-photos-heading"><span><i class="fas fa-images"></i> Photographs</span></div>
         ${photosHTML}
-      </div>`;
+      </div>
+    `;
   });
 
-  // Call safely
-  if (typeof triggerReveal === "function") {
-    triggerReveal();
-  }
+  if (typeof triggerReveal === 'function') triggerReveal();
 }
-
-// Ensure it runs after page load
-document.addEventListener("DOMContentLoaded", renderTributes);
-
-/* ── MEMBER CARD ─────────────────────────────────────────── */
-
-function memberCard(m) {
-
-  const photo = m.photo
-  ? `<img src="${esc(m.photo)}"
-          alt="${esc(m.name)}"
-          onclick="openLightbox('${esc(m.photo)}','${esc(m.name)}')"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-
-     <div class="member-photo-placeholder" style="display:none">
-       <i class="fas fa-user"></i>
-       <span>Photo</span>
-     </div>`
-  : `<div class="member-photo-placeholder">
-       <i class="fas fa-user"></i>
-       <span>Photo Coming</span>
-     </div>`;
-
-  return `
-  <div class="member-card">
-
-    <div class="member-photo-wrap">
-      ${photo}
-    </div>
-
-    <div class="member-info">
-      <div class="member-name">${esc(m.name)}</div>
-      ${m.occupation ? `<div class="member-occupation">${esc(m.occupation)}</div>` : ''}
-    </div>
-
-  </div>`;
-}
-
 
 /* ── SWITCH TRIBUTE TAB ─────────────────────────────────── */
-
 function switchTribute(key) {
   if (!key) return;
 
-  // Activate the correct tab
   document.querySelectorAll('.tribute-tab').forEach(btn => {
-    const tabKey = btn.dataset.key; // safer than parsing onclick
-    btn.classList.toggle('active', tabKey === key);
+    btn.classList.toggle('active', btn.dataset.key === key);
   });
 
-  // Hide all panels
   document.querySelectorAll('.tribute-panel').forEach(panel => {
-    panel.classList.remove('active');
+    panel.classList.toggle('active', panel.id === 'tribute-panel-' + key);
   });
 
-  // Show the selected panel
-  const panel = document.getElementById('tribute-panel-' + key);
-  if (panel) panel.classList.add('active');
-
-  // Trigger animations if function exists
-  if (typeof triggerReveal === "function") triggerReveal();
+  if (typeof triggerReveal === 'function') triggerReveal();
 }
 
 /* ── LIGHTBOX ───────────────────────────────────────────── */
-
 function openLightbox(src, name) {
-
+  const lightbox = document.getElementById('lightbox');
   const img = document.getElementById('lightbox-img');
 
-  img.src = src;
+  img.src = src || '';
   img.alt = name || '';
-
   document.getElementById('lightbox-caption').textContent = name || '';
-  document.getElementById('lightbox').classList.add('open');
-
+  lightbox.classList.add('open');
 }
 
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('open');
 }
+
+/* ── INIT ───────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  renderTributes();
+
+  // Default: show first tab
+  const firstTab = document.querySelector('.tribute-tab.active') || document.querySelector('.tribute-tab');
+  if (firstTab) switchTribute(firstTab.dataset.key);
+});
 
 /* ── ATTENDANCE ───────────────────────────────────────────── */
 function submitAttendance() {
