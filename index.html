@@ -22,8 +22,7 @@
     body{font-family:'Lato',sans-serif;background:var(--ivory);color:var(--text-dark);overflow-x:hidden}
 
 
-
-
+/* ── SITE-WIDE FOOTER ─────────────────────────────────────── */
 .page-footer {
   background: var(--ivory);
   border-top: 1px solid var(--border);
@@ -33,44 +32,82 @@
   color: var(--text-mid);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   text-align: center;
 }
 
+/* Top section: Tribute notice */
 .page-footer .footer-top {
   font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
+.page-footer .footer-top .footer-cross {
+  color: var(--gold);
+  font-size: 1.1rem;
+}
+
+/* Bottom section: developer info + socials */
 .page-footer .footer-bottom {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 12px;
   font-size: 0.85rem;
-  align-items: center;
 }
 
 .page-footer .footer-left {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
+}
+
+.page-footer .footer-right {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 .page-footer .footer-right a {
   color: var(--gold);
   text-decoration: none;
-  margin: 0 4px;
   font-size: 1rem;
+  transition: color 0.2s ease;
 }
 
 .page-footer .footer-right a:hover {
   color: var(--dark);
 }
 
-.footer-cross {
-  margin-right: 6px;
-  color: var(--gold);
+/* Social icons spacing */
+.page-footer .footer-right i {
+  font-size: 1rem;
 }
+
+/* Responsive adjustments for small screens */
+@media (max-width: 600px) {
+  .page-footer .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .page-footer .footer-right {
+    gap: 6px;
+  }
+
+  .page-footer .footer-top {
+    font-size: 0.95rem;
+    gap: 4px;
+  }
+}
+
     /* ── LOADING ────────────────────────────────────────────── */
     #loading-screen{position:fixed;inset:0;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity .8s,visibility .8s}
     #loading-screen.fade-out{opacity:0;visibility:hidden}
