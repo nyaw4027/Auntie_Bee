@@ -1,0 +1,54 @@
+[debug] [2026-03-12T11:55:46.305Z] ----------------------------------------------------------------------
+[debug] [2026-03-12T11:55:46.320Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\NANA-YAW_DEVELOPER\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2026-03-12T11:55:46.321Z] CLI Version:   15.9.1
+[debug] [2026-03-12T11:55:46.321Z] Platform:      win32
+[debug] [2026-03-12T11:55:46.322Z] Node Version:  v20.14.0
+[debug] [2026-03-12T11:55:46.322Z] Time:          Thu Mar 12 2026 11:55:46 GMT+0000 (Greenwich Mean Time)
+[debug] [2026-03-12T11:55:46.323Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-12T11:55:51.431Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-12T11:55:51.432Z] > authorizing via signed-in user (nyaw4027@gmail.com)
+[debug] [2026-03-12T11:55:51.432Z] [iam] checking project auntie-bee for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-03-12T11:55:51.435Z] Checked if tokens are valid: true, expires at: 1773319554614
+[debug] [2026-03-12T11:55:51.435Z] Checked if tokens are valid: true, expires at: 1773319554614
+[debug] [2026-03-12T11:55:51.438Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/auntie-bee:testIamPermissions [none]
+[debug] [2026-03-12T11:55:51.438Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/auntie-bee:testIamPermissions  x-goog-user-project=auntie-bee
+[debug] [2026-03-12T11:55:51.439Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/auntie-bee:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-03-12T11:56:14.040Z] *** [apiv2] error from fetch(https://cloudresourcemanager.googleapis.com/v1/projects/auntie-bee:testIamPermissions, {"headers":{},"method":"POST","body":"{\"permissions\":[\"firebase.projects.get\",\"firebasehosting.sites.update\"]}"}): FetchError: request to https://cloudresourcemanager.googleapis.com/v1/projects/auntie-bee:testIamPermissions failed, reason: 
+[debug] [2026-03-12T11:56:14.045Z] [iam] error while checking permissions, command may fail: Failed to make request to https://cloudresourcemanager.googleapis.com/v1/projects/auntie-bee:testIamPermissions
+[debug] [2026-03-12T11:56:14.049Z] Checked if tokens are valid: true, expires at: 1773319554614
+[debug] [2026-03-12T11:56:14.050Z] Checked if tokens are valid: true, expires at: 1773319554614
+[debug] [2026-03-12T11:56:14.052Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/auntie-bee [none]
+[debug] [2026-03-12T11:56:14.081Z] *** [apiv2] error from fetch(https://firebase.googleapis.com/v1beta1/projects/auntie-bee, {"headers":{},"method":"GET","signal":{"reason":""}}): FetchError: request to https://firebase.googleapis.com/v1beta1/projects/auntie-bee failed, reason: getaddrinfo ENOTFOUND firebase.googleapis.com
+[debug] [2026-03-12T11:56:14.082Z] Failed to make request to https://firebase.googleapis.com/v1beta1/projects/auntie-bee (original: request to https://firebase.googleapis.com/v1beta1/projects/auntie-bee failed, reason: getaddrinfo ENOTFOUND firebase.googleapis.com)
+[debug] [2026-03-12T11:56:19.123Z] Error: Timed out.
+    at Timeout._onTimeout (C:\Users\NANA-YAW_DEVELOPER\AppData\Roaming\npm\node_modules\firebase-tools\lib\utils.js:308:49)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-03-12T11:56:30.466Z] ----------------------------------------------------------------------
+[debug] [2026-03-12T11:56:30.474Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\NANA-YAW_DEVELOPER\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2026-03-12T11:56:30.474Z] CLI Version:   15.9.1
+[debug] [2026-03-12T11:56:30.475Z] Platform:      win32
+[debug] [2026-03-12T11:56:30.475Z] Node Version:  v20.14.0
+[debug] [2026-03-12T11:56:30.475Z] Time:          Thu Mar 12 2026 11:56:30 GMT+0000 (Greenwich Mean Time)
+[debug] [2026-03-12T11:56:30.476Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-12T11:56:34.312Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-12T11:56:34.313Z] > authorizing via signed-in user (nyaw4027@gmail.com)
+[debug] [2026-03-12T11:56:34.313Z] [iam] checking project auntie-bee for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-03-12T11:56:34.315Z] Checked if tokens are valid: true, expires at: 1773319554614
+[debug] [2026-03-12T11:56:34.315Z] Checked if tokens are valid: true, expires at: 1773319554614
+[debug] [2026-03-12T11:56:34.317Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/auntie-bee:testIamPermissions [none]
+[debug] [2026-03-12T11:56:34.317Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/auntie-bee:testIamPermissions  x-goog-user-project=auntie-bee
+[debug] [2026-03-12T11:56:34.318Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/auntie-bee:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-03-12T11:56:41.851Z] *** [apiv2] error from fetch(https://cloudresourcemanager.googleapis.com/v1/projects/auntie-bee:testIamPermissions, {"headers":{},"method":"POST","body":"{\"permissions\":[\"firebase.projects.get\",\"firebasehosting.sites.update\"]}"}): FetchError: request to https://cloudresourcemanager.googleapis.com/v1/projects/auntie-bee:testIamPermissions failed, reason: 
+[debug] [2026-03-12T11:56:41.854Z] [iam] error while checking permissions, command may fail: Failed to make request to https://cloudresourcemanager.googleapis.com/v1/projects/auntie-bee:testIamPermissions
+[debug] [2026-03-12T11:56:41.860Z] Checked if tokens are valid: true, expires at: 1773319554614
+[debug] [2026-03-12T11:56:41.862Z] Checked if tokens are valid: true, expires at: 1773319554614
+[debug] [2026-03-12T11:56:41.865Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/auntie-bee [none]
+[debug] [2026-03-12T11:56:42.145Z] *** [apiv2] error from fetch(https://firebase.googleapis.com/v1beta1/projects/auntie-bee, {"headers":{},"method":"GET","signal":{"reason":""}}): FetchError: request to https://firebase.googleapis.com/v1beta1/projects/auntie-bee failed, reason: getaddrinfo ENOTFOUND firebase.googleapis.com
+[debug] [2026-03-12T11:56:42.146Z] Failed to make request to https://firebase.googleapis.com/v1beta1/projects/auntie-bee (original: request to https://firebase.googleapis.com/v1beta1/projects/auntie-bee failed, reason: getaddrinfo ENOTFOUND firebase.googleapis.com)
+[error] 
+[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier
