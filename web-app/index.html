@@ -931,12 +931,14 @@
         <button class="tribute-tab" data-key="family" onclick="switchTribute('family')"><i class="fas fa-users"></i> Family</button>
         <button class="tribute-tab" data-key="grandchildren" onclick="switchTribute('grandchildren')"><i class="fas fa-baby"></i> Grandchildren</button>
         <button class="tribute-tab" data-key="greatgrandchildren" onclick="switchTribute('greatgrandchildren')"><i class="fas fa-seedling"></i> Great-Grandchildren</button>
+        <button class="tribute-tab" data-key="inlaws" onclick="switchTribute('inlaws')"><i class="fas fa-user-friends"></i> In-Laws</button>
         <button class="tribute-tab" data-key="church" onclick="switchTribute('church')"><i class="fas fa-church"></i> Church</button>
       </div>
       <div class="tribute-panel active" id="tribute-panel-children"></div>
       <div class="tribute-panel"        id="tribute-panel-family"></div>
       <div class="tribute-panel"        id="tribute-panel-grandchildren"></div>
       <div class="tribute-panel"        id="tribute-panel-greatgrandchildren"></div>
+      <div class="tribute-panel"        id="tribute-panel-inlaws"></div>
       <div class="tribute-panel"        id="tribute-panel-church"></div>
     </div>
   </section>
@@ -1565,6 +1567,26 @@ Rest peacefully, Great-Grandma.`,
        { photo: 'images/Greatgrand4.jpeg', name: 'Nana Kwasi', occupation: 'Student · Sankubenase' },
     ]
   },
+
+
+  inlaws: {
+  icon: 'fa-user-friends',
+  signName: 'The In-Laws of Madam Agnes Pomaa',
+  signRole: 'In loving memory of our beloved mother-in-law',
+  text: `Mama welcomed us into the family with warmth and kindness.
+She treated us not as outsiders but as her own children.
+
+Her advice, laughter, and prayers strengthened our homes
+and made us proud to be part of this wonderful family.
+
+Though she is gone, the love she shared will remain with us forever.`,
+
+  members: [
+    { photo: 'images/inlaw1.jpeg', name: 'Margaret Darkwaa', occupation: 'Trader · Sankubenase' },
+    { photo: 'images/inlaw2.jpeg', name: 'Akosua Mensah', occupation: 'Teacher · Accra' }
+  ]
+},
+
   church: {
     icon:'fa-church', signName:'The Church Of Pentecost, Sankubenase Assembly', signRole:'In loving memory of a faithful and dedicated member',
     text:`Sister Agnes Pomaa was the kind of member every church prays for.\n\nShe came early and stayed late. She served quietly without seeking recognition. She gave generously without keeping records. Her faith was not just something she professed — it was something she practised, consistently, over many decades of faithful service to God and to this assembly.\n\nWe will remember her in the choir, in the women's fellowship, and in the quiet corners of the sanctuary where she would linger after service to pray.\n\nThe Sankubenase Assembly has lost a pillar. But heaven has gained one of its finest servants. We celebrate her life and give thanks to God for the privilege of worshipping alongside her. May her memory inspire us to serve with the same devotion she showed until the very end`,
