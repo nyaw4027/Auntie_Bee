@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#c8a84b"/>
+</head>
   <style>
     /* ═══════════════════════════════════════════════════════════
        VARIABLES
@@ -435,11 +438,7 @@
   </style>
 </head>
 <body>
-  <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
-  }
-</script>
+  
 
 <!-- LOADING -->
 <div id="loading-screen">
@@ -1627,5 +1626,12 @@ function initAll() {
   if (streamLinks.zm) document.getElementById('zm-stream-link').href = streamLinks.zm;
 }
 </script>
+
+ <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
+
 </body>
 </html>
