@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="apple-touch-icon" href="icons/icon-192.png"/>
  
 </head>
   <style>
@@ -434,6 +435,15 @@
     @media (max-width: 480px) {
       .tribute-grid { grid-template-columns: 1fr 1fr; }
     }
+    /* ── PWA INSTALL BANNER ───────────────────────────────────── */
+#pwa-banner { position:fixed; bottom:0; left:0; right:0; background:#1c1c1c; border-top:2px solid #c8a84b; padding:14px 20px; z-index:9998; display:none; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.pwa-banner-info { display:flex; align-items:center; gap:12px; }
+.pwa-banner-icon { width:40px; height:40px; border-radius:8px; }
+.pwa-banner-title { color:#f5e9c4; font-size:.9rem; font-weight:700; }
+.pwa-banner-sub   { color:#888880; font-size:.75rem; }
+.pwa-banner-btns  { display:flex; gap:10px; }
+.pwa-btn-install  { background:#c8a84b; color:#111; border:none; padding:10px 20px; border-radius:2px; font-weight:700; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; }
+.pwa-btn-dismiss  { background:transparent; color:#888880; border:1px solid #555; padding:10px 16px; border-radius:2px; font-size:.8rem; cursor:pointer; }
   </style>
    <link rel="manifest" href="/manifest.json"/><meta name="theme-color" content="#c8a84b"/>
 </head>
@@ -570,6 +580,21 @@
     </div>
   </section>
 
+  <!-- PWA INSTALL BANNER -->
+<div id="pwa-banner">
+  <div class="pwa-banner-info">
+    <img src="icons/icon-192.png" class="pwa-banner-icon" alt="Auntie Bee App"/>
+    <div>
+      <div class="pwa-banner-title">Install Auntie Bee App</div>
+      <div class="pwa-banner-sub">Add to your home screen for quick access</div>
+    </div>
+  </div>
+  <div class="pwa-banner-btns">
+    <button onclick="installPWA()" class="pwa-btn-install">Install</button>
+    <button onclick="dismissBanner()" class="pwa-btn-dismiss">Not Now</button>
+  </div>
+</div>
+
   <section class="section section-dark">
     <div class="container-sm share-section reveal">
       <span class="section-eyebrow">Spread the Word</span>
@@ -598,13 +623,12 @@
       <div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div>
       <div class="footer-right">
         Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;
-        <a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;
-        <a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
-        <a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+<a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a>
+<a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer" title="X / Twitter"><i class="fab fa-twitter"></i></a>
+<a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
+<a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
@@ -1625,13 +1649,64 @@ function initAll() {
   if (streamLinks.yt) document.getElementById('yt-stream-link').href = streamLinks.yt;
   if (streamLinks.zm) document.getElementById('zm-stream-link').href = streamLinks.zm;
 }
-</script>
 
- <script>
+/* ── PWA INSTALL ──────────────────────────────────────────── */
+let deferredPrompt = null;
+const pwaBanner    = document.getElementById('pwa-banner');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // Show banner after 3 seconds
+  setTimeout(() => {
+    if (deferredPrompt) {
+      pwaBanner.style.display = 'flex';
+    }
+  }, 3000);
+});
+
+function installPWA() {
+  if (!deferredPrompt) {
+    showToast('Open this page in Chrome on Android to install.', 'warning');
+    return;
+  }
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(choice => {
+    if (choice.outcome === 'accepted') {
+      showToast('App installed successfully! 🎉');
+    }
+    deferredPrompt = null;
+    pwaBanner.style.display = 'none';
+  });
+}
+
+function dismissBanner() {
+  pwaBanner.style.display = 'none';
+  // Don't show again for 24 hours
+  localStorage.setItem('pwa-dismissed', Date.now());
+}
+
+// Don't show banner if dismissed within last 24 hours
+window.addEventListener('load', () => {
+  const dismissed = localStorage.getItem('pwa-dismissed');
+  if (dismissed && Date.now() - dismissed < 86400000) {
+    if (pwaBanner) pwaBanner.style.display = 'none';
+  }
+});
+
+// Hide banner after app is installed
+window.addEventListener('appinstalled', () => {
+  pwaBanner.style.display = 'none';
+  showToast('Auntie Bee app installed! 🎉');
+});
+
+
+
+ 
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js');
     }
-  </script>
-
+  
+</script>
 </body>
 </html>
