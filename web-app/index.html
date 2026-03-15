@@ -421,6 +421,15 @@
     .reveal-mt { margin-top: 40px; }
     .livestream-sub { text-align:center; margin-top:16px; font-size:.95rem; }
 
+    /* ── WHATSAPP ACTION CARD ─────────────────────────────────── */
+    .wa-card { background:rgba(37,211,102,.08); border:1px solid rgba(37,211,102,.3); border-radius:4px; padding:20px 24px; margin-top:20px; display:none; flex-direction:column; gap:14px; }
+    .wa-card.show { display:flex; }
+    .wa-card-title { color:#25d366; font-family:"Playfair Display",serif; font-size:1.05rem; font-weight:600; display:flex; align-items:center; gap:10px; }
+    .wa-card-body  { font-size:.88rem; color:var(--gold-pale); line-height:1.6; }
+    .wa-card-body strong { color:#25d366; }
+    .btn-whatsapp  { background:#25d366; color:#fff; border:none; padding:13px 28px; font-family:"Lato",sans-serif; font-size:.82rem; letter-spacing:.12em; text-transform:uppercase; font-weight:700; cursor:pointer; border-radius:2px; display:inline-flex; align-items:center; gap:10px; transition:background .2s; align-self:flex-start; }
+    .btn-whatsapp:hover { background:#1ebe5d; }
+
     @media (max-width: 768px) {
       .nav-links  { display: none; }
       .hamburger  { display: block; }
@@ -696,9 +705,13 @@
         <button class="btn-gold" id="cond-btn" onclick="submitCondolence()">
           <i class="fas fa-paper-plane"></i> Send Condolences
         </button>
-        <div class="sms-notice" style="margin-top:16px">
-          <i class="fab fa-whatsapp"></i>
-          <span>After sending, <strong>WhatsApp will open</strong> to notify the family admin. Tap <strong>Send</strong> in WhatsApp to complete the notification.</span>
+        <!-- WhatsApp action card — shown after condolence is sent -->
+        <div class="wa-card" id="cond-wa-card">
+          <div class="wa-card-title"><i class="fab fa-whatsapp"></i> Message sent! Notify the family now</div>
+          <div class="wa-card-body">Your condolence has been saved. Tap the button below to send a <strong>free WhatsApp notification</strong> to the family admin.</div>
+          <button class="btn-whatsapp" id="cond-wa-btn" onclick="sendCondWA()">
+            <i class="fab fa-whatsapp"></i> Notify Family via WhatsApp
+          </button>
         </div>
       </div>
       <div class="reveal">
@@ -862,7 +875,15 @@
         <button class="btn-gold" id="att-btn" onclick="submitAttendance()"><i class="fas fa-check-circle"></i> Register Attendance</button>
         <div class="sms-notice">
           <i class="fab fa-whatsapp"></i>
-          <span>After registering, <strong>WhatsApp will open</strong> on your device with a pre-filled message to the family admin. Simply tap <strong>Send</strong> in WhatsApp to notify us. Free &amp; instant.</span>
+          <span>After registering, tap the green <strong>Notify via WhatsApp</strong> button that appears below to alert the family admin. Free &amp; instant.</span>
+        </div>
+        <!-- WhatsApp action card — shown after successful registration -->
+        <div class="wa-card" id="att-wa-card">
+          <div class="wa-card-title"><i class="fab fa-whatsapp"></i> Registration saved! Notify the family now</div>
+          <div class="wa-card-body">Your attendance has been recorded. Tap the button below to send a <strong>free WhatsApp message</strong> to the family admin so they know you're coming.</div>
+          <button class="btn-whatsapp" id="att-wa-btn" onclick="sendAttWA()">
+            <i class="fab fa-whatsapp"></i> Notify Family via WhatsApp
+          </button>
         </div>
       </div>
       <div class="attendees-section reveal">
@@ -916,15 +937,7 @@ const FIREBASE_CONFIG = {
 ══════════════════════════════════════════════════════════════ */
 const ADMIN_WHATSAPP = '233558040216'; // family admin WhatsApp
 
-/**
- * Opens WhatsApp on the user's device with a pre-filled message
- * addressed to the admin number. The user taps Send in WhatsApp.
- * Completely free — works on every phone in Ghana.
- */
-function notifyAdmin(message) {
-  const url = `https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(message)}`;
-  window.open(url, '_blank');
-}
+/* notifyAdmin is handled via sendAttWA() and sendCondWA() tap buttons */
 
 /* ── LOCAL STORES ─────────────────────────────────────────── */
 let attendees   = JSON.parse(localStorage.getItem('attendees')   || '[]');
@@ -1135,15 +1148,18 @@ async function submitCondolence() {
       document.getElementById('cond-message').value  = '';
       showToast('Your message has been sent and is now visible to everyone. 🙏');
 
-      /* Notify admin via WhatsApp */
+      /* Build WhatsApp message and show the tap-to-send card */
       const preview    = message.length > 100 ? message.slice(0, 100) + '…' : message;
-      const adminAlert =
+      window._condWAMsg =
         `✉️ *New Condolence – Auntie Bee Memorial*\n\n` +
         `👤 *From:* ${name}\n` +
         `🤝 *Relation:* ${rel || 'Well-wisher'}\n\n` +
         `💬 "${preview}"\n\n` +
         `_Sent via auntie-bee.web.app_`;
-      notifyAdmin(adminAlert);
+
+      /* Show the WhatsApp card */
+      const condWACard = document.getElementById('cond-wa-card');
+      if (condWACard) condWACard.classList.add('show');
 
       await pollCondolences(true);
     } catch(e) {
@@ -1490,9 +1506,9 @@ async function submitAttendance() {
   renderAttendees();
   updateStats();
 
-  /* Notify admin via WhatsApp */
+  /* Build WhatsApp message and show the tap-to-send card */
   const eventsLabel = entry.events.join(', ');
-  const adminMsg =
+  window._attWAMsg =
     `🙏 *New Attendance – Auntie Bee Memorial*\n\n` +
     `👤 *Name:* ${name}\n` +
     `🤝 *Relation:* ${entry.relation}\n` +
@@ -1501,12 +1517,39 @@ async function submitAttendance() {
     `📞 *Phone:* ${phone}\n` +
     `📝 *Notes:* ${entry.notes || 'None'}\n\n` +
     `_Registered via auntie-bee.web.app_`;
-  notifyAdmin(adminMsg);
 
-  showToast(`Registered successfully! Thank you, ${name}. 🙏`);
+  /* Show the WhatsApp card */
+  const waCard = document.getElementById('att-wa-card');
+  if (waCard) waCard.classList.add('show');
+
+  showToast(`Registered! Tap the WhatsApp button below to notify the family. 🙏`);
 
   btn.disabled = false;
   btn.innerHTML = '<i class="fas fa-check-circle"></i> Register Attendance';
+}
+
+/* Called when user taps the WhatsApp notify button after condolence */
+function sendCondWA() {
+  if (window._condWAMsg) {
+    const url = `https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(window._condWAMsg)}`;
+    window.open(url, '_blank');
+    const card = document.getElementById('cond-wa-card');
+    if (card) {
+      card.innerHTML = '<div class="wa-card-title"><i class="fab fa-whatsapp"></i> WhatsApp opened! Tap Send to complete.</div>';
+    }
+  }
+}
+
+/* Called when user taps the WhatsApp notify button after attendance */
+function sendAttWA() {
+  if (window._attWAMsg) {
+    const url = `https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(window._attWAMsg)}`;
+    window.open(url, '_blank');
+    const card = document.getElementById('att-wa-card');
+    if (card) {
+      card.innerHTML = '<div class="wa-card-title"><i class="fab fa-whatsapp"></i> WhatsApp opened! Tap Send to complete.</div>';
+    }
+  }
 }
 
 function renderAttendees() {
