@@ -435,6 +435,11 @@
   </style>
 </head>
 <body>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+</script>
 
 <!-- LOADING -->
 <div id="loading-screen">
