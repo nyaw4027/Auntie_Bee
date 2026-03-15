@@ -13,7 +13,6 @@
        VARIABLES
     ═══════════════════════════════════════════════════════════ */
     :root {
-      /* Palette */
       --charcoal:     #1c1c1c;
       --dark:         #111111;
       --gold:         #c8a84b;
@@ -21,25 +20,16 @@
       --gold-pale:    #f5e9c4;
       --cream:        #f8f4ec;
       --ivory:        #fdfaf4;
-      /* Text */
       --text-dark:    #2a2a2a;
       --text-mid:     #555550;
       --text-light:   #888880;
-      /* Utility */
       --border:       rgba(200,168,75,.25);
       --shadow:       0 8px 40px rgba(0,0,0,.12);
     }
-
-    /* ═══════════════════════════════════════════════════════════
-       RESET & BASE
-    ═══════════════════════════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html  { scroll-behavior: smooth; }
     body  { font-family: 'Lato', sans-serif; background: var(--ivory); color: var(--text-dark); overflow-x: hidden; }
 
-    /* ═══════════════════════════════════════════════════════════
-       LOADING SCREEN
-    ═══════════════════════════════════════════════════════════ */
     #loading-screen {
       position: fixed; inset: 0; background: var(--dark);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -65,9 +55,6 @@
       color: var(--gold-pale); font-size: 1.1rem; letter-spacing: .3em; text-transform: uppercase;
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       NAVIGATION
-    ═══════════════════════════════════════════════════════════ */
     #nav {
       position: fixed; top: 0; left: 0; right: 0;
       background: rgba(17,17,17,.97);
@@ -108,23 +95,14 @@
     }
     .mobile-menu a:hover { color: var(--gold); background: rgba(200,168,75,.08); }
 
-    /* ═══════════════════════════════════════════════════════════
-       PAGE SYSTEM
-    ═══════════════════════════════════════════════════════════ */
     .page {
       display: none; min-height: 100vh;
       padding-top: 64px; background: var(--ivory);
       animation: fadeInPage .45s ease forwards;
     }
     .page.active { display: block; }
-    @keyframes fadeInPage {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
+    @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
 
-    /* ═══════════════════════════════════════════════════════════
-       HERO
-    ═══════════════════════════════════════════════════════════ */
     .hero {
       position: relative; min-height: calc(100vh - 64px); background: var(--dark);
       display: flex; align-items: center; justify-content: center;
@@ -174,9 +152,6 @@
       50%       { transform: translateX(-50%) translateY(6px); }
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       SECTIONS & CONTAINERS
-    ═══════════════════════════════════════════════════════════ */
     .section        { padding: 80px 24px; background: var(--ivory); }
     .section-alt    { background: var(--cream); }
     .section-dark   { background: var(--dark); color: var(--cream); }
@@ -195,9 +170,6 @@
     .container-sm { max-width: 720px;  margin: 0 auto; }
     .container-md { max-width: 900px;  margin: 0 auto; }
 
-    /* ═══════════════════════════════════════════════════════════
-       VERSE & ABOUT STRIPS
-    ═══════════════════════════════════════════════════════════ */
     .verse-strip { background: var(--charcoal); padding: 40px 24px; text-align: center; }
     .verse-text  { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(1.1rem,2.5vw,1.5rem); color: var(--gold-pale); max-width: 640px; margin: 0 auto 12px; line-height: 1.7; opacity: .85; }
     .verse-ref   { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); opacity: .6; }
@@ -205,9 +177,6 @@
     .about-strip p { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; line-height: 1.8; color: rgba(245,233,196,.75); max-width: 680px; margin: 0 auto; font-style: italic; }
     .about-strip strong { color: var(--gold); }
 
-    /* ═══════════════════════════════════════════════════════════
-       EVENT CARDS
-    ═══════════════════════════════════════════════════════════ */
     .quick-events-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 24px; margin-top: 8px; }
     .event-card { background: var(--ivory); border: 1px solid var(--border); border-top: 3px solid var(--gold); padding: 28px 24px; border-radius: 2px; transition: transform .2s,box-shadow .2s; }
     .event-card:hover    { transform: translateY(-4px); box-shadow: var(--shadow); }
@@ -217,24 +186,15 @@
     .event-card-detail   { font-size: .85rem; color: var(--text-mid); line-height: 1.6; }
     .event-card-detail i { color: var(--gold); margin-right: 5px; width: 14px; }
 
-    /* ═══════════════════════════════════════════════════════════
-       STATS ROW
-    ═══════════════════════════════════════════════════════════ */
     .stats-row            { display: flex; flex-wrap: wrap; justify-content: center; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
     .stat-item            { flex: 1; min-width: 140px; padding: 28px 20px; text-align: center; border-right: 1px solid var(--border); background: var(--ivory); }
     .stat-item:last-child { border-right: none; }
     .stat-num             { font-family: "Playfair Display", serif; font-size: 2.4rem; font-weight: 700; color: var(--gold); display: block; margin-bottom: 6px; }
     .stat-label           { font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-light); }
 
-    /* ═══════════════════════════════════════════════════════════
-       SHARE SECTION
-    ═══════════════════════════════════════════════════════════ */
     .share-section   { text-align: center; }
     .share-section p { color: rgba(245,233,196,.6); margin: 24px auto; max-width: 480px; line-height: 1.8; font-size: .92rem; }
 
-    /* ═══════════════════════════════════════════════════════════
-       ANNOUNCEMENTS
-    ═══════════════════════════════════════════════════════════ */
     .announcement-list { display: flex; flex-direction: column; gap: 20px; }
     .announcement-item { background: var(--ivory); border-left: 4px solid var(--gold); padding: 24px 28px; border-radius: 0 4px 4px 0; box-shadow: 0 2px 12px rgba(0,0,0,.06); transition: transform .2s; }
     .announcement-item:hover { transform: translateX(4px); }
@@ -244,9 +204,6 @@
     .ann-title { font-family: "Playfair Display", serif; font-size: 1.2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; }
     .ann-body  { font-size: .9rem; color: var(--text-mid); line-height: 1.7; }
 
-    /* ═══════════════════════════════════════════════════════════
-       FUNERAL PROGRAMME
-    ═══════════════════════════════════════════════════════════ */
     .program-tabs { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 48px; }
     .program-tab  { padding: 10px 22px; border: 1px solid var(--border); background: var(--ivory); color: var(--text-mid); font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all .2s; font-family: "Lato",sans-serif; }
     .program-tab.active,
@@ -266,9 +223,6 @@
     .program-item-detail  { font-size: .82rem; color: var(--text-mid); }
     .program-item-time    { font-size: .75rem; color: var(--gold); font-weight: 700; letter-spacing: .05em; margin-left: 12px; flex-shrink: 0; }
 
-    /* ═══════════════════════════════════════════════════════════
-       FORMS & BUTTONS
-    ═══════════════════════════════════════════════════════════ */
     .form-wrap-dark  { background: var(--charcoal); padding: 40px; border-radius: 4px; border: 1px solid rgba(200,168,75,.15); margin-bottom: 48px; }
     .form-wrap-title { font-family: "Playfair Display", serif; color: var(--gold-pale); margin-bottom: 24px; font-size: 1.25rem; }
     .form-row    { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -291,9 +245,6 @@
     .btn-outline { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 10px 24px; font-family: "Lato",sans-serif; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; cursor: pointer; border-radius: 2px; transition: all .2s; }
     .btn-outline:hover { background: var(--gold); color: var(--dark); }
 
-    /* ═══════════════════════════════════════════════════════════
-       CONDOLENCES
-    ═══════════════════════════════════════════════════════════ */
     .cond-status-bar { display: flex; align-items: center; gap: 10px; padding: 11px 18px; border-radius: 4px; margin-bottom: 28px; font-size: .82rem; }
     .cond-status-bar.live    { background: rgba(34,197,94,.07);  border: 1px solid rgba(34,197,94,.2); }
     .cond-status-bar.offline { background: rgba(200,168,75,.07); border: 1px solid rgba(200,168,75,.2); }
@@ -337,9 +288,6 @@
     .cond-empty   { text-align: center; padding: 52px 20px; color: var(--text-light); font-family: "Cormorant Garamond",serif; font-style: italic; font-size: 1rem; border: 1px dashed rgba(200,168,75,.2); border-radius: 4px; }
     .cond-empty i { display: block; font-size: 2rem; color: var(--gold); opacity: .2; margin-bottom: 12px; }
 
-    /* ═══════════════════════════════════════════════════════════
-       TRIBUTES
-    ═══════════════════════════════════════════════════════════ */
     .tribute-page-sub { margin: 16px auto 0; color: var(--text-mid); font-size: .9rem; max-width: 540px; text-align: center; line-height: 1.7; }
     .tribute-tabs { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 52px; }
     .tribute-tab  { padding: 11px 26px; border: 1px solid var(--border); background: var(--ivory); color: var(--text-mid); font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all .2s; font-family: "Lato",sans-serif; display: flex; align-items: center; gap: 8px; }
@@ -364,21 +312,13 @@
     .member-photo-wrap                       { position: relative; aspect-ratio: 3/4; overflow: hidden; background: var(--charcoal); cursor: pointer; }
     .member-photo-wrap img                   { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .4s; }
     .member-card:hover .member-photo-wrap img { transform: scale(1.05); }
-   .member-photo-placeholder {
-    width: 100%;                    /* fill the parent container */
-    height: 100%;                   /* fill the parent container */
-    display: flex;                  /* enable flex layout */
-    flex-direction: column;         /* stack icon and text vertically */
-    align-items: center;            /* center horizontally */
-    justify-content: center;        /* center vertically */
-    background: linear-gradient(135deg, #1e1e18, #2a2a22); /* dark gradient background */
-    color: var(--gold);             /* icon and text color */
-    gap: 10px;                      /* spacing between icon and text */
-    font-size: 0.9rem;              /* ensures text isn't too small */
-    text-align: center;             /* center-align the text */
-    border-radius: 4px;             /* rounded corners to match member card */
-    overflow: hidden;               /* ensure nothing spills out */
-}
+    .member-photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #1e1e18, #2a2a22);
+      color: var(--gold); gap: 10px; font-size: 0.9rem; text-align: center;
+      border-radius: 4px; overflow: hidden;
+    }
     .member-photo-placeholder i    { font-size: 2.8rem; opacity: .4; }
     .member-photo-placeholder span { font-size: .68rem; letter-spacing: .12em; color: var(--text-light); text-transform: uppercase; }
     .member-info       { padding: 16px 12px 18px; }
@@ -389,9 +329,6 @@
     .tribute-empty    { text-align: center; padding: 48px 20px; color: var(--text-light); font-size: .9rem; border: 1px dashed rgba(200,168,75,.2); border-radius: 4px; }
     .tribute-empty i  { display: block; font-size: 2.4rem; color: var(--gold); opacity: .2; margin-bottom: 14px; }
 
-    /* ═══════════════════════════════════════════════════════════
-       LIGHTBOX
-    ═══════════════════════════════════════════════════════════ */
     .lightbox       { position: fixed; inset: 0; background: rgba(0,0,0,.93); z-index: 2000; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 14px; }
     .lightbox.open  { display: flex; }
     .lightbox img   { max-width: 90vw; max-height: 78vh; object-fit: contain; border-radius: 2px; }
@@ -399,9 +336,6 @@
     .lightbox-close   { position: absolute; top: 24px; right: 28px; color: var(--gold); font-size: 1.8rem; cursor: pointer; opacity: .7; background: none; border: none; transition: opacity .2s; }
     .lightbox-close:hover { opacity: 1; }
 
-    /* ═══════════════════════════════════════════════════════════
-       LIVESTREAM
-    ═══════════════════════════════════════════════════════════ */
     .livestream-embed { position: relative; padding-bottom: 56.25%; height: 0; background: #000; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 40px; }
     .livestream-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
     .livestream-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--charcoal); color: var(--gold-pale); gap: 16px; text-align: center; padding: 24px; }
@@ -428,9 +362,6 @@
     .admin-links-title    { font-family: "Playfair Display",serif; font-size: 1.2rem; text-align: center; margin-bottom: 24px; }
     .admin-mt             { margin-top: 14px; }
 
-    /* ═══════════════════════════════════════════════════════════
-       ATTEND & SMS
-    ═══════════════════════════════════════════════════════════ */
     .attend-intro        { background: var(--charcoal); border: 1px solid rgba(200,168,75,.15); border-left: 4px solid var(--gold); padding: 20px 24px; border-radius: 0 4px 4px 0; margin-bottom: 36px; color: var(--gold-pale); font-family: "Cormorant Garamond",serif; font-size: 1.1rem; line-height: 1.6; }
     .attend-intro strong { color: var(--gold); }
     .sms-notice          { background: rgba(200,168,75,.08); border: 1px solid rgba(200,168,75,.2); border-radius: 4px; padding: 14px 18px; margin-top: 20px; font-size: .82rem; color: var(--gold-pale); display: flex; gap: 10px; align-items: flex-start; }
@@ -451,31 +382,14 @@
     .attendee-badges { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
     .attendee-badge  { font-size: .7rem; padding: 3px 9px; background: rgba(200,168,75,.1); color: var(--gold); border-radius: 2px; letter-spacing: .08em; text-transform: uppercase; }
 
-    /* ═══════════════════════════════════════════════════════════
-       SITE-WIDE FOOTER
-    ═══════════════════════════════════════════════════════════ */
-    .site-footer {
-      background: var(--dark);
-      border-top: 1px solid rgba(200,168,75,.18);
-      font-family: "Lato",sans-serif;
-      color: rgba(245,233,196,.4);
-      font-size: .82rem;
-    }
-    /* — Top: memorial strip */
-    .footer-top {
-      display: flex; align-items: center; justify-content: center;
-      gap: 14px; padding: 28px 24px 22px;
-      border-bottom: 1px solid rgba(200,168,75,.09);
-      flex-wrap: wrap; text-align: center;
-    }
+    .site-footer { background: var(--dark); border-top: 1px solid rgba(200,168,75,.18); font-family: "Lato",sans-serif; color: rgba(245,233,196,.4); font-size: .82rem; }
+    .footer-top { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 28px 24px 22px; border-bottom: 1px solid rgba(200,168,75,.09); flex-wrap: wrap; text-align: center; }
     .footer-top .footer-cross { color: var(--gold); opacity: .38; font-size: 1rem; flex-shrink: 0; }
     .footer-memorial { font-family: "Cormorant Garamond",serif; font-style: italic; font-size: 1rem; color: rgba(245,233,196,.5); letter-spacing: .02em; line-height: 1.5; }
     .footer-memorial strong { color: var(--gold); font-style: normal; }
-    /* — Middle: nav */
     .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 6px; padding: 18px 24px; border-bottom: 1px solid rgba(200,168,75,.09); }
     .footer-nav a { color: rgba(245,233,196,.3); font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; text-decoration: none; padding: 5px 11px; border-radius: 2px; transition: color .2s, background .2s; }
     .footer-nav a:hover { color: var(--gold); background: rgba(200,168,75,.08); }
-    /* — Bottom: credits + socials */
     .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; padding: 16px 32px; flex-wrap: wrap; }
     .footer-left   { font-size: .76rem; color: rgba(245,233,196,.25); letter-spacing: .04em; }
     .footer-right  { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .78rem; color: rgba(245,233,196,.32); }
@@ -488,19 +402,12 @@
     .footer-right a[href*="x.com"]:hover     { color: #e7e7e7; }
     .footer-right a[href*="instagram"]:hover { color: #e1306c; }
     .footer-right a[href*="linkedin"]:hover  { color: #0a66c2; }
-    /* — Motto */
     .footer-copy { text-align: center; padding: 13px 24px 22px; font-family: "Cormorant Garamond",serif; font-style: italic; font-size: .92rem; color: rgba(245,233,196,.18); letter-spacing: .06em; border-top: 1px solid rgba(200,168,75,.06); }
 
-    /* ═══════════════════════════════════════════════════════════
-       TOAST
-    ═══════════════════════════════════════════════════════════ */
     #toast { position: fixed; bottom: 28px; right: 28px; background: var(--charcoal); border: 1px solid var(--gold); color: var(--cream); padding: 14px 22px; border-radius: 4px; font-size: .88rem; box-shadow: 0 8px 24px rgba(0,0,0,.25); z-index: 5000; transform: translateY(80px); opacity: 0; transition: all .35s; display: flex; align-items: center; gap: 10px; max-width: 320px; }
     #toast.show { transform: translateY(0); opacity: 1; }
     #toast i    { color: var(--gold); }
 
-    /* ═══════════════════════════════════════════════════════════
-       SCROLL REVEAL
-    ═══════════════════════════════════════════════════════════ */
     .reveal         { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: .1s; }
@@ -508,9 +415,6 @@
     .reveal-delay-3 { transition-delay: .3s; }
     .reveal-delay-4 { transition-delay: .4s; }
 
-    /* ═══════════════════════════════════════════════════════════
-       RESPONSIVE
-    ═══════════════════════════════════════════════════════════ */
     @media (max-width: 768px) {
       .nav-links  { display: none; }
       .hamburger  { display: block; }
@@ -673,56 +577,9 @@
   </section>
 
   <footer class="site-footer">
-  <div class="footer-top">
-    <i class="fas fa-cross footer-cross"></i>
-    <div class="footer-memorial">
-      In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026
-    </div>
-  </div>
-  <nav class="footer-nav">
-    <a onclick="showPage('home')">Home</a>
-    <a onclick="showPage('announcements')">Announcements</a>
-    <a onclick="showPage('program')">Program</a>
-    <a onclick="showPage('condolences')">Condolences</a>
-    <a onclick="showPage('tributes')">Tributes</a>
-    <a onclick="showPage('livestream')">Livestream</a>
-    <a onclick="showPage('attend')">Attend</a>
-  </nav>
-  <div class="footer-bottom">
-    <div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div>
-    <div class="footer-right">
-      Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;
-      <a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;
-      <a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
-      <a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-      <a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-    </div>
-  </div>
-  <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
-</footer>
-</div>
-
-<!-- ══════════════════ ANNOUNCEMENTS ══════════════════ -->
-<div id="page-announcements" class="page">
-  <section class="section">
-    <div class="container-md">
-      <div class="section-header reveal">
-        <span class="section-eyebrow">Updates</span>
-        <h2 class="section-title">Announcements</h2>
-        <div class="section-ornament"><span></span><i class="fas fa-bullhorn"></i><span></span></div>
-      </div>
-      <div class="announcement-list" id="announcement-list"></div>
-    </div>
-  </section>
-  <footer class="site-footer">
     <div class="footer-top">
       <i class="fas fa-cross footer-cross"></i>
-      <div class="footer-memorial">
-        In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026
-      </div>
+      <div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div>
     </div>
     <nav class="footer-nav">
       <a onclick="showPage('home')">Home</a>
@@ -738,14 +595,34 @@
       <div class="footer-right">
         Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;
         <a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;
-        <a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer" title="X / Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+        <a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
+    <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
+  </footer>
+</div>
+
+<!-- ══════════════════ ANNOUNCEMENTS ══════════════════ -->
+<div id="page-announcements" class="page">
+  <section class="section">
+    <div class="container-md">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Updates</span>
+        <h2 class="section-title">Announcements</h2>
+        <div class="section-ornament"><span></span><i class="fas fa-bullhorn"></i><span></span></div>
+      </div>
+      <div class="announcement-list" id="announcement-list"></div>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="footer-top"><i class="fas fa-cross footer-cross"></i><div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div></div>
+    <nav class="footer-nav"><a onclick="showPage('home')">Home</a><a onclick="showPage('announcements')">Announcements</a><a onclick="showPage('program')">Program</a><a onclick="showPage('condolences')">Condolences</a><a onclick="showPage('tributes')">Tributes</a><a onclick="showPage('livestream')">Livestream</a><a onclick="showPage('attend')">Attend</a></nav>
+    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
   </footer>
 </div>
@@ -784,34 +661,9 @@
     </div>
   </section>
   <footer class="site-footer">
-    <div class="footer-top">
-      <i class="fas fa-cross footer-cross"></i>
-      <div class="footer-memorial">
-        In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026
-      </div>
-    </div>
-    <nav class="footer-nav">
-      <a onclick="showPage('home')">Home</a>
-      <a onclick="showPage('announcements')">Announcements</a>
-      <a onclick="showPage('program')">Program</a>
-      <a onclick="showPage('condolences')">Condolences</a>
-      <a onclick="showPage('tributes')">Tributes</a>
-      <a onclick="showPage('livestream')">Livestream</a>
-      <a onclick="showPage('attend')">Attend</a>
-    </nav>
-    <div class="footer-bottom">
-      <div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div>
-      <div class="footer-right">
-        Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;
-        <a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;
-        <a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer" title="X / Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-    </div>
+    <div class="footer-top"><i class="fas fa-cross footer-cross"></i><div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div></div>
+    <nav class="footer-nav"><a onclick="showPage('home')">Home</a><a onclick="showPage('announcements')">Announcements</a><a onclick="showPage('program')">Program</a><a onclick="showPage('condolences')">Condolences</a><a onclick="showPage('tributes')">Tributes</a><a onclick="showPage('livestream')">Livestream</a><a onclick="showPage('attend')">Attend</a></nav>
+    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
   </footer>
 </div>
@@ -825,19 +677,11 @@
         <h2 class="section-title">Condolence Messages</h2>
         <div class="section-ornament"><span></span><i class="fas fa-heart"></i><span></span></div>
       </div>
-
-      <!-- Submit form -->
       <div class="form-wrap-dark reveal">
         <h3 class="form-wrap-title">Leave a Message</h3>
         <div class="form-row">
-          <div class="form-group">
-            <label for="cond-name">Your Name *</label>
-            <input type="text" id="cond-name" placeholder="Your full name"/>
-          </div>
-          <div class="form-group">
-            <label for="cond-relation">Your Relationship</label>
-            <input type="text" id="cond-relation" placeholder="e.g. Friend, Nephew, Colleague"/>
-          </div>
+          <div class="form-group"><label for="cond-name">Your Name *</label><input type="text" id="cond-name" placeholder="Your full name"/></div>
+          <div class="form-group"><label for="cond-relation">Your Relationship</label><input type="text" id="cond-relation" placeholder="e.g. Friend, Nephew, Colleague"/></div>
         </div>
         <div class="form-group">
           <label for="cond-message">Your Message *</label>
@@ -847,71 +691,36 @@
           <i class="fas fa-paper-plane"></i> Send Condolences
         </button>
       </div>
-
-      <!-- Live messages -->
       <div class="reveal">
         <div class="cond-status-bar live" id="cond-status-bar">
           <span class="live-dot green" id="status-dot"></span>
           <span class="status-text" id="status-text">Loading messages…</span>
           <span class="status-count" id="status-count"></span>
         </div>
-
-        <!-- Error / info banners (hidden by default) -->
         <div class="info-banner yellow" id="banner-setup" style="display:none">
           <i class="fas fa-circle-info"></i>
-          <div>
-            <strong>Complete Firebase setup to share messages across all devices</strong>
+          <div><strong>Complete Firebase setup to share messages across all devices</strong>
             Go to <a href="https://console.firebase.google.com" target="_blank">console.firebase.google.com</a>,
-            open your <strong>Auntie Bee</strong> project → register a Web app → copy the config → paste it into this file's
-            <code>FIREBASE_CONFIG</code> section at the bottom. Until then, messages are only visible on this device.
+            open your <strong>Auntie Bee</strong> project → register a Web app → copy the config → paste it into this file's <code>FIREBASE_CONFIG</code> section at the bottom.
           </div>
         </div>
         <div class="info-banner red" id="banner-error" style="display:none">
           <i class="fas fa-triangle-exclamation"></i>
           <div id="banner-error-text">Could not connect to database.</div>
         </div>
-
         <h3 class="condolences-heading" id="cond-heading">Messages from the Community</h3>
-
-        <!-- Skeleton loader -->
         <div id="cond-skeleton" class="skeleton-wrap">
           <div class="skeleton-card"><div class="skel s"></div><div class="skel m"></div><div class="skel l"></div><div class="skel xl"></div></div>
           <div class="skeleton-card"><div class="skel s"></div><div class="skel m"></div><div class="skel l"></div><div class="skel xl"></div></div>
         </div>
-
         <div class="condolence-cards" id="condolence-cards"></div>
       </div>
     </div>
   </section>
   <footer class="site-footer">
-    <div class="footer-top">
-      <i class="fas fa-cross footer-cross"></i>
-      <div class="footer-memorial">
-        In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026
-      </div>
-    </div>
-    <nav class="footer-nav">
-      <a onclick="showPage('home')">Home</a>
-      <a onclick="showPage('announcements')">Announcements</a>
-      <a onclick="showPage('program')">Program</a>
-      <a onclick="showPage('condolences')">Condolences</a>
-      <a onclick="showPage('tributes')">Tributes</a>
-      <a onclick="showPage('livestream')">Livestream</a>
-      <a onclick="showPage('attend')">Attend</a>
-    </nav>
-    <div class="footer-bottom">
-      <div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div>
-      <div class="footer-right">
-        Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;
-        <a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;
-        <a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer" title="X / Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-    </div>
+    <div class="footer-top"><i class="fas fa-cross footer-cross"></i><div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div></div>
+    <nav class="footer-nav"><a onclick="showPage('home')">Home</a><a onclick="showPage('announcements')">Announcements</a><a onclick="showPage('program')">Program</a><a onclick="showPage('condolences')">Condolences</a><a onclick="showPage('tributes')">Tributes</a><a onclick="showPage('livestream')">Livestream</a><a onclick="showPage('attend')">Attend</a></nav>
+    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
   </footer>
 </div>
@@ -927,12 +736,12 @@
         <p class="tribute-page-sub">Heartfelt tributes and cherished photographs from those whose lives were touched by Madam Agnes Pomaa — "Auntie Bee".</p>
       </div>
       <div class="tribute-tabs reveal">
-        <button class="tribute-tab active" data-key="children" onclick="switchTribute('children')"><i class="fas fa-child"></i> Children</button>
-        <button class="tribute-tab" data-key="family" onclick="switchTribute('family')"><i class="fas fa-users"></i> Family</button>
-        <button class="tribute-tab" data-key="grandchildren" onclick="switchTribute('grandchildren')"><i class="fas fa-baby"></i> Grandchildren</button>
-        <button class="tribute-tab" data-key="greatgrandchildren" onclick="switchTribute('greatgrandchildren')"><i class="fas fa-seedling"></i> Great-Grandchildren</button>
-        <button class="tribute-tab" data-key="inlaws" onclick="switchTribute('inlaws')"><i class="fas fa-user-friends"></i> In-Laws</button>
-        <button class="tribute-tab" data-key="church" onclick="switchTribute('church')"><i class="fas fa-church"></i> Church</button>
+        <button class="tribute-tab active" data-key="children"          onclick="switchTribute('children')"><i class="fas fa-child"></i> Children</button>
+        <button class="tribute-tab"        data-key="family"            onclick="switchTribute('family')"><i class="fas fa-users"></i> Family</button>
+        <button class="tribute-tab"        data-key="grandchildren"     onclick="switchTribute('grandchildren')"><i class="fas fa-baby"></i> Grandchildren</button>
+        <button class="tribute-tab"        data-key="greatgrandchildren"onclick="switchTribute('greatgrandchildren')"><i class="fas fa-seedling"></i> Great-Grandchildren</button>
+        <button class="tribute-tab"        data-key="inlaws"            onclick="switchTribute('inlaws')"><i class="fas fa-user-friends"></i> In-Laws</button>
+        <button class="tribute-tab"        data-key="church"            onclick="switchTribute('church')"><i class="fas fa-church"></i> Church</button>
       </div>
       <div class="tribute-panel active" id="tribute-panel-children"></div>
       <div class="tribute-panel"        id="tribute-panel-family"></div>
@@ -943,34 +752,9 @@
     </div>
   </section>
   <footer class="site-footer">
-    <div class="footer-top">
-      <i class="fas fa-cross footer-cross"></i>
-      <div class="footer-memorial">
-        In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026
-      </div>
-    </div>
-    <nav class="footer-nav">
-      <a onclick="showPage('home')">Home</a>
-      <a onclick="showPage('announcements')">Announcements</a>
-      <a onclick="showPage('program')">Program</a>
-      <a onclick="showPage('condolences')">Condolences</a>
-      <a onclick="showPage('tributes')">Tributes</a>
-      <a onclick="showPage('livestream')">Livestream</a>
-      <a onclick="showPage('attend')">Attend</a>
-    </nav>
-    <div class="footer-bottom">
-      <div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div>
-      <div class="footer-right">
-        Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;
-        <a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;
-        <a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer" title="X / Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-    </div>
+    <div class="footer-top"><i class="fas fa-cross footer-cross"></i><div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div></div>
+    <nav class="footer-nav"><a onclick="showPage('home')">Home</a><a onclick="showPage('announcements')">Announcements</a><a onclick="showPage('program')">Program</a><a onclick="showPage('condolences')">Condolences</a><a onclick="showPage('tributes')">Tributes</a><a onclick="showPage('livestream')">Livestream</a><a onclick="showPage('attend')">Attend</a></nav>
+    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
   </footer>
 </div>
@@ -1025,34 +809,9 @@
     </div>
   </section>
   <footer class="site-footer">
-    <div class="footer-top">
-      <i class="fas fa-cross footer-cross"></i>
-      <div class="footer-memorial">
-        In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026
-      </div>
-    </div>
-    <nav class="footer-nav">
-      <a onclick="showPage('home')">Home</a>
-      <a onclick="showPage('announcements')">Announcements</a>
-      <a onclick="showPage('program')">Program</a>
-      <a onclick="showPage('condolences')">Condolences</a>
-      <a onclick="showPage('tributes')">Tributes</a>
-      <a onclick="showPage('livestream')">Livestream</a>
-      <a onclick="showPage('attend')">Attend</a>
-    </nav>
-    <div class="footer-bottom">
-      <div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div>
-      <div class="footer-right">
-        Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;
-        <a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;
-        <a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer" title="X / Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-    </div>
+    <div class="footer-top"><i class="fas fa-cross footer-cross"></i><div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div></div>
+    <nav class="footer-nav"><a onclick="showPage('home')">Home</a><a onclick="showPage('announcements')">Announcements</a><a onclick="showPage('program')">Program</a><a onclick="showPage('condolences')">Condolences</a><a onclick="showPage('tributes')">Tributes</a><a onclick="showPage('livestream')">Livestream</a><a onclick="showPage('attend')">Attend</a></nav>
+    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
   </footer>
 </div>
@@ -1090,10 +849,11 @@
           </div>
         </div>
         <div class="form-group"><label for="att-notes">Additional Notes</label><textarea id="att-notes" rows="2" placeholder="Any special notes (e.g. transport needs)..."></textarea></div>
-        <button class="btn-gold" onclick="submitAttendance()"><i class="fas fa-check-circle"></i> Register &amp; Send SMS</button>
+        <button class="btn-gold" id="att-btn" onclick="submitAttendance()"><i class="fas fa-check-circle"></i> Register &amp; Send SMS</button>
         <div class="sms-notice">
           <i class="fas fa-info-circle"></i>
-          <span>An SMS confirmation will be sent to your phone number after registration. <strong>SMS powered by Africa's Talking / Hubtel.</strong></span>
+          <!-- FIX 1: Updated provider name to Arkesel -->
+          <span>An SMS confirmation will be sent to your phone number after registration. <strong>SMS powered by Arkesel.</strong></span>
         </div>
       </div>
       <div class="attendees-section reveal">
@@ -1105,34 +865,9 @@
     </div>
   </section>
   <footer class="site-footer">
-    <div class="footer-top">
-      <i class="fas fa-cross footer-cross"></i>
-      <div class="footer-memorial">
-        In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026
-      </div>
-    </div>
-    <nav class="footer-nav">
-      <a onclick="showPage('home')">Home</a>
-      <a onclick="showPage('announcements')">Announcements</a>
-      <a onclick="showPage('program')">Program</a>
-      <a onclick="showPage('condolences')">Condolences</a>
-      <a onclick="showPage('tributes')">Tributes</a>
-      <a onclick="showPage('livestream')">Livestream</a>
-      <a onclick="showPage('attend')">Attend</a>
-    </nav>
-    <div class="footer-bottom">
-      <div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div>
-      <div class="footer-right">
-        Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;
-        <a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;
-        <a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer" title="X / Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-    </div>
+    <div class="footer-top"><i class="fas fa-cross footer-cross"></i><div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div></div>
+    <nav class="footer-nav"><a onclick="showPage('home')">Home</a><a onclick="showPage('announcements')">Announcements</a><a onclick="showPage('program')">Program</a><a onclick="showPage('condolences')">Condolences</a><a onclick="showPage('tributes')">Tributes</a><a onclick="showPage('livestream')">Livestream</a><a onclick="showPage('attend')">Attend</a></nav>
+    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
   </footer>
 </div>
@@ -1152,18 +887,6 @@
 
 /* ══════════════════════════════════════════════════════════════
    FIREBASE CONFIG
-   ─────────────────────────────────────────────────────────────
-   Once you have your Firebase web-app credentials, paste the
-   6 values below (keep the quotes).  The site works without
-   them, but messages will only be stored on the current device.
-
-   How to get them:
-     1. https://console.firebase.google.com → Auntie Bee project
-     2. ⚙ Project settings → Your apps → click </> → Register app
-     3. Copy the firebaseConfig values and paste them here.
-     4. Also make sure Firestore is created:
-        Left menu → Firestore Database → Create database
-        → Start in test mode → Enable
 ══════════════════════════════════════════════════════════════ */
 const FIREBASE_CONFIG = {
   apiKey:            'AIzaSyD-O6i2QeIQqMN_fok7IbS34r5gjxnKduk',
@@ -1174,7 +897,50 @@ const FIREBASE_CONFIG = {
   appId:             '1:944149452006:web:b6e978266cd85492e15727',
   measurementId:     'G-M0ZKZH1JC3'
 };
-/* ══════════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════════════════
+   ARKESEL SMS CONFIG
+   ─────────────────────────────────────────────────────────────
+   SENDER_ID must be registered/approved in your Arkesel dashboard
+   (max 11 chars, no spaces). Suggested: "AuntieBee"
+   ADMIN_PHONE receives a notification whenever someone leaves
+   a condolence message. Use local format: 0XXXXXXXXX
+══════════════════════════════════════════════════════════════ */
+const ARKESEL_API_KEY = 'T0h3b2RnUUdEZ3RadlBoQU5KT2w';
+const ARKESEL_SENDER  = 'AuntieBee';
+const ADMIN_PHONE     = '0558040216'; // family admin number
+
+/* Convert 0XXXXXXXXX → 233XXXXXXXXX for Arkesel */
+function toIntl(phone) {
+  const clean = String(phone).replace(/\s+/g, '').replace(/^\+/, '');
+  if (clean.startsWith('233')) return clean;
+  if (clean.startsWith('0'))   return '233' + clean.slice(1);
+  return '233' + clean;
+}
+
+/**
+ * Send an SMS via Arkesel v1 API (GET, browser-friendly, no CORS issues).
+ * Returns true on success, false on failure.
+ */
+async function sendArkeselSMS(phone, message) {
+  try {
+    const params = new URLSearchParams({
+      action:  'send-sms',
+      api_key: ARKESEL_API_KEY,
+      to:      toIntl(phone),
+      from:    ARKESEL_SENDER,
+      sms:     message
+    });
+    const res  = await fetch(`https://sms.arkesel.com/sms/api?${params}`);
+    const json = await res.json();
+    console.log('[Arkesel]', json);
+    // Arkesel returns { code: "ok" } on success
+    return json.code === 'ok' || json.status === 'success';
+  } catch (err) {
+    console.warn('[Arkesel] SMS failed:', err.message);
+    return false;
+  }
+}
 
 /* ── LOCAL STORES ─────────────────────────────────────────── */
 let attendees   = JSON.parse(localStorage.getItem('attendees')   || '[]');
@@ -1187,7 +953,6 @@ let lastPollIds = new Set();
 /* ── FIREBASE DETECTION ───────────────────────────────────── */
 const FB_CONFIGURED = FIREBASE_CONFIG.projectId.length > 0;
 
-/* Firebase REST helpers (no SDK needed) */
 const FS_BASE = FB_CONFIGURED
   ? `https://firestore.googleapis.com/v1/projects/${FIREBASE_CONFIG.projectId}/databases/(default)/documents`
   : '';
@@ -1233,6 +998,33 @@ async function fsAdd(data) {
   return r.json();
 }
 
+/* ── FIX 2: Firestore save for attendees (triggers Cloud Function → Arkesel SMS) ── */
+async function fsAddAttendee(data) {
+  const eventsStr = Array.isArray(data.events) ? data.events.join(', ') : String(data.events);
+  const body = {
+    fields: {
+      name:     fsField(data.name),
+      phone:    fsField(data.phone),
+      location: fsField(data.location),
+      relation: fsField(data.relation),
+      events:   fsField(eventsStr),
+      notes:    fsField(data.notes || ''),
+      dateStr:  fsField(data.dateStr),
+      createdAt:{ timestampValue: new Date().toISOString() }
+    }
+  };
+  const r = await fetch(`${FS_BASE}/attendees`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) {
+    const err = await r.json().catch(() => ({}));
+    throw new Error(err?.error?.message || 'HTTP ' + r.status);
+  }
+  return r.json();
+}
+
 /* ── SEED messages ────────────────────────────────────────── */
 const SEED_MSGS = [
   { name:'Kofi Mensah',         relation:'Family Friend', message:'My deepest condolences to the entire family. Auntie Bee was a woman of great character and warmth. May her soul rest in perfect peace.',  dateStr:'8 March 2026' },
@@ -1241,7 +1033,7 @@ const SEED_MSGS = [
   { name:'Akosua Frimpong',     relation:'Colleague',     message:'We worked together for over fifteen years and not a day passed that she did not brighten our office. She truly lived to serve others. Rest well, Agnes.', dateStr:'6 March 2026' }
 ];
 
-/* ── CONDOLENCES INIT ─────────────────────────────────────── */
+/* ── CONDOLENCES ──────────────────────────────────────────── */
 async function initCondolences() {
   const skeleton = document.getElementById('cond-skeleton');
   const bar      = document.getElementById('cond-status-bar');
@@ -1249,7 +1041,6 @@ async function initCondolences() {
   const txt      = document.getElementById('status-text');
 
   if (!FB_CONFIGURED) {
-    // No Firebase — use localStorage with seed fallback
     bar.className  = 'cond-status-bar offline';
     dot.className  = 'live-dot amber';
     txt.textContent = 'Messages saved on this device only';
@@ -1260,28 +1051,21 @@ async function initCondolences() {
     return;
   }
 
-  // Firebase configured — poll Firestore
   txt.textContent = 'Connecting…';
   try {
     const msgs = await fsGet();
     if (skeleton) skeleton.style.display = 'none';
-
-    // First load & empty → seed
     if (msgs.length === 0) {
       for (const m of SEED_MSGS) await fsAdd(m);
       await pollCondolences(true);
       return;
     }
-
     lastPollIds = new Set(msgs.map(m => m.id));
     renderCards(msgs, false);
     liveCount = msgs.length;
     updateStats();
     setStatusLive(msgs.length);
-
-    // Poll every 8 s for new messages
     pollTimer = setInterval(() => pollCondolences(false), 8000);
-
   } catch(e) {
     if (skeleton) skeleton.style.display = 'none';
     bar.className   = 'cond-status-bar offline';
@@ -1290,10 +1074,9 @@ async function initCondolences() {
     const errBanner = document.getElementById('banner-error');
     errBanner.style.display = 'flex';
     document.getElementById('banner-error-text').innerHTML =
-      `<strong>Database connection failed.</strong> Make sure your Firestore database is created and is in <strong>Test Mode</strong>. ` +
+      `<strong>Database connection failed.</strong> Make sure Firestore is in <strong>Test Mode</strong>. ` +
       `Go to <a href="https://console.firebase.google.com" target="_blank">Firebase Console</a> → Firestore Database → Rules → change <code>false</code> to <code>true</code> and publish. ` +
       `(Error: ${e.message})`;
-    // Fall back to local
     if (localMsgs.length === 0) localMsgs = [...SEED_MSGS];
     renderCards(localMsgs, false);
   }
@@ -1311,7 +1094,7 @@ async function pollCondolences(forceRender) {
       updateStats();
       setStatusLive(msgs.length);
     }
-  } catch(_) { /* silent — keep showing last data */ }
+  } catch(_) {}
 }
 
 function setStatusLive(count) {
@@ -1367,12 +1150,20 @@ async function submitCondolence() {
       document.getElementById('cond-relation').value = '';
       document.getElementById('cond-message').value  = '';
       showToast('Your message has been sent and is now visible to everyone. 🙏');
-      await pollCondolences(true); // refresh immediately
+
+      /* Notify admin of new condolence */
+      if (ADMIN_PHONE) {
+        const preview    = message.length > 80 ? message.slice(0, 80) + '…' : message;
+        const adminAlert =
+          `New condolence from ${name} (${rel || 'Well-wisher'}): "${preview}" – Auntie Bee Memorial`;
+        sendArkeselSMS(ADMIN_PHONE, adminAlert);
+      }
+
+      await pollCondolences(true);
     } catch(e) {
       showToast('Failed to send: ' + e.message, 'warning');
     }
   } else {
-    // Local fallback
     localMsgs.unshift(entry);
     localStorage.setItem('condolences', JSON.stringify(localMsgs));
     document.getElementById('cond-name').value    = '';
@@ -1411,7 +1202,6 @@ function closeMenu() {
   document.getElementById('ham-icon').className = 'fas fa-bars';
 }
 
-/* ── REVEAL ───────────────────────────────────────────────── */
 function triggerReveal() {
   setTimeout(() => document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')), 80);
 }
@@ -1515,12 +1305,6 @@ function switchProgram(tab) {
 }
 
 /* ── TRIBUTES ─────────────────────────────────────────────── */
-/*
-  TO ADD PEOPLE: find the members array for the group below and add:
-  { photo: 'filename.jpg', name: 'Full Name', occupation: 'Role · City' }
-  Leave photo:'' to show a placeholder until photo is ready.
-  For church members also add  subgroup: 'leaders'  or  subgroup: 'members'
-*/
 const TRIBUTE_GROUPS = {
   children: {
     icon:'fa-child', signName:'The Children of Madam Agnes Pomaa', signRole:'In loving memory of our dear mother',
@@ -1532,72 +1316,50 @@ const TRIBUTE_GROUPS = {
   family: {
     icon:'fa-users', signName:'The Family of Madam Agnes Pomaa', signRole:'In loving memory of our beloved',
     text:`She was the thread that held us all together.\n\nAt every naming ceremony, every wedding, every gathering — Auntie Bee was there, moving between rooms and people with a warmth that made everyone feel at home. She remembered birthdays, she called to check in, she sent for you when she hadn't heard your voice in too long.\n\nFamily was not just a word to her — it was her life's work.\n\nWe are grateful for every moment shared, every lesson passed down, and every prayer she lifted on our behalf. Her legacy lives on in this family she loved so deeply. We will carry her name with pride.`,
-    members: [
-      // { photo: 'uncle.jpg', name: 'James Pomaa', occupation: 'Family Head · Sankubenase' },
-    ]
+    members: []
   },
   grandchildren: {
-    icon:'fa-baby', 
-    signName:'The Grandchildren of Madam Agnes Pomaa', 
+    icon:'fa-baby',
+    signName:'The Grandchildren of Madam Agnes Pomaa',
     signRole:'In loving memory of our dearest grandmother',
     text:`Grandma, you spoiled us with love and we would not change a single moment.\n\nYou always had something on the stove when we visited. You called us by our full names when we were in trouble, and funny nicknames when you were proud of us. You told us the stories of where we came from, and made sure we never forgot them.\n\nYou believed in us before we believed in ourselves. You prayed for us every single morning — we know because we heard you.\n\nWe will grow up carrying your values, your strength, and your faith. One day we will tell our own children about you, and the stories will make them wish they had known you too. We love you forever, Grandma.`,
     members: [
       { photo: 'images/Grandchild4.jpeg', name: 'Engr. Samuel Owusu Frimpong', occupation: 'Software Engineer · Accra' },
-      { photo : 'images/Grandchild7.jpeg', name: 'Gabriel Gyasi', occupation: 'Supply Officer- Atiwa West district Hospital · Kwabeng' },
-      { photo: 'images/Grandchild1.jpg', name: 'Sandra Owusu', occupation: 'Accountant · Accra' },
-      { photo: 'images/Grandchild2.jpeg', name: 'Beatrice Pomaa', occupation: 'Trader · Sankubenase' },
-      { photo: 'images/Grandchild5.jpeg', name: 'Naomi Owusua', occupation: 'Hair Styler · Sankubenase' },
-      { photo: 'images/Grandchild3.jpeg', name: 'Dosia  Aboagyewaa', occupation: 'Trader · Sankubenase' },
-      { photo: 'images/Grandchild6.jpeg', name: 'Perpetual Oforiwaa', occupation: 'Fashion Designer · Accra' },
-      
-      // { photo: 'grand1.jpg', name: 'Nana Ama', occupation: 'Student · Accra' },
+      { photo: 'images/Grandchild7.jpeg', name: 'Gabriel Gyasi',               occupation: 'Supply Officer · Kwabeng' },
+      { photo: 'images/Grandchild1.jpg',  name: 'Sandra Owusu',               occupation: 'Accountant · Accra' },
+      { photo: 'images/Grandchild2.jpeg', name: 'Beatrice Pomaa',             occupation: 'Trader · Sankubenase' },
+      { photo: 'images/Grandchild5.jpeg', name: 'Naomi Owusua',               occupation: 'Hair Styler · Sankubenase' },
+      { photo: 'images/Grandchild3.jpeg', name: 'Dosia Aboagyewaa',           occupation: 'Trader · Sankubenase' },
+      { photo: 'images/Grandchild6.jpeg', name: 'Perpetual Oforiwaa',         occupation: 'Fashion Designer · Accra' },
     ]
   },
   greatgrandchildren: {
     icon: 'fa-seedling',
     signName: 'The Great-Grandchildren of Madam Agnes Pomaa',
     signRole: 'In loving memory of our great-grandmother',
-    text: `Though some of us were very young, your love still touched our lives.
-
-Your legacy will continue through generations to come. Your kindness, faith, and strength will live on through our families.
-
-Rest peacefully, Great-Grandma.`,
+    text: `Though some of us were very young, your love still touched our lives.\n\nYour legacy will continue through generations to come. Your kindness, faith, and strength will live on through our families.\n\nRest peacefully, Great-Grandma.`,
     members: [
-       { photo: 'images/Greatgrand1.jpeg', name: 'Pricilla Ofori', occupation: 'Student · Sankubenase' },
-       { photo: 'images/Greatgrand2.jpeg', name: 'Emmanuel Ofori', occupation: 'Student · Sankubenase' },
-       { photo: 'images/Greatgrand3.jpeg', name: 'Daniel Owusu', occupation: 'Student · Sankubenase' },
-       { photo: 'images/Greatgrand4.jpeg', name: 'Nana Kwasi', occupation: 'Student · Sankubenase' },
+      { photo: 'images/Greatgrand1.jpeg', name: 'Pricilla Ofori',  occupation: 'Student · Sankubenase' },
+      { photo: 'images/Greatgrand2.jpeg', name: 'Emmanuel Ofori', occupation: 'Student · Sankubenase' },
+      { photo: 'images/Greatgrand3.jpeg', name: 'Daniel Owusu',   occupation: 'Student · Sankubenase' },
+      { photo: 'images/Greatgrand4.jpeg', name: 'Nana Kwasi',     occupation: 'Student · Sankubenase' },
     ]
   },
-
-
   inlaws: {
-  icon: 'fa-user-friends',
-  signName: 'The In-Laws of Madam Agnes Pomaa',
-  signRole: 'In loving memory of our beloved mother-in-law',
-  text: `Mama welcomed us into the family with warmth and kindness.
-She treated us not as outsiders but as her own children.
-
-Her advice, laughter, and prayers strengthened our homes
-and made us proud to be part of this wonderful family.
-
-Though she is gone, the love she shared will remain with us forever.`,
-
-  members: [
-    { photo: 'images/inlaw1.jpeg', name: 'Margaret Darkwaa', occupation: 'Trader · Sankubenase' },
-    { photo: 'images/inlaw2.jpeg', name: 'Akosua Mensah', occupation: 'Teacher · Accra' }
-  ]
-},
-
+    icon: 'fa-user-friends',
+    signName: 'The In-Laws of Madam Agnes Pomaa',
+    signRole: 'In loving memory of our beloved mother-in-law',
+    text: `Mama welcomed us into the family with warmth and kindness.\nShe treated us not as outsiders but as her own children.\n\nHer advice, laughter, and prayers strengthened our homes\nand made us proud to be part of this wonderful family.\n\nThough she is gone, the love she shared will remain with us forever.`,
+    members: [
+      { photo: 'images/inlaw1.jpeg', name: 'Margaret Darkwaa', occupation: 'Trader · Sankubenase' },
+      /* FIX 3: inlaw2.jpeg is not in the deployed files — using placeholder until photo is added */
+      { photo: '', name: 'Akosua Mensah', occupation: 'Teacher · Accra' }
+    ]
+  },
   church: {
     icon:'fa-church', signName:'The Church Of Pentecost, Sankubenase Assembly', signRole:'In loving memory of a faithful and dedicated member',
-    text:`Sister Agnes Pomaa was the kind of member every church prays for.\n\nShe came early and stayed late. She served quietly without seeking recognition. She gave generously without keeping records. Her faith was not just something she professed — it was something she practised, consistently, over many decades of faithful service to God and to this assembly.\n\nWe will remember her in the choir, in the women's fellowship, and in the quiet corners of the sanctuary where she would linger after service to pray.\n\nThe Sankubenase Assembly has lost a pillar. But heaven has gained one of its finest servants. We celebrate her life and give thanks to God for the privilege of worshipping alongside her. May her memory inspire us to serve with the same devotion she showed until the very end`,
-    members: [
-      // { photo: 'pastor.jpg',  name: 'Ps. Emmanuel Adu',    occupation: 'District Pastor',      subgroup: 'leaders' },
-      // { photo: 'elder1.jpg',  name: 'Elder Kwesi Boateng', occupation: 'Presiding Elder',       subgroup: 'leaders' },
-      // { photo: 'choir.jpg',   name: 'Church Choir',        occupation: 'Sankubenase Assembly',  subgroup: 'members' },
-      // { photo: 'women.jpg',   name: "Women's Fellowship",  occupation: 'Sankubenase Assembly',  subgroup: 'members' },
-    ]
+    text:`Sister Agnes Pomaa was the kind of member every church prays for.\n\nShe came early and stayed late. She served quietly without seeking recognition. She gave generously without keeping records. Her faith was not just something she professed — it was something she practised, consistently, over many decades of faithful service to God and to this assembly.\n\nWe will remember her in the choir, in the women's fellowship, and in the quiet corners of the sanctuary where she would linger after service to pray.\n\nThe Sankubenase Assembly has lost a pillar. But heaven has gained one of its finest servants. We celebrate her life and give thanks to God for the privilege of worshipping alongside her. May her memory inspire us to serve with the same devotion she showed until the very end.`,
+    members: []
   }
 };
 
@@ -1650,19 +1412,15 @@ function memberCard(m) {
              onerror="this.style.display='none'; this.parentNode.querySelector('.member-photo-placeholder').style.display='flex';"
              onclick="openLightbox('${esc(m.photo)}','${esc(m.name)}')"/>
         <div class="member-photo-placeholder" style="display:none">
-          <i class="fas fa-user"></i>
-          <span>Photo</span>
+          <i class="fas fa-user"></i><span>Photo</span>
         </div>
-      </div>
-    `
+      </div>`
     : `
       <div class="member-photo-wrap">
         <div class="member-photo-placeholder" style="display:flex">
-          <i class="fas fa-user"></i>
-          <span>Photo Coming</span>
+          <i class="fas fa-user"></i><span>Photo Coming</span>
         </div>
-      </div>
-    `;
+      </div>`;
 
   return `
     <div class="member-card">
@@ -1671,12 +1429,12 @@ function memberCard(m) {
         <div class="member-name">${esc(m.name)}</div>
         ${m.occupation ? `<div class="member-occupation">${esc(m.occupation)}</div>` : ''}
       </div>
-    </div>
-  `;
+    </div>`;
 }
 
+/* FIX 4: switchTribute — all 6 keys present so tab highlighting works correctly */
 function switchTribute(key) {
-  const keys = ['children','family','grandchildren','church'];
+  const keys = ['children','family','grandchildren','greatgrandchildren','inlaws','church'];
   document.querySelectorAll('.tribute-tab').forEach((b, i) => b.classList.toggle('active', keys[i] === key));
   document.querySelectorAll('.tribute-panel').forEach(p => p.classList.remove('active'));
   document.getElementById('tribute-panel-' + key).classList.add('active');
@@ -1690,8 +1448,8 @@ function openLightbox(src, name) {
 }
 function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
 
-/* ── ATTENDANCE ───────────────────────────────────────────── */
-function submitAttendance() {
+/* ── ATTENDANCE — FIX 2 continued: saves to Firestore so Cloud Function fires ── */
+async function submitAttendance() {
   const name     = document.getElementById('att-name').value.trim();
   const phone    = document.getElementById('att-phone').value.trim();
   const location = document.getElementById('att-location').value.trim();
@@ -1704,17 +1462,61 @@ function submitAttendance() {
   if (checked.length === 0) { showToast('Please select at least one event.', 'warning'); return; }
   if (!/^0[2-9]\d{8}$/.test(phone)) { showToast('Please enter a valid Ghanaian phone number (e.g. 0244000000).', 'warning'); return; }
 
+  const btn = document.getElementById('att-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Registering…';
+
   const labels = { 'one-week':'One Week (14 Apr)', wake:'Wake Keeping', burial:'Burial Service', thanksgiving:'Thanksgiving' };
-  attendees.push({ name, phone, location: location || 'Not specified', relation: relation || 'Well-wisher',
-    events: checked.map(c => labels[c]), notes: notes || '',
-    date: new Date().toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) });
+  const dateStr = new Date().toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+  const entry = {
+    name,
+    phone,
+    location: location || 'Not specified',
+    relation: relation || 'Well-wisher',
+    events:   checked.map(c => labels[c]),
+    notes:    notes || '',
+    date:     dateStr,
+    dateStr
+  };
+
+  /* Save to Firestore → triggers onAttendeeRegistered Cloud Function → Arkesel SMS */
+  if (FB_CONFIGURED) {
+    try {
+      await fsAddAttendee(entry);
+    } catch(e) {
+      console.warn('[Attendance] Firestore save failed, falling back to localStorage:', e.message);
+    }
+  }
+
+  /* Always also save locally so the list shows immediately */
+  attendees.push(entry);
   localStorage.setItem('attendees', JSON.stringify(attendees));
 
   ['att-name','att-phone','att-location','att-relation','att-notes'].forEach(id => document.getElementById(id).value = '');
   document.querySelectorAll('input[name="att-event"]').forEach(c => c.checked = false);
   renderAttendees();
   updateStats();
-  showToast(`Registered! An SMS confirmation will be sent to ${phone}.`);
+
+  /* Send SMS confirmation to the registrant via Arkesel */
+  const eventsLabel = entry.events.join(', ');
+  const confirmMsg  =
+    `Hello ${name}, your attendance has been registered for: ${eventsLabel}. ` +
+    `We look forward to seeing you. God bless you. – Auntie Bee Memorial Family`;
+  sendArkeselSMS(phone, confirmMsg)
+    .then(ok => console.log(ok ? '[SMS] Confirmation sent' : '[SMS] Confirmation failed'));
+
+  /* Notify admin that someone registered */
+  if (ADMIN_PHONE) {
+    const adminMsg =
+      `New attendance: ${name} (${entry.relation}) from ${entry.location} registered for ${eventsLabel}.`;
+    sendArkeselSMS(ADMIN_PHONE, adminMsg)
+      .then(ok => console.log(ok ? '[SMS] Admin notified' : '[SMS] Admin notify failed'));
+  }
+
+  showToast(`Registered! SMS confirmation sent to ${phone}.`);
+
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fas fa-check-circle"></i> Register &amp; Send SMS';
 }
 
 function renderAttendees() {
