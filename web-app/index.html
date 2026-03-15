@@ -9,8 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="apple-touch-icon" href="icons/icon-192.png"/>
- 
-</head>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#c8a84b"/>
   <style>
     /* ═══════════════════════════════════════════════════════════
        VARIABLES
@@ -417,6 +417,9 @@
     .reveal-delay-2 { transition-delay: .2s; }
     .reveal-delay-3 { transition-delay: .3s; }
     .reveal-delay-4 { transition-delay: .4s; }
+    .reveal-mb { margin-bottom: 40px; }
+    .reveal-mt { margin-top: 40px; }
+    .livestream-sub { text-align:center; margin-top:16px; font-size:.95rem; }
 
     @media (max-width: 768px) {
       .nav-links  { display: none; }
@@ -435,20 +438,9 @@
     @media (max-width: 480px) {
       .tribute-grid { grid-template-columns: 1fr 1fr; }
     }
-    /* ── PWA INSTALL BANNER ───────────────────────────────────── */
-#pwa-banner { position:fixed; bottom:0; left:0; right:0; background:#1c1c1c; border-top:2px solid #c8a84b; padding:14px 20px; z-index:9998; display:none; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-.pwa-banner-info { display:flex; align-items:center; gap:12px; }
-.pwa-banner-icon { width:40px; height:40px; border-radius:8px; }
-.pwa-banner-title { color:#f5e9c4; font-size:.9rem; font-weight:700; }
-.pwa-banner-sub   { color:#888880; font-size:.75rem; }
-.pwa-banner-btns  { display:flex; gap:10px; }
-.pwa-btn-install  { background:#c8a84b; color:#111; border:none; padding:10px 20px; border-radius:2px; font-weight:700; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; }
-.pwa-btn-dismiss  { background:transparent; color:#888880; border:1px solid #555; padding:10px 16px; border-radius:2px; font-size:.8rem; cursor:pointer; }
   </style>
-   <link rel="manifest" href="/manifest.json"/><meta name="theme-color" content="#c8a84b"/>
 </head>
 <body>
-  
 
 <!-- LOADING -->
 <div id="loading-screen">
@@ -482,7 +474,7 @@
     <a onclick="showPage('condolences');closeMenu()">Condolences</a>
     <a onclick="showPage('tributes');closeMenu()">Tributes</a>
     <a onclick="showPage('livestream');closeMenu()">Livestream</a>
-    <a onclick="showPage('attend');closeMenu()">Attend &amp; SMS</a>
+    <a onclick="showPage('attend');closeMenu()">Attend &amp; Register</a>
   </div>
 </nav>
 
@@ -562,7 +554,7 @@
           <div class="event-card-detail">
             <div><i class="fas fa-calendar-alt"></i> Date to be announced</div>
             <div><i class="fas fa-clock"></i> 9:00 AM</div>
-            <div><i class="fas fa-map-marker-alt"></i> The Church Of Pentecost - Sankubenase Assembly</div>
+            <div><i class="fas fa-map-marker-alt"></i> The Church Of Pentecost - Central Assembly - Sankubenase</div>
           </div>
         </div>
       </div>
@@ -572,28 +564,13 @@
   <section class="section section-alt">
     <div class="container-sm">
       <div class="stats-row reveal">
-        <div class="stat-item"><span class="stat-num" id="counter-years">70</span><span class="stat-label">Years of Life</span></div>
+        <div class="stat-item"><span class="stat-num" id="counter-years">84</span><span class="stat-label">Years of Life</span></div>
         <div class="stat-item"><span class="stat-num" id="counter-condolences">0</span><span class="stat-label">Condolences</span></div>
         <div class="stat-item"><span class="stat-num" id="counter-attendees">0</span><span class="stat-label">Registered Attendees</span></div>
         <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">Events</span></div>
       </div>
     </div>
   </section>
-
-  <!-- PWA INSTALL BANNER -->
-<div id="pwa-banner">
-  <div class="pwa-banner-info">
-    <img src="icons/icon-192.png" class="pwa-banner-icon" alt="Auntie Bee App"/>
-    <div>
-      <div class="pwa-banner-title">Install Auntie Bee App</div>
-      <div class="pwa-banner-sub">Add to your home screen for quick access</div>
-    </div>
-  </div>
-  <div class="pwa-banner-btns">
-    <button onclick="installPWA()" class="pwa-btn-install">Install</button>
-    <button onclick="dismissBanner()" class="pwa-btn-dismiss">Not Now</button>
-  </div>
-</div>
 
   <section class="section section-dark">
     <div class="container-sm share-section reveal">
@@ -623,12 +600,13 @@
       <div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div>
       <div class="footer-right">
         Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;
-        <a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-<a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-<a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a>
-<a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer" title="X / Twitter"><i class="fab fa-twitter"></i></a>
-<a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
-<a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="tel:+233558040216" rel="noopener noreferrer" title="Call"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;
+        <a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+        <a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
@@ -650,7 +628,7 @@
   <footer class="site-footer">
     <div class="footer-top"><i class="fas fa-cross footer-cross"></i><div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div></div>
     <nav class="footer-nav"><a onclick="showPage('home')">Home</a><a onclick="showPage('announcements')">Announcements</a><a onclick="showPage('program')">Program</a><a onclick="showPage('condolences')">Condolences</a><a onclick="showPage('tributes')">Tributes</a><a onclick="showPage('livestream')">Livestream</a><a onclick="showPage('attend')">Attend</a></nav>
-    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
+    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216" rel="noopener noreferrer" title="Call"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
   </footer>
 </div>
@@ -691,7 +669,7 @@
   <footer class="site-footer">
     <div class="footer-top"><i class="fas fa-cross footer-cross"></i><div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div></div>
     <nav class="footer-nav"><a onclick="showPage('home')">Home</a><a onclick="showPage('announcements')">Announcements</a><a onclick="showPage('program')">Program</a><a onclick="showPage('condolences')">Condolences</a><a onclick="showPage('tributes')">Tributes</a><a onclick="showPage('livestream')">Livestream</a><a onclick="showPage('attend')">Attend</a></nav>
-    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
+    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216" rel="noopener noreferrer" title="Call"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
   </footer>
 </div>
@@ -728,7 +706,7 @@
         <div class="info-banner yellow" id="banner-setup" style="display:none">
           <i class="fas fa-circle-info"></i>
           <div><strong>Complete Firebase setup to share messages across all devices</strong>
-            Go to <a href="https://console.firebase.google.com" target="_blank" rel="noopener noreferrer">console.firebase.google.com</a>
+            Go to <a href="https://console.firebase.google.com" target="_blank">console.firebase.google.com</a>,
             open your <strong>Auntie Bee</strong> project → register a Web app → copy the config → paste it into this file's <code>FIREBASE_CONFIG</code> section at the bottom.
           </div>
         </div>
@@ -748,7 +726,7 @@
   <footer class="site-footer">
     <div class="footer-top"><i class="fas fa-cross footer-cross"></i><div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div></div>
     <nav class="footer-nav"><a onclick="showPage('home')">Home</a><a onclick="showPage('announcements')">Announcements</a><a onclick="showPage('program')">Program</a><a onclick="showPage('condolences')">Condolences</a><a onclick="showPage('tributes')">Tributes</a><a onclick="showPage('livestream')">Livestream</a><a onclick="showPage('attend')">Attend</a></nav>
-    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
+    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216" rel="noopener noreferrer" title="Call"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
   </footer>
 </div>
@@ -782,7 +760,7 @@
   <footer class="site-footer">
     <div class="footer-top"><i class="fas fa-cross footer-cross"></i><div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div></div>
     <nav class="footer-nav"><a onclick="showPage('home')">Home</a><a onclick="showPage('announcements')">Announcements</a><a onclick="showPage('program')">Program</a><a onclick="showPage('condolences')">Condolences</a><a onclick="showPage('tributes')">Tributes</a><a onclick="showPage('livestream')">Livestream</a><a onclick="showPage('attend')">Attend</a></nav>
-    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
+    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216" rel="noopener noreferrer" title="Call"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
   </footer>
 </div>
@@ -795,9 +773,9 @@
         <span class="section-eyebrow">Watch Online</span>
         <h2 class="section-title">Livestream</h2>
         <div class="section-ornament"><span></span><i class="fas fa-video"></i><span></span></div>
-        <p style="text-align:center;margin-top:16px;font-size:.95rem">Can't be there in person? Join us live from anywhere in the world.</p>
+        <p class="livestream-sub">Can't be there in person? Join us live from anywhere in the world.</p>
       </div>
-      <div class="reveal" style="margin-bottom:40px">
+      <div class="reveal reveal-mb">
         <div class="livestream-embed" id="livestream-embed">
           <div class="livestream-placeholder">
             <i class="fas fa-satellite-dish"></i>
@@ -817,7 +795,7 @@
           </div>
         </div>
       </div>
-      <div class="reveal" style="margin-top:40px">
+      <div class="reveal reveal-mt">
         <h3 class="admin-links-title">Join on Your Platform</h3>
         <div class="livestream-links">
           <a class="stream-link" href="#" id="fb-stream-link" target="_blank"><i class="fab fa-facebook ic-fb"></i> Facebook Live</a>
@@ -839,7 +817,7 @@
   <footer class="site-footer">
     <div class="footer-top"><i class="fas fa-cross footer-cross"></i><div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div></div>
     <nav class="footer-nav"><a onclick="showPage('home')">Home</a><a onclick="showPage('announcements')">Announcements</a><a onclick="showPage('program')">Program</a><a onclick="showPage('condolences')">Condolences</a><a onclick="showPage('tributes')">Tributes</a><a onclick="showPage('livestream')">Livestream</a><a onclick="showPage('attend')">Attend</a></nav>
-    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
+    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216" rel="noopener noreferrer" title="Call"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
   </footer>
 </div>
@@ -850,12 +828,12 @@
     <div class="container-md">
       <div class="section-header reveal">
         <span class="section-eyebrow">Register Your Presence</span>
-        <h2 class="section-title">Attend &amp; SMS Updates</h2>
-        <div class="section-ornament"><span></span><i class="fas fa-sms"></i><span></span></div>
+        <h2 class="section-title">Attend &amp; Register</h2>
+        <div class="section-ornament"><span></span><i class="fas fa-calendar-check"></i><span></span></div>
       </div>
       <div class="attend-intro reveal">
         <strong>Dear Family &amp; Friends,</strong><br/>
-        Please register below to indicate which event(s) you will be attending. Upon registration, you will receive an <strong>SMS confirmation</strong> on the phone number you provide, along with important updates and reminders.
+        Please register below to indicate which event(s) you will be attending. Upon registration, your attendance will be registered and the family will be notified via <strong>WhatsApp</strong>.
       </div>
       <div class="form-wrap-dark reveal">
         <h3 class="form-wrap-title">Register Your Attendance</h3>
@@ -877,11 +855,10 @@
           </div>
         </div>
         <div class="form-group"><label for="att-notes">Additional Notes</label><textarea id="att-notes" rows="2" placeholder="Any special notes (e.g. transport needs)..."></textarea></div>
-        <button class="btn-gold" id="att-btn" onclick="submitAttendance()"><i class="fas fa-check-circle"></i> Register &amp; Send SMS</button>
+        <button class="btn-gold" id="att-btn" onclick="submitAttendance()"><i class="fas fa-check-circle"></i> Register Attendance</button>
         <div class="sms-notice">
-          <i class="fas fa-info-circle"></i>
-          <!-- FIX 1: Updated provider name to Arkesel -->
-          <span>An SMS confirmation will be sent to your phone number after registration. <strong>SMS powered by Arkesel.</strong></span>
+          <i class="fab fa-whatsapp"></i>
+          <span>After registration, the family admin will be notified via <strong>WhatsApp</strong>. Make sure your phone number is correct.</span>
         </div>
       </div>
       <div class="attendees-section reveal">
@@ -895,7 +872,7 @@
   <footer class="site-footer">
     <div class="footer-top"><i class="fas fa-cross footer-cross"></i><div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div></div>
     <nav class="footer-nav"><a onclick="showPage('home')">Home</a><a onclick="showPage('announcements')">Announcements</a><a onclick="showPage('program')">Program</a><a onclick="showPage('condolences')">Condolences</a><a onclick="showPage('tributes')">Tributes</a><a onclick="showPage('livestream')">Livestream</a><a onclick="showPage('attend')">Attend</a></nav>
-    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
+    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216" rel="noopener noreferrer" title="Call"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></div></div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
   </footer>
 </div>
@@ -927,47 +904,21 @@ const FIREBASE_CONFIG = {
 };
 
 /* ══════════════════════════════════════════════════════════════
-   ARKESEL SMS CONFIG
+   WHATSAPP NOTIFICATION CONFIG
    ─────────────────────────────────────────────────────────────
-   SENDER_ID must be registered/approved in your Arkesel dashboard
-   (max 11 chars, no spaces). Suggested: "AuntieBee"
-   ADMIN_PHONE receives a notification whenever someone leaves
-   a condolence message. Use local format: 0XXXXXXXXX
+   ADMIN_WHATSAPP receives a free WhatsApp message whenever
+   someone registers attendance or leaves a condolence.
+   Use international format without '+': 233XXXXXXXXX
 ══════════════════════════════════════════════════════════════ */
-const ARKESEL_API_KEY = 'T0h3b2RnUUdEZ3RadlBoQU5KT2w';
-const ARKESEL_SENDER  = 'AuntieBee';
-const ADMIN_PHONE     = '0558040216'; // family admin number
-
-/* Convert 0XXXXXXXXX → 233XXXXXXXXX for Arkesel */
-function toIntl(phone) {
-  const clean = String(phone).replace(/\s+/g, '').replace(/^\+/, '');
-  if (clean.startsWith('233')) return clean;
-  if (clean.startsWith('0'))   return '233' + clean.slice(1);
-  return '233' + clean;
-}
+const ADMIN_WHATSAPP = '233558040216'; // family admin WhatsApp
 
 /**
- * Send an SMS via Arkesel v1 API (GET, browser-friendly, no CORS issues).
- * Returns true on success, false on failure.
+ * Opens WhatsApp with a pre-filled message to the admin.
+ * Completely free — works on every phone in Ghana.
  */
-async function sendArkeselSMS(phone, message) {
-  try {
-    const params = new URLSearchParams({
-      action:  'send-sms',
-      api_key: ARKESEL_API_KEY,
-      to:      toIntl(phone),
-      from:    ARKESEL_SENDER,
-      sms:     message
-    });
-    const res  = await fetch(`https://sms.arkesel.com/sms/api?${params}`);
-    const json = await res.json();
-    console.log('[Arkesel]', json);
-    // Arkesel returns { code: "ok" } on success
-    return json.code === 'ok' || json.status === 'success';
-  } catch (err) {
-    console.warn('[Arkesel] SMS failed:', err.message);
-    return false;
-  }
+function notifyAdmin(message) {
+  const url = `https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
 }
 
 /* ── LOCAL STORES ─────────────────────────────────────────── */
@@ -1026,7 +977,7 @@ async function fsAdd(data) {
   return r.json();
 }
 
-/* ── FIX 2: Firestore save for attendees (triggers Cloud Function → Arkesel SMS) ── */
+/* ── Save attendee to Firestore ── */
 async function fsAddAttendee(data) {
   const eventsStr = Array.isArray(data.events) ? data.events.join(', ') : String(data.events);
   const body = {
@@ -1179,13 +1130,10 @@ async function submitCondolence() {
       document.getElementById('cond-message').value  = '';
       showToast('Your message has been sent and is now visible to everyone. 🙏');
 
-      /* Notify admin of new condolence */
-      if (ADMIN_PHONE) {
-        const preview    = message.length > 80 ? message.slice(0, 80) + '…' : message;
-        const adminAlert =
-          `New condolence from ${name} (${rel || 'Well-wisher'}): "${preview}" – Auntie Bee Memorial`;
-        sendArkeselSMS(ADMIN_PHONE, adminAlert);
-      }
+      /* Notify admin via WhatsApp */
+      const preview    = message.length > 80 ? message.slice(0, 80) + '…' : message;
+      const adminAlert = `✉️ New condolence from ${name} (${rel || 'Well-wisher'}):\n"${preview}"\n– Auntie Bee Memorial`;
+      notifyAdmin(adminAlert);
 
       await pollCondolences(true);
     } catch(e) {
@@ -1338,11 +1286,7 @@ const TRIBUTE_GROUPS = {
     icon:'fa-child', signName:'The Children of Madam Agnes Pomaa', signRole:'In loving memory of our dear mother',
     text:`Maa, you were our first home — the place we always came back to, no matter how far life took us.\n\nYour hands cooked for us, your voice prayed over us, and your love never once wavered. You taught us what it means to work hard, to love God, and to stand together as family.\n\nThe house feels quieter now, but your presence lives in every corner of it. In your grandchildren's laughter, in the way we still set the table the way you liked it, in the recipes we are slowly learning to make.\n\nWe are so proud to be your children. Thank you for everything you gave us — not just the things we can hold, but the things we carry inside us. Rest well, Maa. You have truly earned it.`,
     members: [
-      { photo: 'images/Child1.jpg', name: 'Mr. Daniel Owusu', occupation: 'Farmer · Sankubenase' },
-      {photo: 'images/Child2.jpeg', name: 'Mr. Charlse Owusu', occupation: 'Farmer · Sankubenase' },
-      { photo: 'images/Deconness1.jpeg', name: 'Mrs. Kwakoaa',   occupation: 'Trader · Sankubenase' },
-      
-      //{ photo: 'images/Child3.jpg', name: 'Beatrice Pomaa', occupation: 'Trader · Sankubenase' }
+      { photo: 'images/Child1.jpg', name: 'Daniel Owusu', occupation: 'Farmer · Sankubenase' },
     ]
   },
   family: {
@@ -1384,23 +1328,20 @@ const TRIBUTE_GROUPS = {
     text: `Mama welcomed us into the family with warmth and kindness.\nShe treated us not as outsiders but as her own children.\n\nHer advice, laughter, and prayers strengthened our homes\nand made us proud to be part of this wonderful family.\n\nThough she is gone, the love she shared will remain with us forever.`,
     members: [
       { photo: 'images/inlaw1.jpeg', name: 'Mrs. Margaret Darkwaa', occupation: 'Trader · Sankubenase' },
-      { photo: 'images/inlaw2.jpeg', name: 'Elder. Gyasi', occupation: 'Farmer · Sankubenase' },
-      /* FIX 3: inlaw2.jpeg is not in the deployed files — using placeholder until photo is added */
-      ///{ photo: '', name: 'Akosua Mensah', occupation: 'Teacher · Accra' }
+      { photo: 'images/inlaw2.jpeg', name: 'Elder. Ebenezer Gyasi', occupation: 'Farmer · Sankubenase' },
     ]
   },
   church: {
-    icon:'fa-church', signName:'The Church Of Pentecost, Sankubenase Assembly', signRole:'In loving memory of a faithful and dedicated member',
-    text:`Sister Agnes Pomaa was the kind of member every church prays for.\n\nShe came early and stayed late. She served quietly without seeking recognition. She gave generously without keeping records. Her faith was not just something she professed — it was something she practised, consistently, over many decades of faithful service to God and to this assembly.\n\nWe will remember her in the choir, in the women's fellowship, and in the quiet corners of the sanctuary where she would linger after service to pray.\n\nThe Sankubenase Assembly has lost a pillar. But heaven has gained one of its finest servants. We celebrate her life and give thanks to God for the privilege of worshipping alongside her. May her memory inspire us to serve with the same devotion she showed until the very end.`,
+    icon:'fa-church', signName:'The Church Of Pentecost, Central Assembly - Sankubenase', signRole:'In loving memory of a faithful and dedicated member',
+    text:`Sister Agnes Pomaa was the kind of member every church prays for.\n\nShe came early and stayed late. She served quietly without seeking recognition. She gave generously without keeping records. Her faith was not just something she professed — it was something she practised, consistently, over many decades of faithful service to God and to this assembly.\n\nWe will remember her in the choir, in the women's fellowship, and in the quiet corners of the sanctuary where she would linger after service to pray.\n\nThe Sankubenase Assembly has lost a pillar. But heaven has gained one of its finest servants. We celebrate her life and give thanks to God for the privilege of worshipping alongside her. May her memory inspire us to serve with the same devotion she showed until the very end`,
     members: [
-      {photo: './images/Elder1.jpeg', name: 'Elder Simon Aborbie', occupation: 'Preciding Elder · Central Assembly - Sankubenase', subgroup: 'leaders' },
-      { photo: './images/Elder2.jpeg', name: 'Elder Gyasi',  occupation: 'Elder · Central Assembly - Sankubenase', subgroup: 'leaders' },
-      { photo: './images/Elder3.jpeg', name: 'Elder Asare', occupation: 'Elder · Centra Assembly - Sankubenase', subgroup: 'leaders' },
-      {photo: './images/Deconness1.jpeg', name: 'Deaconess Kwakoaa ', occupation: 'Deaconess · Central Assembly - Sankubenase', subgroup: 'leaders' },
-      { photo: './images/Deconness2.jpeg', name: 'Deaconess Janet Aborbie', occupation: 'Deaconess · Central Assembly - Sankubenase', subgroup: 'leaders' },
-      { photo: 'images/Leaders1.jpeg',    name: "Elders and Deaconesses",  occupation: "Central Assembly - Sankubenase",  subgroup: 'members' },
-      {photo: 'images/Congregation1.jpeg', name: "General Congregation", occupation: "Central Assembly - Sankubenase", subgroup: 'members' },
-     /// { photo: 'images/church2.jpeg', name: 'Sister Abena Asante', occupation: 'Member · Women's Fellowship' },
+      {photo: './images/Elder1.jpeg', name: 'Elder Simon Aborbie', occupation: 'Presiding Elder · Central Assembly - Sankubenase', subgroup: 'leaders' },
+      { photo: './images/Elder2.jpeg', name: 'Elder Ebenezer Gyasi', occupation: 'Elder · Central Assembly - Sankubenase', subgroup: 'leaders' },
+      { photo: './images/Elder3.jpeg', name: 'Elder John Asare', occupation: 'Elder · Central Assembly - Sankubenase', subgroup: 'leaders' },
+      { photo: './images/Deconness1.jpeg', name: 'Mrs. Regina Kwakoa Gyasi', occupation: 'Deaconess · Central Assembly - Sankubenase', subgroup: 'leaders' },
+      { photo: './images/Deconness2.jpeg', name: 'Mrs. Janet Aborbie', occupation: 'Deaconess · Central Assembly - Sankubenase', subgroup: 'leaders' },
+      { photo: 'images/Leaders1.jpeg', name: 'Elders and Deaconesses', occupation: 'Central Assembly - Sankubenase', subgroup: 'members' },
+      { photo: 'images/Congregation1.jpeg', name: 'General Congregation', occupation: 'Central Assembly - Sankubenase', subgroup: 'members' },
     ]
   }
 };
@@ -1521,7 +1462,7 @@ async function submitAttendance() {
     dateStr
   };
 
-  /* Save to Firestore → triggers onAttendeeRegistered Cloud Function → Arkesel SMS */
+  /* Save to Firestore */
   if (FB_CONFIGURED) {
     try {
       await fsAddAttendee(entry);
@@ -1539,26 +1480,15 @@ async function submitAttendance() {
   renderAttendees();
   updateStats();
 
-  /* Send SMS confirmation to the registrant via Arkesel */
+  /* Notify admin via WhatsApp */
   const eventsLabel = entry.events.join(', ');
-  const confirmMsg  =
-    `Hello ${name}, your attendance has been registered for: ${eventsLabel}. ` +
-    `We look forward to seeing you. God bless you. – Auntie Bee Memorial Family`;
-  sendArkeselSMS(phone, confirmMsg)
-    .then(ok => console.log(ok ? '[SMS] Confirmation sent' : '[SMS] Confirmation failed'));
+  const adminMsg = `🙏 New Attendance Registration:\nName: ${name}\nRelation: ${entry.relation}\nFrom: ${entry.location}\nEvents: ${eventsLabel}\nPhone: ${phone}\n– Auntie Bee Memorial`;
+  notifyAdmin(adminMsg);
 
-  /* Notify admin that someone registered */
-  if (ADMIN_PHONE) {
-    const adminMsg =
-      `New attendance: ${name} (${entry.relation}) from ${entry.location} registered for ${eventsLabel}.`;
-    sendArkeselSMS(ADMIN_PHONE, adminMsg)
-      .then(ok => console.log(ok ? '[SMS] Admin notified' : '[SMS] Admin notify failed'));
-  }
-
-  showToast(`Registered! SMS confirmation sent to ${phone}.`);
+  showToast(`Registered successfully! Thank you, ${name}. 🙏`);
 
   btn.disabled = false;
-  btn.innerHTML = '<i class="fas fa-check-circle"></i> Register &amp; Send SMS';
+  btn.innerHTML = '<i class="fas fa-check-circle"></i> Register Attendance';
 }
 
 function renderAttendees() {
@@ -1650,63 +1580,9 @@ function initAll() {
   if (streamLinks.zm) document.getElementById('zm-stream-link').href = streamLinks.zm;
 }
 
-/* ── PWA INSTALL ──────────────────────────────────────────── */
-let deferredPrompt = null;
-const pwaBanner    = document.getElementById('pwa-banner');
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  // Show banner after 3 seconds
-  setTimeout(() => {
-    if (deferredPrompt) {
-      pwaBanner.style.display = 'flex';
-    }
-  }, 3000);
-});
-
-function installPWA() {
-  if (!deferredPrompt) {
-    showToast('Open this page in Chrome on Android to install.', 'warning');
-    return;
-  }
-  deferredPrompt.prompt();
-  deferredPrompt.userChoice.then(choice => {
-    if (choice.outcome === 'accepted') {
-      showToast('App installed successfully! 🎉');
-    }
-    deferredPrompt = null;
-    pwaBanner.style.display = 'none';
-  });
-}
-
-function dismissBanner() {
-  pwaBanner.style.display = 'none';
-  // Don't show again for 24 hours
-  localStorage.setItem('pwa-dismissed', Date.now());
-}
-
-// Don't show banner if dismissed within last 24 hours
-window.addEventListener('load', () => {
-  const dismissed = localStorage.getItem('pwa-dismissed');
-  if (dismissed && Date.now() - dismissed < 86400000) {
-    if (pwaBanner) pwaBanner.style.display = 'none';
-  }
-});
-
-// Hide banner after app is installed
-window.addEventListener('appinstalled', () => {
-  pwaBanner.style.display = 'none';
-  showToast('Auntie Bee app installed! 🎉');
-});
-
-
-
- 
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js');
     }
-  
 </script>
 </body>
 </html>
