@@ -10,7 +10,6 @@
   "orientation": "portrait",
   "lang": "en",
   "categories": ["lifestyle", "social"],
-  "screenshots": [],
   "icons": [
     {
       "src": "icons/icon-192.png",
@@ -23,6 +22,22 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Home screen – Auntie Bee Memorial"
+    },
+    {
+      "src": "screenshots/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Funeral Programme – Auntie Bee Memorial"
     }
   ],
   "shortcuts": [
