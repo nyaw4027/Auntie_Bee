@@ -6,7 +6,7 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["window-controls-overlay", "standalone", "minimal-ui", "browser"],
+  "display_override": ["window-controls-overlay", "tabbed", "standalone", "minimal-ui", "browser"],
   "background_color": "#111111",
   "theme_color": "#c8a84b",
   "orientation": "portrait",
@@ -15,12 +15,77 @@
   "categories": ["lifestyle", "social"],
   "prefer_related_applications": false,
   "handle_links": "preferred",
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
   "launch_handler": {
     "client_mode": "navigate-existing"
   },
   "edge_side_panel": {
     "preferred_width": 400
   },
+  "scope_extensions": [
+    { "origin": "https://auntie-bee.web.app" }
+  ],
+  "tab_strip": {
+    "home_tab": {
+      "scope_patterns": [{ "pathname": "/*" }]
+    },
+    "new_tab_button": {
+      "url": "/"
+    }
+  },
+  "note_taking": {
+    "new_note_url": "/?page=condolences"
+  },
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+auntiebee",
+      "url": "/?protocol=%s"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "image/*": [".png", ".jpg", ".jpeg", ".gif", ".webp"]
+      }
+    }
+  ],
+  "related_applications": [],
+  "widgets": [
+    {
+      "name": "Auntie Bee Memorial",
+      "description": "Quick access to Auntie Bee Memorial",
+      "tag": "auntie-bee-widget",
+      "template": "generic-template",
+      "ms_ac_template": "widgets/template.json",
+      "data": "widgets/data.json",
+      "type": "application/json",
+      "screenshots": [
+        {
+          "src": "screenshots/screenshot-mobile.png",
+          "sizes": "390x844",
+          "label": "Auntie Bee Memorial Widget"
+        }
+      ],
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ],
+      "auth": false,
+      "update": 86400
+    }
+  ],
   "icons": [
     {
       "src": "icons/icon-192.png",
@@ -53,14 +118,16 @@
       "sizes": "390x844",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Home screen – Auntie Bee Memorial"
+      "label": "Home screen – Auntie Bee Memorial",
+      "platform": "android"
     },
     {
       "src": "screenshots/screenshot-wide.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Funeral Programme – Auntie Bee Memorial"
+      "label": "Funeral Programme – Auntie Bee Memorial",
+      "platform": "windows"
     }
   ],
   "shortcuts": [
