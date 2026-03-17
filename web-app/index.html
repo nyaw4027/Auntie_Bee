@@ -504,6 +504,7 @@
       <li><a onclick="showPage('program')"       data-page="program">Program</a></li>
       <li><a onclick="showPage('condolences')"   data-page="condolences">Condolences</a></li>
       <li><a onclick="showPage('tributes')"      data-page="tributes">Tributes</a></li>
+      <li><a onclick="showPage('chat')" data-page="chat">Family Chat</a></li>
       <li><a onclick="showPage('gallery')" data-page="gallery">Gallery</a></li>
       <li><a onclick="showPage('livestream')"    data-page="livestream">Livestream</a></li>
       <li><a onclick="showPage('attend')"        data-page="attend">Attend</a></li>
@@ -518,6 +519,7 @@
     <a onclick="showPage('program');closeMenu()">Funeral Program</a>
     <a onclick="showPage('condolences');closeMenu()">Condolences</a>
     <a onclick="showPage('tributes');closeMenu()">Tributes</a>
+    <a onclick="showPage('chat');closeMenu()">Family Chat</a>
     <a onclick="showPage('gallery');closeMenu()">Gallery</a>
     <a onclick="showPage('livestream');closeMenu()">Livestream</a>
     <a onclick="showPage('attend');closeMenu()">Attend &amp; Register</a>
@@ -833,6 +835,95 @@
     <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216" rel="noopener noreferrer" title="Call"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer" title="X / Twitter"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a></div></div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
   </footer>
+</div>
+
+
+<!-- ══════════════════ FAMILY CHAT ══════════════════ -->
+<div id="page-chat" class="page">
+  <div class="chat-wrap" id="chat-wrap">
+
+    <!-- AUTH SCREEN (shown when not logged in) -->
+    <div class="chat-auth" id="chat-auth">
+      <div class="chat-auth-box">
+        <div class="chat-auth-title">Family Chat</div>
+        <div class="chat-auth-sub">A private space for the family of Madam Agnes Pomaa to connect, share memories and support one another.</div>
+        <div class="chat-auth-tabs">
+          <button class="chat-auth-tab active" onclick="switchAuthTab('login')">Sign In</button>
+          <button class="chat-auth-tab" onclick="switchAuthTab('register')">Register</button>
+        </div>
+        <div class="chat-auth-err" id="chat-auth-err"></div>
+        <!-- Login form -->
+        <div id="auth-login">
+          <div class="form-group"><label>Email Address</label><input type="email" id="login-email" placeholder="your@email.com" class="admin-input"/></div>
+          <div class="form-group"><label>Password</label><input type="password" id="login-pass" placeholder="Your password" class="admin-input"/></div>
+          <button class="btn-gold" style="width:100%;justify-content:center;margin-top:8px" id="login-btn" onclick="chatLogin()"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+        </div>
+        <!-- Register form -->
+        <div id="auth-register" style="display:none">
+          <div class="form-group"><label>Full Name</label><input type="text" id="reg-name" placeholder="Your full name" class="admin-input"/></div>
+          <div class="form-group"><label>Email Address</label><input type="email" id="reg-email" placeholder="your@email.com" class="admin-input"/></div>
+          <div class="form-group"><label>Password</label><input type="password" id="reg-pass" placeholder="Min. 6 characters" class="admin-input"/></div>
+          <div class="form-group"><label>Relationship to Auntie Bee</label><input type="text" id="reg-relation" placeholder="e.g. Grandchild, Niece" class="admin-input"/></div>
+          <button class="btn-gold" style="width:100%;justify-content:center;margin-top:8px" id="reg-btn" onclick="chatRegister()"><i class="fas fa-user-plus"></i> Create Account</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAT INTERFACE (shown when logged in) -->
+    <div id="chat-interface" style="display:none;flex:1;display:none;overflow:hidden;flex-direction:column;width:100%">
+      <div style="display:flex;flex:1;overflow:hidden">
+
+        <!-- Sidebar -->
+        <div class="chat-sidebar" id="chat-sidebar">
+          <div class="chat-sidebar-head">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div>
+                <div class="chat-sidebar-title">🙏 Family Chat</div>
+                <div class="chat-sidebar-sub" id="chat-user-label">Welcome</div>
+              </div>
+              <button class="btn-outline" style="padding:6px 12px;font-size:.7rem" onclick="chatLogout()">Sign Out</button>
+            </div>
+          </div>
+          <div class="chat-search"><input type="text" placeholder="Search members..." oninput="filterMembers(this.value)"/></div>
+          <div class="chat-rooms" id="chat-rooms"></div>
+          <div class="chat-members">
+            <div class="chat-members-title">Online Members</div>
+            <div id="chat-online-list"></div>
+          </div>
+        </div>
+
+        <!-- Main chat area -->
+        <div class="chat-main" id="chat-main">
+          <div class="chat-no-room" id="chat-no-room">
+            <i class="fas fa-comments"></i>
+            <span>Select a chat to start messaging</span>
+            <button class="chat-mobile-menu" onclick="openChatSidebar()"><i class="fas fa-bars"></i> Chats</button>
+          </div>
+          <div id="chat-active" style="display:none;flex-direction:column;flex:1;overflow:hidden">
+            <div class="chat-main-head">
+              <button class="chat-mobile-back" onclick="closeChatSidebar()"><i class="fas fa-arrow-left"></i></button>
+              <div class="chat-main-avatar" id="active-avatar">G</div>
+              <div>
+                <div class="chat-main-name" id="active-name">Family Group</div>
+                <div class="chat-main-status" id="active-status">Group Chat</div>
+              </div>
+              <button class="chat-mobile-menu" onclick="openChatSidebar()"><i class="fas fa-bars"></i></button>
+            </div>
+            <div class="chat-messages" id="chat-messages"></div>
+            <div class="chat-input-wrap">
+              <button class="chat-attach-btn" onclick="document.getElementById('chat-file-input').click()" title="Send image"><i class="fas fa-image"></i></button>
+              <input type="file" id="chat-file-input" accept="image/*,audio/*,video/*" style="display:none" onchange="sendChatFile(this)"/>
+              <textarea class="chat-input" id="chat-input" placeholder="Type a message..." rows="1"
+                onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChatMessage()}"
+                oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,120)+'px'"></textarea>
+              <button class="chat-send-btn" onclick="sendChatMessage()" title="Send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ══════════════════ GALLERY ══════════════════ -->
@@ -1282,6 +1373,7 @@ function showPage(name) {
   if (name === 'attend') renderAttendees();
   if (name === 'home')   updateStats();
   if (name === 'gallery')  renderGallery();
+  if (name === 'chat') initChat();
 }
 function toggleMenu() {
   document.getElementById('mobile-menu').classList.toggle('open');
@@ -1880,7 +1972,346 @@ function resetSlideTimer() {
   clearInterval(slideTimer);
   slideTimer = setInterval(() => nextSlide(), SLIDE_DELAY);
 }
+/* ══════════════════════════════════════════════════════════
+   FAMILY CHAT
+══════════════════════════════════════════════════════════ */
+const AUTH_URL = `https://identitytoolkit.googleapis.com/v1/accounts`;
+const API_KEY  = FIREBASE_CONFIG.apiKey;
 
+let chatUser        = JSON.parse(localStorage.getItem('chatUser') || 'null');
+let activeChatId    = null;
+let chatMsgListener = null;
+let allMembers      = [];
+
+/* ── AUTH ─────────────────────────────────────────────────── */
+function switchAuthTab(tab) {
+  document.getElementById('auth-login').style.display    = tab === 'login'    ? 'block' : 'none';
+  document.getElementById('auth-register').style.display = tab === 'register' ? 'block' : 'none';
+  document.querySelectorAll('.chat-auth-tab').forEach((t,i) =>
+    t.classList.toggle('active', (i===0&&tab==='login')||(i===1&&tab==='register')));
+  document.getElementById('chat-auth-err').classList.remove('show');
+}
+
+function showAuthErr(msg) {
+  const el = document.getElementById('chat-auth-err');
+  el.textContent = msg;
+  el.classList.add('show');
+}
+
+async function chatRegister() {
+  const name     = document.getElementById('reg-name').value.trim();
+  const email    = document.getElementById('reg-email').value.trim();
+  const pass     = document.getElementById('reg-pass').value;
+  const relation = document.getElementById('reg-relation').value.trim();
+  if (!name || !email || !pass) { showAuthErr('Please fill in all fields.'); return; }
+  if (pass.length < 6)          { showAuthErr('Password must be at least 6 characters.'); return; }
+
+  const btn = document.getElementById('reg-btn');
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating...';
+
+  try {
+    const res  = await fetch(`${AUTH_URL}:signUp?key=${API_KEY}`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ email, password:pass, returnSecureToken:true })
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message.replace(/_/g,' ').toLowerCase());
+
+    await fetch(`${FS_BASE}/chatUsers/${data.localId}`, {
+      method:'PATCH', headers:{'Content-Type':'application/json',
+        'Authorization':`Bearer ${data.idToken}`},
+      body: JSON.stringify({ fields:{
+        name:     fsField(name),
+        email:    fsField(email),
+        relation: fsField(relation || 'Family Member'),
+        uid:      fsField(data.localId),
+        joinedAt: { timestampValue: new Date().toISOString() }
+      }})
+    });
+
+    chatUser = { uid:data.localId, name, email, relation, token:data.idToken, refreshToken:data.refreshToken };
+    localStorage.setItem('chatUser', JSON.stringify(chatUser));
+    initChatInterface();
+  } catch(e) {
+    showAuthErr('Registration failed: ' + e.message);
+  }
+  btn.disabled = false; btn.innerHTML = '<i class="fas fa-user-plus"></i> Create Account';
+}
+
+async function chatLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const pass  = document.getElementById('login-pass').value;
+  if (!email || !pass) { showAuthErr('Please enter your email and password.'); return; }
+
+  const btn = document.getElementById('login-btn');
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+
+  try {
+    const res  = await fetch(`${AUTH_URL}:signInWithPassword?key=${API_KEY}`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ email, password:pass, returnSecureToken:true })
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message.replace(/_/g,' ').toLowerCase());
+
+    const profileRes = await fetch(`${FS_BASE}/chatUsers/${data.localId}`);
+    const profile    = await profileRes.json();
+    const name       = profile.fields?.name?.stringValue || email.split('@')[0];
+    const relation   = profile.fields?.relation?.stringValue || 'Family Member';
+
+    chatUser = { uid:data.localId, name, email, relation, token:data.idToken, refreshToken:data.refreshToken };
+    localStorage.setItem('chatUser', JSON.stringify(chatUser));
+    initChatInterface();
+  } catch(e) {
+    showAuthErr('Sign in failed: ' + e.message);
+  }
+  btn.disabled = false; btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+}
+
+function chatLogout() {
+  chatUser = null;
+  localStorage.removeItem('chatUser');
+  activeChatId = null;
+  document.getElementById('chat-interface').style.display = 'none';
+  document.getElementById('chat-auth').style.display      = 'flex';
+}
+
+/* ── INTERFACE INIT ───────────────────────────────────────── */
+function initChatInterface() {
+  document.getElementById('chat-auth').style.display      = 'none';
+  document.getElementById('chat-interface').style.display = 'flex';
+  document.getElementById('chat-user-label').textContent  = '👋 ' + chatUser.name;
+  loadChatRooms();
+  loadOnlineMembers();
+}
+
+function initChat() {
+  if (chatUser) initChatInterface();
+}
+
+/* ── ROOMS ────────────────────────────────────────────────── */
+async function loadChatRooms() {
+  const rooms = [
+    { id:'family-group', name:'👨‍👩‍👧‍👦 Family Group', preview:'Welcome to the family chat', isGroup:true }
+  ];
+
+  try {
+    const res  = await fetch(`${FS_BASE}/chatUsers`);
+    const data = await res.json();
+    allMembers = (data.documents || []).map(function(d) {
+      return {
+        uid:      d.fields && d.fields.uid      && d.fields.uid.stringValue      || d.name.split('/').pop(),
+        name:     d.fields && d.fields.name     && d.fields.name.stringValue     || 'Family Member',
+        relation: d.fields && d.fields.relation && d.fields.relation.stringValue || 'Family Member',
+      };
+    }).filter(function(m) { return m.uid !== chatUser.uid; });
+
+    allMembers.forEach(function(m) {
+      const dmId = 'dm-' + [chatUser.uid, m.uid].sort().join('-');
+      rooms.push({ id:dmId, name:m.name, preview:m.relation, isGroup:false, uid:m.uid });
+    });
+  } catch(e) {}
+
+  renderRooms(rooms);
+}
+
+/* ── FIX 1: renderRooms — no nested quotes in template literal ── */
+function renderRooms(rooms) {
+  const el = document.getElementById('chat-rooms');
+  el.innerHTML = rooms.map(function(r) {
+    const activeClass  = activeChatId === r.id ? ' active' : '';
+    const avatarClass  = r.isGroup ? 'chat-room-avatar group' : 'chat-room-avatar';
+    const avatarInner  = r.isGroup ? '<i class="fas fa-users"></i>' : r.name.charAt(0).toUpperCase();
+    return '<div class="chat-room-item' + activeClass + '" onclick="openRoom(\'' + r.id + '\',\'' + esc(r.name) + '\',' + r.isGroup + ')">' +
+      '<div class="' + avatarClass + '">' + avatarInner + '</div>' +
+      '<div class="chat-room-info">' +
+        '<div class="chat-room-name">'    + esc(r.name)    + '</div>' +
+        '<div class="chat-room-preview">' + esc(r.preview) + '</div>' +
+      '</div></div>';
+  }).join('');
+}
+
+function filterMembers(q) { loadChatRooms(); }
+
+/* ── OPEN ROOM ────────────────────────────────────────────── */
+function openRoom(roomId, roomName, isGroup) {
+  activeChatId = roomId;
+  document.getElementById('chat-no-room').style.display = 'none';
+  document.getElementById('chat-active').style.display  = 'flex';
+  document.getElementById('active-name').textContent    = roomName;
+  document.getElementById('active-status').textContent  = isGroup
+    ? 'Group · ' + (allMembers.length + 1) + ' members'
+    : 'Private Message';
+  if (isGroup) {
+    document.getElementById('active-avatar').innerHTML = '<i class="fas fa-users" style="font-size:.8rem"></i>';
+  } else {
+    document.getElementById('active-avatar').textContent = roomName.charAt(0).toUpperCase();
+  }
+  document.getElementById('chat-messages').innerHTML = '';
+  closeChatSidebar();
+  loadMessages(roomId);
+  document.querySelectorAll('.chat-room-item').forEach(function(el) {
+    el.classList.toggle('active', el.getAttribute('onclick') && el.getAttribute('onclick').includes(roomId));
+  });
+}
+
+/* ── MESSAGES ─────────────────────────────────────────────── */
+async function loadMessages(roomId) {
+  const el = document.getElementById('chat-messages');
+  el.innerHTML = '<div style="text-align:center;color:var(--text-light);font-size:.8rem;padding:20px">Loading messages…</div>';
+
+  try {
+    const res  = await fetch(`${FS_BASE}/chatMessages?pageSize=50&orderBy=sentAt`);
+    const data = await res.json();
+    const msgs = (data.documents || [])
+      .filter(function(d) { return d.fields && d.fields.roomId && d.fields.roomId.stringValue === roomId; })
+      .map(function(d) {
+        return {
+          id:       d.name.split('/').pop(),
+          uid:      d.fields.uid      && d.fields.uid.stringValue      || '',
+          name:     d.fields.name     && d.fields.name.stringValue     || 'Family Member',
+          relation: d.fields.relation && d.fields.relation.stringValue || '',
+          text:     d.fields.text     && d.fields.text.stringValue     || '',
+          imageUrl: d.fields.imageUrl && d.fields.imageUrl.stringValue || '',
+          sentAt:   d.fields.sentAt   && d.fields.sentAt.timestampValue|| '',
+        };
+      });
+    renderMessages(msgs);
+    pollMessages(roomId);
+  } catch(e) {
+    el.innerHTML = '<div style="text-align:center;color:#ef4444;font-size:.8rem;padding:20px">Could not load messages.</div>';
+  }
+}
+
+/* ── FIX 2: renderMessages — no nested quotes in template literal ── */
+function renderMessages(msgs) {
+  const el = document.getElementById('chat-messages');
+  if (!msgs.length) {
+    el.innerHTML = '<div style="text-align:center;color:var(--text-light);font-family:Cormorant Garamond,serif;font-style:italic;padding:40px">No messages yet. Say hello! 👋</div>';
+    return;
+  }
+  el.innerHTML = msgs.map(function(m) {
+    const mine    = m.uid === chatUser.uid;
+    const time    = m.sentAt ? new Date(m.sentAt).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}) : '';
+    const imgHtml = m.imageUrl
+      ? '<img src="' + esc(m.imageUrl) + '" class="chat-msg-img" onclick="openLightbox(\'' + esc(m.imageUrl) + '\',\'' + esc(m.name) + '\')" alt="Photo"/>'
+      : '';
+    const senderHtml = !mine
+      ? '<div class="chat-msg-sender">' + esc(m.name) + ' · ' + esc(m.relation || '') + '</div>'
+      : '';
+    return '<div class="chat-msg ' + (mine ? 'mine' : 'theirs') + '">' +
+      senderHtml +
+      '<div class="chat-msg-bubble">' + (m.text ? esc(m.text) : '') + imgHtml + '</div>' +
+      '<div class="chat-msg-time">' + time + '</div>' +
+      '</div>';
+  }).join('');
+  el.scrollTop = el.scrollHeight;
+}
+
+let msgPollTimer = null;
+let lastMsgCount = 0;
+
+function pollMessages(roomId) {
+  clearInterval(msgPollTimer);
+  msgPollTimer = setInterval(async function() {
+    if (activeChatId !== roomId) return;
+    try {
+      const res  = await fetch(`${FS_BASE}/chatMessages?pageSize=50&orderBy=sentAt`);
+      const data = await res.json();
+      const msgs = (data.documents || [])
+        .filter(function(d) { return d.fields && d.fields.roomId && d.fields.roomId.stringValue === roomId; })
+        .map(function(d) {
+          return {
+            id:       d.name.split('/').pop(),
+            uid:      d.fields.uid      && d.fields.uid.stringValue      || '',
+            name:     d.fields.name     && d.fields.name.stringValue     || 'Family Member',
+            relation: d.fields.relation && d.fields.relation.stringValue || '',
+            text:     d.fields.text     && d.fields.text.stringValue     || '',
+            imageUrl: d.fields.imageUrl && d.fields.imageUrl.stringValue || '',
+            sentAt:   d.fields.sentAt   && d.fields.sentAt.timestampValue|| '',
+          };
+        });
+      if (msgs.length !== lastMsgCount) {
+        lastMsgCount = msgs.length;
+        renderMessages(msgs);
+      }
+    } catch(e) {}
+  }, 3000);
+}
+
+async function sendChatMessage() {
+  const input = document.getElementById('chat-input');
+  const text  = input.value.trim();
+  if (!text || !activeChatId) return;
+  input.value = '';
+  input.style.height = 'auto';
+  try {
+    await fetch(`${FS_BASE}/chatMessages`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ fields:{
+        roomId:   fsField(activeChatId),
+        uid:      fsField(chatUser.uid),
+        name:     fsField(chatUser.name),
+        relation: fsField(chatUser.relation || ''),
+        text:     fsField(text),
+        imageUrl: fsField(''),
+        sentAt:   { timestampValue: new Date().toISOString() }
+      }})
+    });
+    loadMessages(activeChatId);
+  } catch(e) {
+    showToast('Failed to send message.', 'warning');
+  }
+}
+
+async function sendChatFile(input) {
+  const file = input.files[0];
+  if (!file || !activeChatId) return;
+  showToast('Uploading image…');
+  try {
+    const bucket   = FIREBASE_CONFIG.storageBucket;
+    const path     = 'chat/' + activeChatId + '/' + Date.now() + '_' + file.name;
+    await fetch(
+      'https://firebasestorage.googleapis.com/v0/b/' + bucket + '/o?uploadType=media&name=' + encodeURIComponent(path),
+      { method:'POST', headers:{'Content-Type': file.type}, body: file }
+    );
+    const imageUrl = 'https://firebasestorage.googleapis.com/v0/b/' + bucket + '/o/' + encodeURIComponent(path) + '?alt=media';
+    await fetch(`${FS_BASE}/chatMessages`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ fields:{
+        roomId:   fsField(activeChatId),
+        uid:      fsField(chatUser.uid),
+        name:     fsField(chatUser.name),
+        relation: fsField(chatUser.relation || ''),
+        text:     fsField(''),
+        imageUrl: fsField(imageUrl),
+        sentAt:   { timestampValue: new Date().toISOString() }
+      }})
+    });
+    showToast('Image sent! 🎉');
+    loadMessages(activeChatId);
+  } catch(e) {
+    showToast('Failed to upload image.', 'warning');
+  }
+  input.value = '';
+}
+
+/* ── FIX 3: loadOnlineMembers — no nested quotes in template literal ── */
+async function loadOnlineMembers() {
+  const el   = document.getElementById('chat-online-list');
+  const rows = [{ name: chatUser.name + ' (You)', relation: chatUser.relation }];
+  allMembers.slice(0,5).forEach(function(m) { rows.push(m); });
+  el.innerHTML = rows.map(function(m) {
+    return '<div class="chat-member-row">' +
+      '<div class="chat-member-av">' + m.name.charAt(0).toUpperCase() + '</div>' +
+      '<div class="chat-member-name">' + esc(m.name) + '</div>' +
+      '</div>';
+  }).join('');
+}
+
+/* ── MOBILE SIDEBAR ───────────────────────────────────────── */
+function openChatSidebar()  { document.getElementById('chat-sidebar').classList.add('open'); }
+function closeChatSidebar() { document.getElementById('chat-sidebar').classList.remove('open'); }
 </script>
 </body>
 </html>
