@@ -468,23 +468,20 @@
 .music-sub    { font-size:.62rem; color:var(--text-light); letter-spacing:.06em; margin-top:2px; }
 .music-vol    { width:60px; accent-color:var(--gold); cursor:pointer; }
 @media(max-width:480px){ .music-player{ bottom:72px; right:12px; } .music-vol{ width:44px; } }
-
-/* ── PHOTO GALLERY ───────────────────────────────────────── */
-.gallery-grid     { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; }
-.gallery-item     { position:relative; aspect-ratio:1; overflow:hidden; border-radius:4px; cursor:pointer; background:var(--charcoal); border:1px solid var(--border); }
-.gallery-item img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; transition:transform .4s; }
-.gallery-item:hover img { transform:scale(1.06); }
-.gallery-item-overlay { position:absolute; inset:0; background:rgba(0,0,0,.45); opacity:0; transition:opacity .3s; display:flex; align-items:center; justify-content:center; }
-.gallery-item:hover .gallery-item-overlay { opacity:1; }
-.gallery-item-overlay i { color:#fff; font-size:1.6rem; }
-.gallery-placeholder { aspect-ratio:1; background:linear-gradient(135deg,#1e1e18,#2a2a22); border-radius:4px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:var(--gold); border:1px dashed rgba(200,168,75,.3); }
-.gallery-placeholder i    { font-size:2rem; opacity:.3; }
-.gallery-placeholder span { font-size:.72rem; color:var(--text-light); letter-spacing:.12em; text-transform:uppercase; }
-.gallery-empty { text-align:center; padding:60px 20px; color:var(--text-light); font-family:"Cormorant Garamond",serif; font-style:italic; }
-.gallery-empty i { display:block; font-size:2.5rem; color:var(--gold); opacity:.2; margin-bottom:14px; }
-@media(max-width:768px){ .gallery-grid{ grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px; } }
-@media(max-width:480px){ .gallery-grid{ grid-template-columns:1fr 1fr; } }
-
+/* ── PHOTO GALLERY SLIDESHOW ─────────────────────────────── */
+.slideshow-wrap   { position:relative; max-width:720px; margin:0 auto; }
+.slideshow-stage  { position:relative; width:100%; aspect-ratio:4/3; overflow:hidden; border-radius:8px; background:var(--charcoal); border:1px solid var(--border); }
+.slide            { position:absolute; inset:0; opacity:0; transition:opacity .9s ease; }
+.slide.active     { opacity:1; }
+.slide img        { width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+.slide-caption    { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent,rgba(0,0,0,.75)); padding:28px 20px 16px; font-family:"Cormorant Garamond",serif; font-style:italic; color:var(--gold-pale); font-size:1rem; text-align:center; }
+.slide-controls   { display:flex; align-items:center; justify-content:center; gap:16px; margin-top:20px; }
+.slide-btn        { width:40px; height:40px; border-radius:50%; background:var(--charcoal); border:1px solid var(--border); color:var(--gold); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:.9rem; transition:all .2s; }
+.slide-btn:hover  { background:var(--gold); color:var(--dark); }
+.slide-dots       { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; max-width:300px; }
+.slide-dot        { width:8px; height:8px; border-radius:50%; background:var(--border); border:none; cursor:pointer; padding:0; transition:background .2s; }
+.slide-dot.active { background:var(--gold); }
+.slide-counter    { font-size:.78rem; color:var(--text-light); letter-spacing:.1em; min-width:50px; text-align:center; }
   </style>
 </head>
 <body>
@@ -1799,48 +1796,89 @@ function toggleMusic() {
 }
 
 function setMusicVol(v) { bgMusic.volume = parseFloat(v); }
-
-
-/* ── PHOTO GALLERY ───────────────────────────────────────── */
+/* ── PHOTO GALLERY SLIDESHOW ─────────────────────────────── */
 const GALLERY_PHOTOS = [
-  { src: 'images/Grandchild4.jpeg',    caption: 'Engr. Samuel Owusu Frimpong' },
-  { src: 'images/Child1.jpg',          caption: 'Mr. Daniel Owusu' },
-  { src: 'images/Child2.jpeg',         caption: 'Mr. Charlse Owusu' },
-  { src: 'images/Grandchild1.jpg',     caption: 'Sandra Owusu' },
-  { src: 'images/Grandchild2.jpeg',    caption: 'Beatrice Pomaa' },
-  { src: 'images/Grandchild3.jpeg',    caption: 'Dosia Aboagyewaa' },
-  { src: 'images/Grandchild5.jpeg',    caption: 'Naomi Owusua' },
-  { src: 'images/Grandchild6.jpeg',    caption: 'Perpetual Oforiwaa' },
-  { src: 'images/Grandchild7.jpeg',    caption: 'Gabriel Gyasi' },
-  { src: 'images/Greatgrand1.jpeg',    caption: 'Pricilla Ofori' },
-  { src: 'images/Greatgrand2.jpeg',    caption: 'Emmanuel Ofori' },
-  { src: 'images/Greatgrand3.jpeg',    caption: 'Daniel Owusu' },
-  { src: 'images/Greatgrand4.jpeg',    caption: 'Nana Kwasi' },
-  { src: 'images/inlaw1.jpeg',         caption: 'Mrs. Margaret Darkwaa' },
-  { src: 'images/inlaw2.jpeg',         caption: 'Elder Gyasi' },
-  { src: 'images/Elder1.jpeg',         caption: 'Elder Simon Aborbie' },
-  { src: 'images/Elder2.jpeg',         caption: 'Elder Ebenezer Gyasi' },
-  { src: 'images/Elder3.jpeg',         caption: 'Elder John Asare' },
-  { src: 'images/Deconness1.jpeg',     caption: 'Mrs. Regina Kwakoa Gyasi' },
-  { src: 'images/Deconness2.jpeg',     caption: 'Mrs. Janet Aborbie' },
-  { src: 'images/Leaders1.jpeg',       caption: 'Elders and Deaconesses' },
-  { src: 'images/Congregation1.jpeg',  caption: 'General Congregation' },
+  { src: 'images/Grandchild4.jpeg',   caption: 'Engr. Samuel Owusu Frimpong' },
+  { src: 'images/Child1.jpg',         caption: 'Mr. Daniel Owusu' },
+  { src: 'images/Child2.jpeg',        caption: 'Mr. Charlse Owusu' },
+  { src: 'images/Grandchild1.jpg',    caption: 'Sandra Owusu' },
+  { src: 'images/Grandchild2.jpeg',   caption: 'Beatrice Pomaa' },
+  { src: 'images/Grandchild3.jpeg',   caption: 'Dosia Aboagyewaa' },
+  { src: 'images/Grandchild5.jpeg',   caption: 'Naomi Owusua' },
+  { src: 'images/Grandchild6.jpeg',   caption: 'Perpetual Oforiwaa' },
+  { src: 'images/Grandchild7.jpeg',   caption: 'Gabriel Gyasi' },
+  { src: 'images/Greatgrand1.jpeg',   caption: 'Pricilla Ofori' },
+  { src: 'images/Greatgrand2.jpeg',   caption: 'Emmanuel Ofori' },
+  { src: 'images/Greatgrand3.jpeg',   caption: 'Daniel Owusu' },
+  { src: 'images/Greatgrand4.jpeg',   caption: 'Nana Kwasi' },
+  { src: 'images/inlaw1.jpeg',        caption: 'Mrs. Margaret Darkwaa' },
+  { src: 'images/Elder1.jpeg',        caption: 'Elder Simon Aborbie' },
+  { src: 'images/Elder2.jpeg',        caption: 'Elder Ebenezer Gyasi' },
+  { src: 'images/Elder3.jpeg',        caption: 'Elder John Asare' },
+  { src: 'images/Deconness1.jpeg',    caption: 'Mrs. Regina Kwakoa Gyasi' },
+  { src: 'images/Deconness2.jpeg',    caption: 'Mrs. Janet Aborbie' },
+  { src: 'images/Leaders1.jpeg',      caption: 'Elders and Deaconesses' },
+  { src: 'images/Congregation1.jpeg', caption: 'General Congregation' },
 ];
+
+let slideIndex   = 0;
+let slideTimer   = null;
+const SLIDE_DELAY = 4000; // 4 seconds per photo
 
 function renderGallery() {
   const grid = document.getElementById('gallery-grid');
-  if (!grid) return;
-  if (!GALLERY_PHOTOS.length) {
-    grid.innerHTML = '<div class="gallery-empty"><i class="fas fa-images"></i>Photos will appear here once added.</div>';
-    return;
-  }
-  grid.innerHTML = GALLERY_PHOTOS.map(p => `
-    <div class="gallery-item" onclick="openLightbox('${esc(p.src)}','${esc(p.caption)}')">
+  if (!grid || !GALLERY_PHOTOS.length) return;
+
+  // Build slides
+  const slidesHTML = GALLERY_PHOTOS.map((p, i) => `
+    <div class="slide${i === 0 ? ' active' : ''}" id="slide-${i}">
       <img src="${esc(p.src)}" alt="${esc(p.caption)}"
-           onerror="this.parentNode.innerHTML='<div class=\\'gallery-placeholder\\'><i class=\\'fas fa-image\\'></i><span>Photo</span></div>'"/>
-      <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+           onerror="this.src=''; this.parentNode.style.background='var(--charcoal)'"/>
+      <div class="slide-caption">${esc(p.caption)}</div>
     </div>`).join('');
+
+  // Build dots
+  const dotsHTML = GALLERY_PHOTOS.map((_, i) =>
+    `<button class="slide-dot${i === 0 ? ' active' : ''}" onclick="goSlide(${i})"></button>`
+  ).join('');
+
+  grid.innerHTML = `
+    <div class="slideshow-wrap">
+      <div class="slideshow-stage">${slidesHTML}</div>
+      <div class="slide-controls">
+        <button class="slide-btn" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+        <div class="slide-dots">${dotsHTML}</div>
+        <span class="slide-counter" id="slide-counter">1 / ${GALLERY_PHOTOS.length}</span>
+        <button class="slide-btn" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>`;
+
+  startSlideshow();
   triggerReveal();
+}
+
+function goSlide(n) {
+  document.getElementById(`slide-${slideIndex}`)?.classList.remove('active');
+  document.querySelectorAll('.slide-dot')[slideIndex]?.classList.remove('active');
+  slideIndex = (n + GALLERY_PHOTOS.length) % GALLERY_PHOTOS.length;
+  document.getElementById(`slide-${slideIndex}`)?.classList.add('active');
+  document.querySelectorAll('.slide-dot')[slideIndex]?.classList.add('active');
+  const counter = document.getElementById('slide-counter');
+  if (counter) counter.textContent = `${slideIndex + 1} / ${GALLERY_PHOTOS.length}`;
+  resetSlideTimer();
+}
+
+function nextSlide() { goSlide(slideIndex + 1); }
+function prevSlide() { goSlide(slideIndex - 1); }
+
+function startSlideshow() {
+  clearInterval(slideTimer);
+  slideTimer = setInterval(() => nextSlide(), SLIDE_DELAY);
+}
+
+function resetSlideTimer() {
+  clearInterval(slideTimer);
+  slideTimer = setInterval(() => nextSlide(), SLIDE_DELAY);
 }
 
 </script>
