@@ -1284,6 +1284,7 @@ function showPage(name) {
   triggerReveal();
   if (name === 'attend') renderAttendees();
   if (name === 'home')   updateStats();
+  if (name === 'gallery')  renderGallery();
 }
 function toggleMenu() {
   document.getElementById('mobile-menu').classList.toggle('open');
@@ -1723,6 +1724,7 @@ function esc(str) {
 /* ── INIT ─────────────────────────────────────────────────── */
 function initAll() {
   renderAnnouncements();
+  renderGallery(); 
   renderPrograms();
   renderTributes();
   initCondolences();
