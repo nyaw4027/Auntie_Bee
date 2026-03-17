@@ -469,6 +469,22 @@
 .music-vol    { width:60px; accent-color:var(--gold); cursor:pointer; }
 @media(max-width:480px){ .music-player{ bottom:72px; right:12px; } .music-vol{ width:44px; } }
 
+/* ── PHOTO GALLERY ───────────────────────────────────────── */
+.gallery-grid     { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; }
+.gallery-item     { position:relative; aspect-ratio:1; overflow:hidden; border-radius:4px; cursor:pointer; background:var(--charcoal); border:1px solid var(--border); }
+.gallery-item img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; transition:transform .4s; }
+.gallery-item:hover img { transform:scale(1.06); }
+.gallery-item-overlay { position:absolute; inset:0; background:rgba(0,0,0,.45); opacity:0; transition:opacity .3s; display:flex; align-items:center; justify-content:center; }
+.gallery-item:hover .gallery-item-overlay { opacity:1; }
+.gallery-item-overlay i { color:#fff; font-size:1.6rem; }
+.gallery-placeholder { aspect-ratio:1; background:linear-gradient(135deg,#1e1e18,#2a2a22); border-radius:4px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:var(--gold); border:1px dashed rgba(200,168,75,.3); }
+.gallery-placeholder i    { font-size:2rem; opacity:.3; }
+.gallery-placeholder span { font-size:.72rem; color:var(--text-light); letter-spacing:.12em; text-transform:uppercase; }
+.gallery-empty { text-align:center; padding:60px 20px; color:var(--text-light); font-family:"Cormorant Garamond",serif; font-style:italic; }
+.gallery-empty i { display:block; font-size:2.5rem; color:var(--gold); opacity:.2; margin-bottom:14px; }
+@media(max-width:768px){ .gallery-grid{ grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px; } }
+@media(max-width:480px){ .gallery-grid{ grid-template-columns:1fr 1fr; } }
+
   </style>
 </head>
 <body>
@@ -491,6 +507,7 @@
       <li><a onclick="showPage('program')"       data-page="program">Program</a></li>
       <li><a onclick="showPage('condolences')"   data-page="condolences">Condolences</a></li>
       <li><a onclick="showPage('tributes')"      data-page="tributes">Tributes</a></li>
+      <li><a onclick="showPage('gallery')" data-page="gallery">Gallery</a></li>
       <li><a onclick="showPage('livestream')"    data-page="livestream">Livestream</a></li>
       <li><a onclick="showPage('attend')"        data-page="attend">Attend</a></li>
     </ul>
@@ -504,6 +521,7 @@
     <a onclick="showPage('program');closeMenu()">Funeral Program</a>
     <a onclick="showPage('condolences');closeMenu()">Condolences</a>
     <a onclick="showPage('tributes');closeMenu()">Tributes</a>
+    <a onclick="showPage('gallery');closeMenu()">Gallery</a>
     <a onclick="showPage('livestream');closeMenu()">Livestream</a>
     <a onclick="showPage('attend');closeMenu()">Attend &amp; Register</a>
   </div>
@@ -816,6 +834,27 @@
     <div class="footer-top"><i class="fas fa-cross footer-cross"></i><div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div></div>
     <nav class="footer-nav"><a onclick="showPage('home')">Home</a><a onclick="showPage('announcements')">Announcements</a><a onclick="showPage('program')">Program</a><a onclick="showPage('condolences')">Condolences</a><a onclick="showPage('tributes')">Tributes</a><a onclick="showPage('livestream')">Livestream</a><a onclick="showPage('attend')">Attend</a></nav>
     <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216" rel="noopener noreferrer" title="Call"><i class="fas fa-phone"></i> Call</a> &nbsp;|&nbsp;<a href="https://www.facebook.com/profile.php?id=61572470427618" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/233558040216" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@nanayaw_developer?_r=1&_t=ZS-94Zgo4NAyvg" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a><a href="https://x.com/nanayawlyn42321" target="_blank" rel="noopener noreferrer" title="X / Twitter"><i class="fab fa-twitter"></i></a><a href="https://www.instagram.com/lynctel?igsh=MXB6eHRpamQ0ODM1Yg==" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/samuel-owusu-frimpong-793101370" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a></div></div>
+    <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
+  </footer>
+</div>
+
+<!-- ══════════════════ GALLERY ══════════════════ -->
+<div id="page-gallery" class="page">
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Cherished Moments</span>
+        <h2 class="section-title">Photo Gallery</h2>
+        <div class="section-ornament"><span></span><i class="fas fa-images"></i><span></span></div>
+        <p style="text-align:center;margin-top:16px;color:var(--text-mid);font-size:.92rem">A collection of cherished photographs celebrating the life of Madam Agnes Pomaa.</p>
+      </div>
+      <div class="gallery-grid reveal" id="gallery-grid"></div>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="footer-top"><i class="fas fa-cross footer-cross"></i><div class="footer-memorial">In Loving Memory of <strong>Madam Agnes Pomaa</strong> &nbsp;&middot;&nbsp; "Auntie Bee" &nbsp;&middot;&nbsp; 1955 &ndash; 2026</div></div>
+    <nav class="footer-nav"><a onclick="showPage('home')">Home</a><a onclick="showPage('announcements')">Announcements</a><a onclick="showPage('program')">Program</a><a onclick="showPage('condolences')">Condolences</a><a onclick="showPage('tributes')">Tributes</a><a onclick="showPage('gallery')">Gallery</a><a onclick="showPage('livestream')">Livestream</a><a onclick="showPage('attend')">Attend</a></nav>
+    <div class="footer-bottom"><div class="footer-left">&copy; 2026 Auntie Bee Tribute. All Rights Reserved.</div><div class="footer-right">Developed by <strong>Owusu Samuel Frimpong</strong> &nbsp;|&nbsp;<a href="tel:+233558040216" rel="noopener noreferrer" title="Call"><i class="fas fa-phone"></i> Call</a></div></div>
     <p class="footer-copy">Celebrating a life well lived &nbsp;&middot;&nbsp; Forever in our hearts</p>
   </footer>
 </div>
@@ -1758,6 +1797,50 @@ function toggleMusic() {
 }
 
 function setMusicVol(v) { bgMusic.volume = parseFloat(v); }
+
+
+/* ── PHOTO GALLERY ───────────────────────────────────────── */
+const GALLERY_PHOTOS = [
+  { src: 'images/Grandchild4.jpeg',    caption: 'Engr. Samuel Owusu Frimpong' },
+  { src: 'images/Child1.jpg',          caption: 'Mr. Daniel Owusu' },
+  { src: 'images/Child2.jpeg',         caption: 'Mr. Charlse Owusu' },
+  { src: 'images/Grandchild1.jpg',     caption: 'Sandra Owusu' },
+  { src: 'images/Grandchild2.jpeg',    caption: 'Beatrice Pomaa' },
+  { src: 'images/Grandchild3.jpeg',    caption: 'Dosia Aboagyewaa' },
+  { src: 'images/Grandchild5.jpeg',    caption: 'Naomi Owusua' },
+  { src: 'images/Grandchild6.jpeg',    caption: 'Perpetual Oforiwaa' },
+  { src: 'images/Grandchild7.jpeg',    caption: 'Gabriel Gyasi' },
+  { src: 'images/Greatgrand1.jpeg',    caption: 'Pricilla Ofori' },
+  { src: 'images/Greatgrand2.jpeg',    caption: 'Emmanuel Ofori' },
+  { src: 'images/Greatgrand3.jpeg',    caption: 'Daniel Owusu' },
+  { src: 'images/Greatgrand4.jpeg',    caption: 'Nana Kwasi' },
+  { src: 'images/inlaw1.jpeg',         caption: 'Mrs. Margaret Darkwaa' },
+  { src: 'images/inlaw2.jpeg',         caption: 'Elder Gyasi' },
+  { src: 'images/Elder1.jpeg',         caption: 'Elder Simon Aborbie' },
+  { src: 'images/Elder2.jpeg',         caption: 'Elder Ebenezer Gyasi' },
+  { src: 'images/Elder3.jpeg',         caption: 'Elder John Asare' },
+  { src: 'images/Deconness1.jpeg',     caption: 'Mrs. Regina Kwakoa Gyasi' },
+  { src: 'images/Deconness2.jpeg',     caption: 'Mrs. Janet Aborbie' },
+  { src: 'images/Leaders1.jpeg',       caption: 'Elders and Deaconesses' },
+  { src: 'images/Congregation1.jpeg',  caption: 'General Congregation' },
+];
+
+function renderGallery() {
+  const grid = document.getElementById('gallery-grid');
+  if (!grid) return;
+  if (!GALLERY_PHOTOS.length) {
+    grid.innerHTML = '<div class="gallery-empty"><i class="fas fa-images"></i>Photos will appear here once added.</div>';
+    return;
+  }
+  grid.innerHTML = GALLERY_PHOTOS.map(p => `
+    <div class="gallery-item" onclick="openLightbox('${esc(p.src)}','${esc(p.caption)}')">
+      <img src="${esc(p.src)}" alt="${esc(p.caption)}"
+           onerror="this.parentNode.innerHTML='<div class=\\'gallery-placeholder\\'><i class=\\'fas fa-image\\'></i><span>Photo</span></div>'"/>
+      <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+    </div>`).join('');
+  triggerReveal();
+}
+
 </script>
 </body>
 </html>
