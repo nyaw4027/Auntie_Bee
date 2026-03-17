@@ -451,6 +451,14 @@
     @media (max-width: 480px) {
       .tribute-grid { grid-template-columns: 1fr 1fr; }
     }
+   /* ── COUNTDOWN TIMER ──────────────────────────────────────── */
+.countdown-strip { background: var(--dark); padding: 36px 24px; text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.countdown-label { font-family: "Cormorant Garamond", serif; color: var(--gold); font-size: .8rem; letter-spacing: .35em; text-transform: uppercase; margin-bottom: 20px; display: block; }
+.countdown-grid  { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.countdown-box   { background: var(--charcoal); border: 1px solid var(--border); border-radius: 4px; padding: 18px 22px; min-width: 80px; }
+.countdown-num   { font-family: "Playfair Display", serif; font-size: 2.6rem; font-weight: 700; color: var(--gold); display: block; line-height: 1; }
+.countdown-unit  { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--text-light); margin-top: 6px; display: block; }
+.countdown-done  { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; color: var(--gold); font-style: italic; }
   </style>
 </head>
 <body>
@@ -513,6 +521,18 @@
     </div>
     <div class="hero-scroll"><i class="fas fa-chevron-down"></i><span>Scroll</span></div>
   </section>
+
+  <!-- COUNTDOWN TIMER -->
+<div class="countdown-strip">
+  <span class="countdown-label">⛪ One Week Observation begins in</span>
+  <div class="countdown-grid" id="countdown-grid">
+    <div class="countdown-box"><span class="countdown-num" id="cd-days">--</span><span class="countdown-unit">Days</span></div>
+    <div class="countdown-box"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-unit">Hours</span></div>
+    <div class="countdown-box"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-unit">Minutes</span></div>
+    <div class="countdown-box"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-unit">Seconds</span></div>
+  </div>
+  <p id="cd-done" style="display:none" class="countdown-done">🙏 The One Week Observation is today. May God be with the family.</p>
+</div>
 
   <div class="verse-strip">
     <p class="verse-text">"I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live."</p>
@@ -1655,6 +1675,34 @@ function initAll() {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js');
     }
+    /* ── COUNTDOWN TIMER ──────────────────────────────────────── */
+(function() {
+  const TARGET = new Date('2026-04-14T07:00:00').getTime();
+
+  function updateCountdown() {
+    const now  = Date.now();
+    const diff = TARGET - now;
+
+    if (diff <= 0) {
+      document.getElementById('countdown-grid').style.display = 'none';
+      document.getElementById('cd-done').style.display = 'block';
+      return;
+    }
+
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000)  / 60000);
+    const secs  = Math.floor((diff % 60000)    / 1000);
+
+    document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+    document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+})();
 </script>
 </body>
 </html>
