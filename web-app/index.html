@@ -2153,6 +2153,7 @@ function initChatInterface() {
   document.getElementById('chat-auth').style.display      = 'none';
   document.getElementById('chat-interface').style.display = 'flex';
   document.getElementById('chat-user-label').textContent  = '👋 ' + chatUser.name;
+  requestNotifyPermission();   
   loadChatRooms();
   loadOnlineMembers();
 }
@@ -2303,10 +2304,17 @@ function pollMessages(roomId) {
             sentAt:   d.fields.sentAt   && d.fields.sentAt.timestampValue|| '',
           };
         });
-      if (msgs.length !== lastMsgCount) {
-        lastMsgCount = msgs.length;
-        renderMessages(msgs);
-      }
+     if (msgs.length !== lastMsgCount) {
+  const newMsgs = msgs.slice(lastMsgCount);
+  lastMsgCount = msgs.length;
+  renderMessages(msgs);
+  // Notify for new messages not sent by current user
+  newMsgs.forEach(function(m) {
+    if (m.uid !== chatUser.uid) {
+      showChatNotification(m.name, m.text);
+    }
+  });
+}
     } catch(e) {}
   }, 3000);
 }
@@ -2343,10 +2351,39 @@ async function sendChatFile(input) {
   try {
     const bucket   = FIREBASE_CONFIG.storageBucket;
     const path     = 'chat/' + activeChatId + '/' + Date.now() + '_' + file.name;
-    await fetch(
-      'https://firebasestorage.googleapis.com/v0/b/' + bucket + '/o?uploadType=media&name=' + encodeURIComponent(path),
-      { method:'POST', headers:{'Content-Type': file.type}, body: file }
-    );
+    const uploadRes = await fetch(
+  'https://firebasestorage.googleapis.com/v0/b/' + bucket + '/o?uploadType=media&name=' + encodeURIComponent(path),
+  {
+    method:'POST',
+    headers:{
+      'Content-Type': file.type,
+      'Authorization': 'Bearer ' + chatUser.token
+    },
+    body: file
+  }
+);
+if (!uploadRes.ok) {
+  const err = await uploadRes.json().catch(() => ({}));
+  throw new Error(err?.error?.message || 'Upload failed');
+}
+```
+
+---
+
+**For private DMs between two people** — this already works! When a family member registers and logs in, their name appears in the **sidebar under the Family Group**. To start a private chat:
+
+1. Look at the left sidebar
+2. You'll see **Family Group** at the top
+3. Below it are **individual names** of every registered member
+4. Tap any name → opens a **private chat** between just the two of you
+
+The only issue is that **both people must have registered** first. Once two family members register, they can see each other in the sidebar and tap to chat privately.
+
+---
+
+Also update Firestore Storage rules to allow authenticated uploads. In Firebase Console → Storage → Rules:
+```
+
     const imageUrl = 'https://firebasestorage.googleapis.com/v0/b/' + bucket + '/o/' + encodeURIComponent(path) + '?alt=media';
     await fetch(`${FS_BASE}/chatMessages`, {
       method:'POST', headers:{'Content-Type':'application/json'},
@@ -2380,6 +2417,28 @@ async function loadOnlineMembers() {
       '</div>';
   }).join('');
 }
+/* ── CHAT NOTIFICATIONS ───────────────────────────────────── */
+function requestNotifyPermission() {
+  if ('Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission();
+  }
+}
+
+function showChatNotification(senderName, messageText) {
+  // Only notify if tab is not focused
+  if (document.hasFocus()) return;
+  if (!('Notification' in window)) return;
+  if (Notification.permission !== 'granted') return;
+
+  new Notification('💬 ' + senderName + ' — Auntie Bee Family Chat', {
+    body:    messageText || 'Sent an image 📷',
+    icon:    '/icons/icon-192.png',
+    badge:   '/icons/icon-192.png',
+    tag:     'chat-message',
+    renotify: true
+  });
+}
+
 
 /* ── MOBILE SIDEBAR ───────────────────────────────────────── */
 function openChatSidebar()  { document.getElementById('chat-sidebar').classList.add('open'); }
