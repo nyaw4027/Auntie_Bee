@@ -148,6 +148,22 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 4rem; color: var(--gold); opacity: .5;
     }
+    .hero-photo-placeholder {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden; /* ensures image stays inside circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eee;
+}
+
+.hero-photo-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* keeps aspect ratio while filling */
+}
     .hero-events      { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px; }
     .hero-event-badge { background: rgba(200,168,75,.1); border: 1px solid rgba(200,168,75,.3); color: var(--gold-pale); padding: 8px 18px; border-radius: 2px; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; }
     .hero-scroll {
@@ -640,8 +656,10 @@
       <span class="hero-ornament">✦ ✦ ✦</span>
       <div class="hero-sub">In Loving Memory of</div>
       <div class="hero-photo-ring">
-        <div class="hero-photo-placeholder"><i class="fas fa-user"></i></div>
-      </div>
+  <div class="hero-photo-placeholder">
+    <img src="profile.jpeg" alt="Profile Photo">
+  </div>
+</div>
       <h1 class="hero-name">Madam Agnes Pomaa<em>"Auntie Bee"</em></h1>
       <div class="hero-dates">1942 <span class="hero-dash"></span> 2026</div>
       <p class="hero-tagline">"A life so beautifully lived, a love so deeply felt.<br/>Gone from our sight, but never from our hearts."</p>
