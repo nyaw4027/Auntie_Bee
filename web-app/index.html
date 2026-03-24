@@ -139,39 +139,41 @@
     .hero-dash      { display: inline-block; width: 60px; height: 1px; background: var(--gold); margin: 0 12px; vertical-align: middle; opacity: .5; }
     .hero-tagline   { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--gold-pale); font-size: 1.3rem; margin: 28px 0 40px; opacity: .8; line-height: 1.6; }
     .hero-photo-ring { width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 36px; position: relative; }
-    .hero-photo-ring::before { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--gold); opacity: .5; }
-    .hero-photo-ring::after  { content: ""; position: absolute; inset: -14px; border-radius: 50%; border: 1px solid rgba(200,168,75,.2); }
-    .hero-photo-ring img     { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
-    .hero-photo-placeholder  {
-      width: 100%; height: 100%; border-radius: 50%;
-      background: linear-gradient(135deg,#2a2a20,#1e1e18);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 4rem; color: var(--gold); opacity: .5;
-    }
-    .hero-photo-placeholder {
-  width: 150px;
-  height: 150px;
+    .hero-photo-ring::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
   border-radius: 50%;
-  overflow: hidden; /* ensures image stays inside circle */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #eee;
+  border: 2px solid var(--gold);
+  opacity: .5;
+}
+
+.hero-photo-ring::after {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 1px solid rgba(200,168,75,.2);
 }
 
 .hero-photo-placeholder img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* keeps aspect ratio while filling */
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
 }
-    .hero-events      { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px; }
-    .hero-event-badge { background: rgba(200,168,75,.1); border: 1px solid rgba(200,168,75,.3); color: var(--gold-pale); padding: 8px 18px; border-radius: 2px; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; }
-    .hero-scroll {
-      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
-      color: rgba(200,168,75,.4); font-size: .7rem; letter-spacing: .2em;
-      text-transform: uppercase; display: flex; flex-direction: column;
-      align-items: center; gap: 8px; animation: bounceDown 2s infinite;
-    }
+   .hero-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#2a2a20,#1e1e18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+  
     @keyframes bounceDown {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50%       { transform: translateX(-50%) translateY(6px); }
@@ -657,7 +659,7 @@
       <div class="hero-sub">In Loving Memory of</div>
       <div class="hero-photo-ring">
   <div class="hero-photo-placeholder">
-    <img src="profile.jpeg" alt="Profile Photo">
+    <img src="images/profile.jpeg" alt="Profile Photo">
   </div>
 </div>
       <h1 class="hero-name">Madam Agnes Pomaa<em>"Auntie Bee"</em></h1>
