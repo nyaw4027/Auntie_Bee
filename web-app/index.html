@@ -1596,16 +1596,31 @@ const PROGRAMS = {
     {time:'All Night', title:'Vigil & Fellowship', detail:'Food and fellowship through the night'}
   ],
   'burial': [
-    {time:'8:00 AM', title:'Procession from Family House', detail:''},
-    {time:'9:00 AM', title:'Arrival at Church / Venue', detail:''},
-    {time:'9:15 AM', title:'Opening Hymn & Prayer', detail:''},
-    {time:'9:30 AM', title:'Scripture Readings', detail:''},
-    {time:'9:50 AM', title:'Biography', detail:'Read by family representative'},
-    {time:'10:10 AM',title:'Tributes', detail:'Family, church, community'},
-    {time:'11:00 AM',title:'Funeral Sermon', detail:''},
-    {time:'11:45 AM',title:'Final Viewing', detail:''},
-    {time:'12:30 PM',title:'Committal at Graveside', detail:''},
-    {time:'1:30 PM', title:'Reception', detail:''}
+    {time:'8:00 AM', title:'Opening Prayer', detail:'Dn. George Appiah'},
+    {time:'9:00 AM', title:'Chorus', detail:'Chorus Team'},
+    {time:'9:15 AM', title:'Introduction / Welcome Songs', detail:' Eld. Simon Martey Aborbie'},
+    {time:'9:30 AM', title:'Scripture Reading', detail:`• English - Bro. Ebenezer Mensah
+    • Twi - Eld. John Asare`},
+    {time:'9:50 AM', title:'Biography', detail:'Family'},
+    {
+    time: '10:10 AM',
+    title: 'Tributes',
+    detail: `• Children
+• Grandchildren
+• Greatgrandchildren
+• Family
+• In-Laws
+• Church
+`
+}
+    {time:'11:00 AM',title:'Songsn', detail:'Chorus Team'},
+    {time:'11:45 AM',title:'Offering', detail:'Conductor Leads'},
+    {time:'12:30 PM',title:'Committal at Graveside', detail:`• Songs
+    • Prayer
+    • Lower Of Casket
+    • Commital
+    • Prayer & Benediction`},
+    {time:'1:30 PM', title:'Reception', detail:'@ The Church Of Jesus Christ Of Latter-Day Saint, Sankubenase Ward'},
   ],
   'thanksgiving': [
     {time:'9:00 AM', title:'Gathering & Praise', detail:''},
@@ -1649,9 +1664,9 @@ const TRIBUTE_GROUPS = {
       { photo: 'images/Child1.jpg', name: 'Mr. Daniel Owusu', occupation: 'Farmer · Sankubenase' },
       { photo: 'images/Child2.jpeg', name: 'Mr. Charles Owusu', occupation: 'Farmer · Sankubenase' },
       { photo: 'images/Deconness1.jpeg', name: 'Mrs. Regina Kwakoa Gyasi', occupation: 'Trader · Sankubenase' },
-      { photo: 'images/child3.jpeg', name: 'Mr. James Kwame Boadi', occupation: 'Electrician . Tarkwa'},
+      { photo: 'images/dadddykwame.jpg', name: 'Mr. James Kwame Boadi', occupation: 'Electrician . Tarkwa'},
       { photo: 'images/child4.jpeg', name: 'Mrs. Beatrice Boadiwaa', occupation: 'Trader . Tarkwa'},
-     // { photo: 'images/Child4.jpg', name: 'Naomi Owusua', occupation: 'Hair Styler · Sankubenase' },
+     
     ]
   },
   family: {
@@ -1672,12 +1687,19 @@ const TRIBUTE_GROUPS = {
     icon:'fa-baby',
     signName:'The Grandchildren of Obaapanyin Agnes Afia Pomaa',
     signRole:'In loving memory of our dearest grandmother',
-    text:`Grandma, you spoiled us with love and we would not change a single moment.\n\nYou always had something on the stove when we visited. You called us by our full names when we were in trouble, and funny nicknames when you were proud of us. You told us the stories of where we came from, and made sure we never forgot them.\n\nYou believed in us before we believed in ourselves. You prayed for us every single morning — we know because we heard you.\n\nWe will grow up carrying your values, your strength, and your faith. One day we will tell our own children about you, and the stories will make them wish they had known you too. We love you forever, Grandma.`,
+    text:`TRIBUTE BY GRAND CHILDREN 
+
+Today, we gather with deep sadness to say our final goodbye to someone who meant so much to us.\n
+NANA BEE  as we used to call her ,was a wonderful person whose kindness, love, and gentle heart touched many lives. Her smile brought comfort, and her presence brought warmth to everyone around her.\n\nIt is difficult to accept that she is no longer with her grandchildren but the memories she left behind will stay in our hearts forever. We will remember the laughter shared, the lessons taught, and the love she gave so freely.\n\n Though death separates us physically, it can never erase the bond we shared
+with our grandmother.\n\n
+As we mourn this painful loss, we also celebrate a beautiful life well lived. May we honor NANA BEE by living with the same kindness and strength she showed every day.\n\n
+You will always be loved and remembered.\n
+DA YIE NANA`,
     members: [
-      { photo: 'images/Grandchild4.jpeg', name: 'Engr. Samuel Owusu Frimpong', occupation: 'Software Engineer · Accra' },
+      { photo: 'images/Grandchild4.jpeg', name: 'Engr. Samuel Owusu Frimpong', occupation: 'Software Engineer · Accra' },//
       { photo: 'images/Grandchild7.jpeg', name: 'Gabriel Gyasi',               occupation: 'Supply Officer · Kwabeng' },
       { photo: 'images/Grandchild20.jpeg', name: 'Aikins Ofori',       occupation: 'Driver . Sankubenase'},
-      { photo: 'images/child3.jpeg',  name: 'Mrs. Sandra Owusu Agyekum',               occupation: 'Accountant · Accra' },
+      { photo: 'images/Child3.jpeg',  name: 'Mrs. Sandra Owusu Agyekum',               occupation: 'Accountant · Accra' },
       { photo: 'images/Grandchild2.jpeg', name: 'Beatrice Pomaa',             occupation: 'Trader · Sankubenase' },
       { photo: 'images/Grandchild5.jpeg', name: 'Naomi Owusua',               occupation: 'Hair Styler · Sankubenase' },
       { photo: 'images/Grandchild3.jpeg', name: 'Dosia Aboagyewaa',           occupation: 'Trader · Sankubenase' },
@@ -1706,7 +1728,11 @@ const TRIBUTE_GROUPS = {
     icon: 'fa-seedling',
     signName: 'The Great-Grandchildren of Obaapanyin Agnes Afia Pomaa',
     signRole: 'In loving memory of our great-grandmother',
-    text: `Though some of us were very young, your love still touched our lives.\n\nYour legacy will continue through generations to come. Your kindness, faith, and strength will live on through our families.\n\nRest peacefully, Great-Grandma.`,
+    text: `TRIBUTE BY THE CHURCH OF PENTECOST FOR THE LATE AGNES POMAA\n
+JOHN 14:2-4\n
+The late Agnes Pomaa was baptized by immersion at the church of pentecost, Suhum Assembly on the 20th day of June,1966. She was baptized by Rev.Owusu,the then officiating minister.\n\n Mad. Agnes Pomaa came to Sankubenase together with her husband due to retirement in the year 1982.\n\n She offered her maximum support in establishing the local church by helping to win more souls to christ. Mad.Agnes Pomaa served in the church as the treasurer for almost 15years. \n\n She engaged in various activities of the church such as service to pastors and elders of the church, participating in all women ministry activities, cleaning church premises, advising young women in the church and many more. \n\nIndeed she is a backbone and strong pillar  of the local church. She has been an active member fpor about 60years. During her critical moments, the church showed her all the support she needed including ;sharing communion and the word of God with her, praying with her, regular visitations and offering both financial and material support, but the lord knows best, we wish our beloved a safe journey back to her maker.\n\n
+ENA PA NANTE YIE \n
+1 THESSALONIANS 4:14`,
     members: [
       { photo: 'images/Greatgrand1.jpeg', name: 'Pricilla Ofori',  occupation: 'Student · Sankubenase' },
       { photo: 'images/Greatgrand2.jpeg', name: 'Emmanuel Ofori', occupation: 'Student · Sankubenase' },
